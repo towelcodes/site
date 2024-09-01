@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+/* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
+
+/* this doesn't actually use sass stuff, i'll fix it later *
+/* catppuccin styles, should probably go in a different file */
+:root {
+    --crust: #111111b;
+    --mantle: #181825;
+    --base: #1e1e2e;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --surface2: #575b70;
+    --overlay0: #6c7086;
+    --overlay1:	#7f849c;
+    --overlay2:	#9399b2;
+    --subtext1:	#bac2de;
+    --subtext0:	#a6adc8;
+    --text:	#cdd6f4;
+    --lavender: #b4befe;
+    --blue: #89b4fa;
+    --sapphire: #74c7ec;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --pink: #f5c2e7;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+}
+
+.pfp {
+    border-radius: 50%;
+}
+
+aside {
+  margin-left: 20px;
+}
+
+.card {
+  /* padding: 70px 0; */
+  border-radius: 0px;
+  padding: 5px;
+  width: 200px;
+  margin: 5px;
+  background-color: var(--surface0);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  display: block;
+  width: 200px;
+}
+
+.container {
+  display: flex;
+}
+
+.main {
+  text-align: center;
+  align-content: center;
+  width: 70%; /* adjust to your desired width */
+  margin: 5px auto; /* center horizontally */
+  // background-color: #f0f0f0; /* optional */
+  // padding: 20px; /* optional */
+  position: relative; /* important for side panel positioning */
+}
+
+.side-panel {
+  width: 200px; /* adjust to your desired width */
+  position: absolute; /* position relative to .main */
+  top: 0; /* align top with .main */
+  right: -220px; /* position outside .main, adjust to your desired offset */
+  background-color: #333; /* optional */
+  padding: 20px; /* optional */
+  color: #fff; /* optional */
+}
+
+/* optional: add a toggle button to show/hide side panel */
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #444;
+}
+
+/* optional: add a media query to adjust layout on smaller screens */
+@media (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+  .side-panel {
+    width: 100%;
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}
+
+a:link, a:visited {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.main-heading {
+  display: block;
+  font-family: "Jersey 10";
+  font-size: 65px;
+  cursor: default;
+  position: relative;
+  background-size: 300%;
+  background-clip: text;
+  color: transparent;
+  z-index: 1;
+  margin: 15px 0;
+}
+
+/* flexbox wrapper */
+.wrapper {
+  display: flex;
+}
+
+.wrapper > div {
+  flex: 1;
+}
+
+.char {
+  position: relative; /* the text becomes invisible when i add this */
+  background-clip: text;
+  display: inline-block;
+  background-image: linear-gradient(45deg, var(--pink), var(--mauve));
+  top: 0;
+  transition: top ease-out 0.5s; 
+  z-index: 2;
+  cursor: default;
+}
+
+.char:hover {
+  top: -20px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to top, #11111b 0%, #1e1e2e 100%);
+  /* background: linear-gradient(to top, #c6a0f6 0%, #f0c6c6 100%); */
+  color: white;
+  /* font-family: 'JetBrains Mono', monospace; */
+  font-family: "MS UI Gothic", "nec_apc3", "Verdana", sans-serif;
+  image-rendering: pixelated;
+}
+
+p {
+  text-shadow: 2px 2px #11111b;
+}
+
+ul {
+  list-style-type: none;
+  list-style-position: inside;
+  padding-left: 0;
+}
