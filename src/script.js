@@ -12,33 +12,33 @@ function timeDifference(current, previous) {
     const calc = (div) => {
         const val = Math.round(elapsed / div);
         const s = val > 1 ? 's' : '';
-        return (val, s);
+        return [val, s];
     }
 
     if (elapsed < msPerMinute) {
-        let val, s = calc(1000);
-        return val + ` second${s} ago`;   
+        let val = calc(1000);
+        return val[0] + ` second${val[1]} ago`;   
     }
 
     else if (elapsed < msPerHour) {
-        let val, s = calc(msPerMinute)
-        return val + ` minute${s} ago`;   
+        let val = calc(msPerMinute)
+        return val[0] + ` minute${val[1]} ago`;   
     }
 
     else if (elapsed < msPerDay) {
-        let val, s = calc(msPerHour)
-        return val + ` hour${s} ago`;   
+        let val = calc(msPerHour)
+        return val[0] + ` hour${val[1]} ago`;   
     }
 
     else if (elapsed < msPerMonth) {
-        let val, s = calc(msPerDay)
-        return val + ` day${s} ago`;   
+        let val = calc(msPerDay)
+        return val[0] + ` day${val[1]} ago`;   
     }
 
     // else if (elapsed < msPerYear) {
     else {
-        let val, s = calc(msPerMonth);
-        return val + ` month${s} ago`;   
+        let val = calc(msPerMonth);
+        return val[0] + ` month${val[1]} ago`;   
     }
 
     // else {
