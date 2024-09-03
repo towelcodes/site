@@ -1,37 +1,50 @@
 // i stole this from https://stackoverflow.com/a/6109105 btw
 function timeDifference(current, previous) {
 
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
+    const msPerMinute = 60 * 1000;
+    const msPerHour = msPerMinute * 60;
+    const msPerDay = msPerHour * 24;
+    const msPerMonth = msPerDay * 30;
+    const msPerYear = msPerDay * 365;
 
-    var elapsed = current - previous;
+    const elapsed = current - previous;
+
+    const calc = (div) => {
+        const val = Math.round(elapsed / div);
+        const s = val > 1 ? 's' : '';
+        return (val, s);
+    }
 
     if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' seconds ago';   
+        let val, s = calc(1000);
+        return val + ` second${s} ago`;   
     }
 
     else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+        let val, s = calc(msPerMinute)
+        return val + ` minute${s} ago`;   
     }
 
-    else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    else if (elapsed < msPerDay) {
+        let val, s = calc(msPerHour)
+        return val + ` hour${s} ago`;   
     }
 
     else if (elapsed < msPerMonth) {
-        return Math.round(elapsed/msPerDay) + ' days ago';   
+        let val, s = calc(msPerDay)
+        return val + ` day${s} ago`;   
     }
 
-    else if (elapsed < msPerYear) {
-        return Math.round(elapsed/msPerMonth) + ' months ago';   
-    }
-
+    // else if (elapsed < msPerYear) {
     else {
-        return Math.round(elapsed/msPerYear ) + ' years ago';   
+        let val, s = calc(msPerMonth);
+        return val + ` month${s} ago`;   
     }
+
+    // else {
+    //     let val, s = calc(msPerYear)
+    //     return val + ` year${s} ago`;   
+    // }
 }
 
 const timeCheck = () => {
