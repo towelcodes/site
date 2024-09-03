@@ -135,8 +135,12 @@ if (process.argv[2] === "serve" || process.argv[2] === "watch") {
             for await (const event of watcher) {
                 const start = Date.now();
                 console.log(event);
-                await build(IN, OUT);
-                console.log("Built in " + (Date.now() - start) + "ms");
+                try {
+                    await build(IN, OUT);
+                    console.log("Built in " + (Date.now() - start) + "ms");
+                } catch(e) {
+                    console.error("Build failed: " + e);
+                }
             }
         })();
     }
