@@ -8,10 +8,11 @@
   "devDependencies": {
     "@types/bun": "latest",
     "@types/minify": "^9.1.4",
+    "http": "^0.0.1-security",
     "minify": "^11.4.0",
     "node-html-parser": "^6.1.13",
-    "node-http-server": "^8.1.6",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "serve-handler": "^6.1.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

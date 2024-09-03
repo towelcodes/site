@@ -126,7 +126,10 @@ await build(IN, OUT);
 console.log("Built in " + (Date.now() - start) + "ms");
 
 if (process.argv[2] === "serve" || process.argv[2] === "watch") {
-    require("node-http-server").deploy({ port: 8080, root: OUT });
+    // require("node-http-server").deploy({ port: 8080, root: OUT });
+    const http = require("http");
+    const handler = require("serve-handler");
+    http.createServer((res: any, req: any) => handler(res, req, { public: OUT })).listen(8080);
     console.log("Serving on http://localhost:8080");
     if (process.argv[2] === "watch") {
         console.log("Watching for changes...");
