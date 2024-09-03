@@ -1,3 +1,5 @@
+@use "catppuccin";
+
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
 /* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
@@ -31,18 +33,176 @@
     border-radius: 50%;
 }
 
-aside {
-  margin-left: 20px;
+.inline {
+  display: inline-block;
 }
 
-.card {
-  /* padding: 70px 0; */
+.clickable:hover {
+  cursor: pointer;
+}
+
+.hover-zoom {
+  transition: 0.5s;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.2) rotate(-10deg);
+  z-index: 4;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  33% {
+    transform: translatey(-5px);
+  }
+  66% {
+    transform: translatey(5px);
+  }
+  99% {
+    transform: translatey(0px);
+  }
+}
+
+.floaty {
+  animation: 3s float infinite;
+}
+
+%card-shared {
   border-radius: 0px;
   padding: 5px;
-  width: 200px;
   margin: 5px;
   background-color: var(--surface0);
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  @extend %card-shared;
+}
+
+.fancy-link {
+  transition: 0.5s;
+  padding: 2px;
+  display: inline-block;
+  background-size: 200%; 
+  &--r {
+    @extend .fancy-link;
+    background-image: linear-gradient(to left, transparent 50%, black 50%); 
+    background-position-x: 100%;
+  }
+  &--l {
+    @extend .fancy-link;
+    background-image: linear-gradient(to right, transparent 50%, black 50%); 
+    background-position-x: 0%;
+  }
+}
+
+.fancy-link--r:hover {
+  transform: scale(1.4) rotate(-5deg);
+  background-position-x: 0%;
+}
+
+.fancy-link--l:hover {
+  transform: scale(1.4) rotate(5deg);
+  background-position-x: 100%;
+}
+
+// .fancy-link span {
+//   display: inline-block;
+//   animation-fill-mode: fowards;
+// }
+
+// .fancy-link span:hover {
+//   animation-fill-mode: forwards;
+//   // animation: scale-up 0.3s;
+// }
+
+// @keyframes scale-up {
+//   from {
+//     transform: scale(1);
+//   }
+//   to {
+//     transform: scale(1.5);
+//   }
+// }
+
+.sidebar-card {
+  @extend %card-shared;
+  height: 18px;
+  width: 200px;
+  transition: 0.3s;
+}
+
+.sidebar-card-selected {
+  @extend %card-shared;
+  width: 230px;
+}
+
+.sidebar-card:hover {
+  font-weight: bold;
+  height: 27px;
+  width: 215px;
+}
+
+.ticker {
+  width: 70%;
+  overflow: hidden;
+  display: grid;
+  max-height: 16px;
+  z-index: 0;
+  background-color: #3a342ee8;
+  border-radius: 5px;
+  box-shadow: #f9e2af 0px 0px 5px;
+}
+
+.scanlines {
+  grid-column: 1;
+  grid-row: 1;
+  width: 102%;
+  margin: -5px;
+  z-index: 1;
+  opacity: 20%;
+  object-fit: fill;
+  animation: scroll-up 5s linear infinite;
+}
+
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.scrolling {
+  animation: scroll 10s linear infinite;
+  position: fixed;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+}
+
+.scrolling#scroll2 {
+  transform: translateX(105%);
+  animation-delay: 5s;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-60%);
+  }
+}
+
+.glow {
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff4da6, 0 0 15px #ff4da6, 0 0 20px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6;
+  position: relative;
 }
 
 .navbar {
@@ -51,19 +211,27 @@ aside {
 }
 
 .container {
-  display: flex;
+  margin: auto;
+}
+
+.flex-container {
+    display: flex;
+  }
+
+.sidebar {
+  // margin-left: 20px;
+  margin-left: auto;
 }
 
 .main {
   text-align: center;
   align-content: center;
   width: 70%; /* adjust to your desired width */
-  margin: 5px auto; /* center horizontally */
-  // background-color: #f0f0f0; /* optional */
-  // padding: 20px; /* optional */
+  margin-right: auto;
   position: relative; /* important for side panel positioning */
 }
 
+// unused
 .side-panel {
   width: 200px; /* adjust to your desired width */
   position: absolute; /* position relative to .main */
@@ -156,6 +324,17 @@ html, body {
   /* font-family: 'JetBrains Mono', monospace; */
   font-family: "MS UI Gothic", "nec_apc3", "Verdana", sans-serif;
   image-rendering: pixelated;
+}
+
+footer {
+  color: #6c7086;
+  text-align: center;
+  margin-top: 20px;
+  font-size: x-small;
+}
+
+#commitUrl {
+  color: #6c7086;
 }
 
 p {
