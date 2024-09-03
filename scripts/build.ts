@@ -74,11 +74,17 @@ const processStyles = async (dir: string, out: string, baseOut: string) => {
         }
 
         const compiled = await sass.compile(dir + "/" + name + ext);
-        // const mini = await minify.css(compiled.css);
-        console.log("- writing file: " + out + "/" + name + ".min.css");
-        await fs.writeFile(out + "/" + name + ".min.css", compiled.css);
-        styles.push(out.substring(baseOut.length) + "/" + name + ".min.css");
-        console.debug("- dbg: " + file.name + " -> " + out.substring(baseOut.length) + "/" + name + ".min.css");
+        let mini: string | null = null;
+        try {
+            mini = await minify.css(compiled.css);
+        } catch (e) {
+            console.warn("-! failed to minify file: " + file.name + " -> " + e);
+        }
+        const extOut = mini !== null ? `.min.css` : `.css`;
+        console.log("- writing file: " + out + "/" + name + extOut);
+        await fs.writeFile(out + "/" + name + extOut, mini !== null ? mini : compiled.css);
+        styles.push(out.substring(baseOut.length) + "/" + name + extOut);
+        console.debug("- dbg: " + file.name + " -> " + out.substring(baseOut.length) + "/" + name + extOut);
     }
     return styles;
 }
