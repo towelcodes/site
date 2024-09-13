@@ -4,6 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
 /* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
 
+@font-face {
+    font-family: 'MS UI Gothic';
+    src: url('/static/fonts/MS-UIGothic.woff2') format('woff2'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}  
+
 /* this doesn't actually use sass stuff, i'll fix it later *
 /* catppuccin styles, should probably go in a different file */
 :root {
