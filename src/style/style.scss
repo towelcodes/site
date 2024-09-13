@@ -34,6 +34,10 @@
     --red: #f38ba8;
 }
 
+.wooper-shadow {
+  filter: drop-shadow(0 0 0.75rem rgb(5, 126, 177));
+}
+
 .pfp {
     border-radius: 50%;
 }

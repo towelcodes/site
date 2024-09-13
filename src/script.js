@@ -47,6 +47,12 @@ function timeDifference(current, previous) {
     // }
 }
 
+// thanks MDN
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
 const timeCheck = () => {
     let opt = {
         timeZone: 'Europe/London',
@@ -73,6 +79,10 @@ window.onload = () => {
     randomDelay.forEach(el => {
         el.style.animationDelay = (Math.random()*2) + "s";
     })
+
+    // pick a random wooper!
+    // const randomWooper = document.querySelector("#random-wooper");
+    // randomWooper.setAttribute("src", "/static/wooper/wooper"+(getRandomInt(3)+1)+".gif");
 }
 window.setInterval(() => timeCheck(), 500);
 
