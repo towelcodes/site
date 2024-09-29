@@ -10,47 +10,11 @@
 
 <body>
     <script src="/script.js"></script>
-    <!-- flexbox wrapper -->
+
+    {{ c:ticker }}
+
     <div class="flex-container">
-        <a class="card clickable hover-zoom" style="margin-left: auto; height: 16px; text-decoration: none;"
-            href="https://github.com/{{ BASE_GITHUB }}" target="_blank">
-            Source
-            <img src="/static/github.svg" style="height: 100%;" />
-        </a>
-        <div class="card ticker" style="margin-right: auto">
-            <div class="scrolling glow" id="scroll1">
-                It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
-                    idk</span> (commit #{{ COMMIT_HASH }})
-            </div>
-            <div class="scrolling glow" id="scroll2">
-                It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
-                    idk</span> (commit #{{ COMMIT_HASH }})
-            </div>
-            <img src="static/scanlines.png" class="scanlines" />
-        </div>
-    </div>
-    <div class="flex-container">
-        <aside class="sidebar">
-            <div class="sidebar-card-selected">
-                home
-            </div>
-            <div class="sidebar-card">
-                wip
-            </div>
-            <div class="sidebar-card">
-                wip
-            </div>
-            <div class="sidebar-card">
-                wip
-            </div>
-            <div class="sidebar-card">
-                wip
-            </div>
-            <div class="card" style="max-width: 200px;">
-                <!-- random wooper -->
-                <img class="wooper-shadow" id="random-wooper" src="/static/wooper/wooper1.gif"/>
-            </div>
-        </aside>
+        {{ c:sidebar }}
         <div class="card main">
             <h1 class="main-heading">
                 <span class="char floaty rand-delay">t</span>
@@ -89,7 +53,8 @@
                         </div>
                     </li>
                     <li>
-                        <s><a href="https://unblocker.towel.sh">holy unblocker instance</a></s> <span style="color:gray">(back soon!)</span>
+                        <s><a href="https://unblocker.towel.sh">holy unblocker instance</a></s> <span
+                            style="color:gray">(back soon!)</span>
                     </li>
                 </center>
             </ul>

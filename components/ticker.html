@@ -1,0 +1,19 @@
+<!-- flexbox wrapper -->
+<div class="flex-container">
+    <a class="card clickable hover-zoom" style="margin-left: auto; height: 16px; text-decoration: none;"
+        href="https://github.com/{{ BASE_GITHUB }}" target="_blank">
+        Source
+        <img src="/static/github.svg" style="height: 100%;" />
+    </a>
+    <div class="card ticker" style="margin-right: auto">
+        <div class="scrolling glow" id="scroll1">
+            It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
+                idk</span> (commit #{{ COMMIT_HASH }})
+        </div>
+        <div class="scrolling glow" id="scroll2">
+            It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
+                idk</span> (commit #{{ COMMIT_HASH }})
+        </div>
+        <img src="static/scanlines.png" class="scanlines" />
+    </div>
+</div>
