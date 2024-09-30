@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Teatowel</title>
+    <link rel="me" href="https://ohai.social/@teatowel">
+</head>
+
+<body>
+    <script src="/script.js"></script>
+
+    {{ c:ticker }}
+
+    <div class="flex-container">
+        {{ c:sidebar }}
+        <div class="card main">
+            <h1 class="main-heading" style="margin-bottom: 0px;">
+                <span class="char floaty rand-delay">w</span>
+                <span class="char floaty rand-delay">i</span>
+                <span class="char floaty  rand-delay">s</span>
+                <span class="char floaty rand-delay">h</span>
+                <span class="char floaty rand-delay">l</span>
+                <span class="char floaty rand-delay">i</span>
+                <span class="char floaty rand-delay">s</span>
+                <span class="char floaty rand-delay">t</span>
+            </h1>
+            <span style="color: rgb(197, 197, 197); margin-bottom: 20%; margin-top: 0px;">support the cause</span>
+            <br />
+
+            <div class="progress-container">
+                <span style="margin-left: auto;">£0</span>
+                <div class="progress-box">
+                    <div class="progress-bar" style="width: 5%"></div>
+                    <div class="marker" style="left: 14%;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="highlight-g">£60</span>
+                            <marquee style="margin-left: 5px;">MSI B450M PRO AM4 Motherboard</marquee>
+                        </div>
+                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/9f282b8b21d7c5b1fae9b0474ed77164.256p.jpg"
+                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                        <a class="buy-button clickable hover-zoom" href="https://amazon.co.uk" target="_blank">buy it
+                            now!</a>
+                    </div>
+                    <div class="marker" style="left: 40%;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="highlight-g">£110</span>
+                            <marquee style="margin-left: 5px;">AMD Ryzen 5 5600X CPU</marquee>
+                        </div>
+                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/3ef757133d38ac40afe75da691ba7d60.256p.jpg"
+                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                        <a class="buy-button clickable hover-zoom" href="https://amazon.co.uk" target="_blank">buy it
+                            now!</a>
+                    </div>
+                    <div class="marker" style="left: 48%;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="highlight-g">£35</span>
+                            <marquee style="margin-left: 5px;">Crucial P3 500GB M.2 SSD</marquee>
+                        </div>
+                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/5b0cd518feacc76794f17f75745b2907.256p.jpg"
+                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                        <a class="buy-button clickable hover-zoom" href="https://amazon.co.uk" target="_blank">buy it
+                            now!</a>
+                    </div>
+                    <div class="marker" style="left: 62%;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="highlight-g">£60</span>
+                            <marquee style="margin-left: 5px;">NZXT H5 Flow Case (White)</marquee>
+                        </div>
+                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/6c58fbf47cba2aca9c9a56ff028fe5d9.256p.jpg"
+                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                        <a class="buy-button clickable hover-zoom" href="https://amazon.co.uk" target="_blank">buy it
+                            now!</a>
+                    </div>
+                    <div class="marker" style="left: 98%;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="highlight-g">£150</span>
+                            <marquee style="margin-left: 5px;">KOORUI 27" 4K 144Hz Monitor</marquee>
+                        </div>
+                        <img src="https://m.media-amazon.com/images/I/419050aOmfL.jpg" width="100px"
+                            style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                        <a class="buy-button clickable hover-zoom" href="https://amazon.co.uk" target="_blank">buy it
+                            now!</a>
+                    </div>
+                </div>
+                <span style="margin-right: auto;">£415</span>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <img src="/static/buttons/handcoded.gif" /><br /><br />
+        built with ❤ by me |
+        last build: <span id="buildTime">{{ BUILD_TIME }}</span> |
+        last commit: <a href="https://github.com/{{ BASE_GITHUB }}/commit/{{ COMMIT_HASH_FULL }}"
+            style="color: #6c7086">{{ COMMIT_HASH }}</a>
+    </footer>
+</body>
+
+</html>
