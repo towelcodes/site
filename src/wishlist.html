@@ -10,6 +10,7 @@
 
 <body>
     <script src="/script.js"></script>
+    <script src="/wishlist.js"></script>
 
     {{ c:ticker }}
 
@@ -33,68 +34,19 @@
                 <span style="margin-left: auto;">£0</span>
                 <div class="progress-box">
                     <div class="progress-bar" style="width: 5%"></div>
-                    <div class="marker" style="left: 14%;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="highlight-g">£60</span>
-                            <marquee style="margin-left: 5px;">MSI B450M PRO AM4 Motherboard</marquee>
+                    <template id="marker">
+                        <div class="marker" style="left: 0%;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="marker-price highlight-g"></span>
+                                <marquee class="marker-name" style="margin-left: 5px;"></marquee>
+                            </div>
+                            <img class="marker-img" width="100px"
+                                style="border-radius: 3px; margin: auto; margin-top: 5px;" />
+                            <a class="marker-buy buy-button clickable hover-zoom" target="_blank">buy it now!</a>
                         </div>
-                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/9f282b8b21d7c5b1fae9b0474ed77164.256p.jpg"
-                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
-                        <a class="buy-button clickable hover-zoom"
-                            href="https://www.amazon.co.uk/MSI-B450M-PRO-VDH-MAX-Motherboard/dp/B07WC724Z7/"
-                            target="_blank">buy it
-                            now!</a>
-                    </div>
-                    <div class="marker" style="left: 40%;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="highlight-g">£110</span>
-                            <marquee style="margin-left: 5px;">AMD Ryzen 5 5600X CPU</marquee>
-                        </div>
-                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/3ef757133d38ac40afe75da691ba7d60.256p.jpg"
-                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
-                        <a class="buy-button clickable hover-zoom"
-                            href="https://www.amazon.co.uk/AMD-Ryzen-5600X-Processor-Cache/dp/B08166SLDF"
-                            target="_blank">buy it
-                            now!</a>
-                    </div>
-                    <div class="marker" style="left: 48%;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="highlight-g">£35</span>
-                            <marquee style="margin-left: 5px;">Crucial P3 500GB M.2 SSD</marquee>
-                        </div>
-                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/5b0cd518feacc76794f17f75745b2907.256p.jpg"
-                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
-                        <a class="buy-button clickable hover-zoom"
-                            href="https://www.amazon.co.uk/Crucial-500GB-PCIe-Gen3-Internal/dp/B0B25LQQPC"
-                            target="_blank">buy it
-                            now!</a>
-                    </div>
-                    <div class="marker" style="left: 62%;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="highlight-g">£60</span>
-                            <marquee style="margin-left: 5px;">NZXT H5 Flow Case (White)</marquee>
-                        </div>
-                        <img src="https://cdna.pcpartpicker.com/static/forever/images/product/6c58fbf47cba2aca9c9a56ff028fe5d9.256p.jpg"
-                            width="100px" style="border-radius: 3px; margin: auto; margin-top: 5px;" />
-                        <a class="buy-button clickable hover-zoom"
-                            href="https://www.amazon.co.uk/NZXT-H5-Flow-CC-H51FB-01-Quick-Release/dp/B0B7VMKP4Y"
-                            target="_blank">buy it
-                            now!</a>
-                    </div>
-                    <div class="marker" style="left: 98%;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span class="highlight-g">£150</span>
-                            <marquee style="margin-left: 5px;">KOORUI 27" 4K 144Hz Monitor</marquee>
-                        </div>
-                        <img src="https://m.media-amazon.com/images/I/419050aOmfL.jpg" width="100px"
-                            style="border-radius: 3px; margin: auto; margin-top: 5px;" />
-                        <a class="buy-button clickable hover-zoom"
-                            href="https://www.amazon.co.uk/KOORUI-FreeSync-Mountable-2560x1440-DisplayPort/dp/B0BBMPF6PT"
-                            target="_blank">buy it
-                            now!</a>
-                    </div>
+                    </template>
                 </div>
-                <span style="margin-right: auto;">£415</span>
+                <span id="total-cost" style="margin-right: auto;">£415</span>
             </div>
 
         </div>
