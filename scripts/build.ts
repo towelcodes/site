@@ -144,7 +144,12 @@ const build = async (dir: string, out: string, vars: Record<string, string>,inhe
         // output folder already exists
         await fs.rm(out, { recursive: true, force: true });
     }
-    await fs.mkdir(out, { recursive: true });
+    try {
+        await fs.mkdir(out, { recursive: true });
+    } catch (e) {
+        await (new Promise(r => setTimeout(r, 100))); // wait 100ms
+        await fs.mkdir(out, { recursive: true });
+    }
 
     // a string array of relative paths to compiled stylesheets
     // these should be placed in all html documents
