@@ -1,0 +1,23 @@
+name: deploy to cloudflare
+on:
+    push:
+        branches:
+            - main
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v3
+            - name: setup bun
+              uses: oven-sh/setup-bun@v2
+            - name: install dependencies
+              run: bun install
+            - name: build
+              run: bun run build
+            - name: deploy
+              uses: cloudflare/wrangler-action@v3
+              with:
+                apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                command: pages deploy build --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }}
