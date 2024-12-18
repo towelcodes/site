@@ -217,16 +217,28 @@ if (process.argv[2] === "serve" || process.argv[2] === "watch") {
         console.log("Watching for changes...");
         (async () => {
             const watcher = fs.watch(IN, { recursive: true });
-            for await (const event of watcher) {
+            const componentWatcher = fs.watch(COMPONENTS, { recursive: true });
+            const rebuild = async () => {
                 const start = Date.now();
-                console.log(event);
                 try {
                     await initBuild();
                     console.log("Built in " + (Date.now() - start) + "ms");
                 } catch(e) {
                     console.error("Build failed: " + e);
                 }
-            }
+            };
+            await Promise.all([
+                (async () => {
+                    for await (const event of watcher) {
+                        await rebuild();
+                    }
+                })(),
+                (async () => {
+                    for await (const event of componentWatcher) {
+                        await rebuild();
+                    }
+                })()
+            ]);
         })();
     }
 }
