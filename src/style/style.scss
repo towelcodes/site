@@ -55,7 +55,7 @@
 }
 
 .hover-zoom:hover {
-  transform: scale(1.2) rotate(-10deg);
+  transform: scale(1.2) rotate(-5deg);
   z-index: 4;
 }
 
@@ -235,9 +235,56 @@
 .main {
   text-align: center;
   align-content: center;
-  width: 70%; /* adjust to your desired width */
+  width: 50%; /* adjust to your desired width */
   margin-right: auto;
   position: relative; /* important for side panel positioning */
+}
+
+.highlight-g {
+  color:#1e1e2e;
+  background-color: #96ffb5;
+  border-radius: 2px;
+}
+
+.guestbook-entry {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.guestbook-name {
+  justify-self: left;
+  background-color: #1e1e2e;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 4px;
+  align-self: start;
+}
+
+.guestbook-msg {
+  padding: 0 3px;
+}
+
+#guestbook-submission input {
+  margin-top: 2px;
+  background-color: var(--mantle);
+  border: 1px solid var(--surface1);
+  padding: 4px;
+  width: 90%;
+  color: white;
+}
+
+#guestbook-submission input::placeholder {
+  color: var(--overlay0);
+}
+
+#guestbook-input-submit {
+  margin-top: 7px;
+  font-family: "MS UI Gothic", nec_apc3, Verdana, sans-serif;
+  border: none;
+}
+
+hr {
+  border: 1px solid var(--mantle);
 }
 
 // unused

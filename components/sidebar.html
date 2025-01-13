@@ -2,17 +2,36 @@
     <div class="sidebar-card-selected">
         home
     </div>
-    <div class="sidebar-card">
-        wip
-    </div>
-    <div class="sidebar-card">
-        wip
-    </div>
-    <div class="sidebar-card">
-        wip
-    </div>
-    <div class="sidebar-card">
-        wip
+    <div class="card" style="max-width: 200px;">
+        <div align="center">
+            <div class="guestbook-header" style="margin-bottom: 8px">
+                <strong class="highlight-g" style="padding: 3px">guestbook!!</strong>
+            </div>
+            <div id="guestbook-entries">
+                <hr>
+                <div class="guestbook-entry">
+                    <div class="guestbook-name">john</div>
+                    <div class="guestbook-msg">i love you!!1 pls kiss me bro i want u so baddddd :3333</div>
+                </div>
+                <hr>
+                <div class="guestbook-entry">
+                    <div class="guestbook-name">wooper</div>
+                    <div class="guestbook-msg">shut up i'm a wooper</div>
+                </div>
+                <hr>
+            </div>
+            <div id="guestbook-submission">
+                <form action="{{ API_BASE }}/guestbook" method="POST">
+                    <label for="guestbook-input-name" hidden>name</label>
+                    <input type="text" id="guestbook-input-name" placeholder="who are you?">
+
+                    <label for="guestbook-input-msg" hidden>message</label>
+                    <input type="text" id="guestbook-input-msg" placeholder="enter your message here!">
+
+                    <input type="submit" id="guestbook-input-submit" value="Submit" class="card clickable hover-zoom"/>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="card" style="max-width: 200px;">
         <!-- random wooper -->

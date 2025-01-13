@@ -12,9 +12,13 @@
     "minify": "^11.4.0",
     "node-html-parser": "^6.1.13",
     "sass": "^1.77.8",
-    "serve-handler": "^6.1.5"
+    "serve-handler": "^6.1.5",
+    "wrangler": "^3.97.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "mariadb": "^3.4.0"
   }
 }
