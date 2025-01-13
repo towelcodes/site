@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply p-1 m-1 bg-surface0 shadow-card
+    }
+}
+
+@layer utilities {
+    .clickable {
+        @apply hover:cursor-pointer
+    }
+}

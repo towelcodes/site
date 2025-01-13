@@ -1,0 +1,357 @@
+//@use "catppuccin";
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+/* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
+
+//@font-face {
+//    font-family: 'MS UI Gothic';
+//    src: url('/static/fonts/MS-UIGothic.woff2') format('woff2'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+//}
+
+/* this doesn't actually use sass stuff, i'll fix it later *
+/* catppuccin styles, should probably go in a different file */
+:root {
+    --crust: #111111b;
+    --mantle: #181825;
+    --base: #1e1e2e;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --surface2: #575b70;
+    --overlay0: #6c7086;
+    --overlay1:	#7f849c;
+    --overlay2:	#9399b2;
+    --subtext1:	#bac2de;
+    --subtext0:	#a6adc8;
+    --text:	#cdd6f4;
+    --lavender: #b4befe;
+    --blue: #89b4fa;
+    --sapphire: #74c7ec;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --pink: #f5c2e7;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+}
+
+.wooper-shadow {
+  filter: drop-shadow(0 0 0.75rem rgb(5, 126, 177));
+}
+
+.pfp {
+    border-radius: 50%;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.hover-zoom {
+  transition: 0.5s;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.2) rotate(-10deg);
+  z-index: 4;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  33% {
+    transform: translatey(-5px);
+  }
+  66% {
+    transform: translatey(5px);
+  }
+  99% {
+    transform: translatey(0px);
+  }
+}
+
+.floaty {
+  animation: 3s float infinite;
+}
+
+%card-shared {
+  border-radius: 0px;
+  padding: 5px;
+  margin: 5px;
+  background-color: var(--surface0);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  @extend %card-shared;
+}
+
+.fancy-link {
+  transition: 0.5s;
+  padding: 2px;
+  display: inline-block;
+  background-size: 200%; 
+  &--r {
+    @extend .fancy-link;
+    background-image: linear-gradient(to left, transparent 50%, black 50%); 
+    background-position-x: 100%;
+  }
+  &--l {
+    @extend .fancy-link;
+    background-image: linear-gradient(to right, transparent 50%, black 50%); 
+    background-position-x: 0%;
+  }
+}
+
+.fancy-link--r:hover {
+  transform: scale(1.4) rotate(-5deg);
+  background-position-x: 0%;
+}
+
+.fancy-link--l:hover {
+  transform: scale(1.4) rotate(5deg);
+  background-position-x: 100%;
+}
+
+// .fancy-link span {
+//   display: inline-block;
+//   animation-fill-mode: fowards;
+// }
+
+// .fancy-link span:hover {
+//   animation-fill-mode: forwards;
+//   // animation: scale-up 0.3s;
+// }
+
+// @keyframes scale-up {
+//   from {
+//     transform: scale(1);
+//   }
+//   to {
+//     transform: scale(1.5);
+//   }
+// }
+
+.sidebar-card {
+  @extend %card-shared;
+  height: 18px;
+  width: 200px;
+  transition: 0.3s;
+}
+
+.sidebar-card-selected {
+  @extend %card-shared;
+  width: 230px;
+}
+
+.sidebar-card:hover {
+  font-weight: bold;
+  height: 27px;
+  width: 215px;
+}
+
+.ticker {
+  width: 70%;
+  overflow: hidden;
+  display: grid;
+  max-height: 16px;
+  z-index: 0;
+  background-color: #3a342ee8;
+  border-radius: 5px;
+  box-shadow: #f9e2af 0px 0px 5px;
+}
+
+.scanlines {
+  grid-column: 1;
+  grid-row: 1;
+  width: 102%;
+  margin: -5px;
+  z-index: 1;
+  opacity: 20%;
+  object-fit: fill;
+  animation: scroll-up 5s linear infinite;
+}
+
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.scrolling {
+  animation: scroll 10s linear infinite;
+  position: fixed;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+}
+
+.scrolling#scroll2 {
+  transform: translateX(105%);
+  animation-delay: 5s;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-60%);
+  }
+}
+
+.glow {
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff4da6, 0 0 15px #ff4da6, 0 0 20px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6;
+  position: relative;
+}
+
+.navbar {
+  display: block;
+  width: 200px;
+}
+
+.container {
+  margin: auto;
+}
+
+.flex-container {
+    display: flex;
+  }
+
+.sidebar {
+  // margin-left: 20px;
+  margin-left: auto;
+}
+
+.main {
+  text-align: center;
+  align-content: center;
+  width: 70%; /* adjust to your desired width */
+  margin-right: auto;
+  position: relative; /* important for side panel positioning */
+}
+
+// unused
+.side-panel {
+  width: 200px; /* adjust to your desired width */
+  position: absolute; /* position relative to .main */
+  top: 0; /* align top with .main */
+  right: -220px; /* position outside .main, adjust to your desired offset */
+  background-color: #333; /* optional */
+  padding: 20px; /* optional */
+  color: #fff; /* optional */
+}
+
+/* optional: add a toggle button to show/hide side panel */
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #444;
+}
+
+/* optional: add a media query to adjust layout on smaller screens */
+@media (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+  .side-panel {
+    width: 100%;
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}
+
+a:link, a:visited {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.main-heading {
+  display: block;
+  font-family: "Jersey 10";
+  font-size: 65px;
+  cursor: default;
+  position: relative;
+  background-size: 300%;
+  background-clip: text;
+  color: transparent;
+  z-index: 1;
+  margin: 15px 0;
+}
+
+/* flexbox wrapper */
+.wrapper {
+  display: flex;
+}
+
+.wrapper > div {
+  flex: 1;
+}
+
+.char {
+  position: relative; /* the text becomes invisible when i add this */
+  background-clip: text;
+  display: inline-block;
+  background-image: linear-gradient(45deg, var(--pink), var(--mauve));
+  top: 0;
+  transition: top ease-out 0.5s; 
+  z-index: 2;
+  cursor: default;
+}
+
+.char:hover {
+  top: -20px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to top, #11111b 0%, #1e1e2e 100%);
+  /* background: linear-gradient(to top, #c6a0f6 0%, #f0c6c6 100%); */
+  color: white;
+  /* font-family: 'JetBrains Mono', monospace; */
+  font-family: "MS UI Gothic", "nec_apc3", "Verdana", sans-serif;
+  image-rendering: pixelated;
+}
+
+footer {
+  color: #6c7086;
+  text-align: center;
+  margin-top: 20px;
+  font-size: x-small;
+}
+
+#commitUrl {
+  color: #6c7086;
+}
+
+p {
+  text-shadow: 2px 2px #11111b;
+}
+
+ul {
+  list-style-type: none;
+  list-style-position: inside;
+  padding-left: 0;
+}

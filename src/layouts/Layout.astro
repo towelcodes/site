@@ -1,0 +1,36 @@
+---
+import Ticker from "../components/Ticker.astro"
+import MainHeader from "../components/MainHeading.svelte";
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="me" href="https://ohai.social/@teatowel"/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Teatowel</title>
+	</head>
+	<body>
+		<Ticker />
+		<div class="flex">
+			<aside class="sidebar">
+				<slot name="sidebar" />
+			</aside>
+			<div class="card-main">
+				<MainHeader title="towel.codes" client:load />
+				<slot />
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

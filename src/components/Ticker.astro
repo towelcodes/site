@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import githubLogo from "../assets/github.svg";
+import scanlines from "../assets/scanlines.png";
+---
+<div class="flex">
+    <a class="card clickable hover-zoom ml-auto h-4 no-underline"
+       href="https://github.com/{{ BASE_GITHUB }}" target="_blank">
+        Source
+        <Image src={githubLogo} alt="github logo" class="h-full" />
+    </a>
+    <div class="card mr-auto">
+        <div class="scrolling glow" id="scroll1">
+            It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
+                idk</span> (commit #{ import.meta.env.COMMIT_HASH })
+        </div>
+        <div class="scrolling glow" id="scroll2">
+            It is <span class="localTime"></span> in Europe/London | Built <span class="buildTime">some time
+                idk</span> (commit #{ import.meta.env.COMMIT_HASH })
+        </div>
+        <Image src={scanlines} alt="" class="scanlines" />
+    </div>
+</div>
