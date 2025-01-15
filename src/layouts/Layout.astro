@@ -1,6 +1,7 @@
 ---
 import Ticker from "../components/Ticker.astro"
-import MainHeader from "../components/MainHeading.svelte";
+import WavyText from "../components/WavyText.svelte";
+import MainHeader from "../components/MainHeader.astro";
 ---
 <!doctype html>
 <html lang="en">
@@ -12,16 +13,13 @@ import MainHeader from "../components/MainHeading.svelte";
 		<meta name="generator" content={Astro.generator} />
 		<title>Teatowel</title>
 	</head>
-	<body>
-		<Ticker />
+	<body class="mocha">
+		<!--<Ticker />-->
 		<div class="flex">
-			<aside class="sidebar">
+			<aside class="ml-auto w-1/6">
 				<slot name="sidebar" />
 			</aside>
-			<div class="card-main">
-				<MainHeader title="towel.codes" client:load />
-				<slot />
-			</div>
+			<MainHeader />
 		</div>
 	</body>
 </html>

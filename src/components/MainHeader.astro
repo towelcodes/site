@@ -1,0 +1,20 @@
+---
+import WavyText from "./WavyText.svelte";
+import wooper from "../assets/wooper/wooper1.gif";
+import scanlines from "../assets/scanlines big.png";
+import {Image} from "astro:assets";
+---
+<div class="flex items-stretch w-3/4 mr-auto">
+    <div class="colour-card text-center flex-grow-[2] overflow-hidden relative">
+        <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10" />
+        <WavyText title="towel.codes" client:load class="z-20" />
+        <slot />
+    </div>
+    <div class="grid flex-grow-[1]">
+        <div class="card">hello worl</div>
+        <div class="card">hello worlr</div>
+    </div>
+    <div class="card max-h-20 max-w-20 overflow-clip">
+       <Image src={wooper} alt="wooper"></Image>
+    </div>
+</div>

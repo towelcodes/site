@@ -1,15 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+/* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
+
+@font-face {
+    font-family: "MS UI Gothic";
+    src: url("/font/MS-UIGothic.woff2") format("woff2");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
     .card {
-        @apply p-1 m-1 bg-surface0 shadow-card
+        @apply p-1 m-1 bg-surface0 shadow-card;
+    }
+    .colour-card {
+        @apply card border-pink border-2 rounded-md shadow-glow;
     }
 }
 
 @layer utilities {
     .clickable {
-        @apply hover:cursor-pointer
+        @apply hover:cursor-pointer;
     }
+}
+
+body {
+    @apply bg-base text-text;
+    image-rendering: pixelated;
 }
