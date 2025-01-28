@@ -15,12 +15,17 @@ export default {
 				"glow": "0 0 10px #9836d9",
 			},
 			animation: {
-				"wave": "wave 1s cubic-bezier(.6,.01,.47,.99) infinite alternate"
+				"wave": "wave 1s cubic-bezier(.6,.01,.47,.99) infinite alternate",
+				"scrollup": "scrollup 8s linear infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
 			},
 			keyframes: {
 				"wave": {
 					"0%": { transform: "translateY(-10px)" },
 					"100%": { transform: "translateY(10px)" }
+				},
+				"scrollup": {
+					"0%": { transform: "translateY(0px)" },
+					"100%": { transform: "translateY(-50%)" }
 				}
 			}
 		},

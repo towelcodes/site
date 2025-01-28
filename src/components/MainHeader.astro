@@ -6,7 +6,7 @@ import {Image} from "astro:assets";
 ---
 <div class="flex items-stretch w-3/4 mr-auto">
     <div class="colour-card text-center flex-grow-[2] overflow-hidden relative">
-        <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10" />
+        <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10 left-5 animate-pulse animate-scrollup" style="image-rendering: auto;" />
         <WavyText title="towel.codes" client:load class="z-20" />
         <slot />
     </div>
