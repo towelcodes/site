@@ -4,7 +4,9 @@ export default {
 	theme: {
 		fontFamily: {
 			'jersey': ['"Jersey 10"', '"MS UI Gothic"', 'sans-serif'],
-			"sans": ["'MS UI Gothic'", "nec_apc3", "Verdana", "sans-serif"]
+			"sans": ["'MS UI Gothic'", "nec_apc3", "Verdana", "sans-serif"],
+			"mono": ["JetBrains Mono", "monospace"],
+			"display": ["Funnel Display", "MS UI Gothic", "Verdana", "sans-serif"]
 		},
 		extend: {
 			boxShadow: {

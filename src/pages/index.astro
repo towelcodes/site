@@ -1,11 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import './app.css';
+import { Image } from "astro:assets";
+import wooper from "../assets/wooper/wooper1.gif";
 ---
 
 <Layout>
-	<div slot="sidebar" class="card">
-		sidebar
+	<!--<div slot="sidebar" class="card">-->
+	<!--</div>-->
+	<div class="grid grid-cols-2">
+		<div>
+			<h1 class="font-display font-bold text-3xl">hello!</h1>
+			<Image src={wooper} alt="wooper"></Image>
+		</div>
+		<div>
+			world
+		</div>
 	</div>
-	hello world
 </Layout>

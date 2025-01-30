@@ -2,6 +2,8 @@
 import Ticker from "../components/Ticker.astro"
 import WavyText from "../components/WavyText.svelte";
 import MainHeader from "../components/MainHeader.astro";
+import PointyThing from "../components/PointyThing.astro";
+import {Image} from "astro:assets";
 ---
 <!doctype html>
 <html lang="en">
@@ -14,12 +16,20 @@ import MainHeader from "../components/MainHeader.astro";
 		<title>Teatowel</title>
 	</head>
 	<body class="mocha">
-		<!--<Ticker />-->
-		<div class="flex">
+		<!--<PointyThing/>-->
+		<div class="w-1/2 mx-auto">
 			<aside class="ml-auto w-1/6">
 				<slot name="sidebar" />
 			</aside>
-			<MainHeader />
+			<div class="flex">
+				<MainHeader />
+				<div class="colour-card">
+					<Image src="https://skillicons.dev/icons?i=astro" alt="astro" width="30" height="30" data-tooltip="astro"/>
+				</div>
+			</div>
+			<div class="card p-4">
+				<slot/>
+			</div>
 		</div>
 	</body>
 </html>
