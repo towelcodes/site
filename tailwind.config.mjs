@@ -2,6 +2,9 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		filter: {
+			"black": "invert(0%) sepia(100%) saturate(31%) hue-rotate(83deg) brightness(94%) contrast(107%)"
+		},
 		fontFamily: {
 			'jersey': ['"Jersey 10"', '"MS UI Gothic"', 'sans-serif'],
 			"sans": ["'MS UI Gothic'", "nec_apc3", "Verdana", "sans-serif"],

@@ -32,3 +32,30 @@ body {
     @apply bg-base text-text;
     image-rendering: pixelated;
 }
+
+.fancy-link {
+    transition: 0.5s;
+    padding: 2px;
+    display: inline-block;
+    background-size: 200%;
+}
+
+.fancy-link--r {
+    background-image: linear-gradient(to left, transparent 50%, black 50%);
+    background-position-x: 100%;
+}
+
+.fancy-link--l {
+    background-image: linear-gradient(to right, transparent 50%, black 50%);
+    background-position-x: 0%;
+}
+
+.fancy-link--r:hover {
+    transform: scale(1.4) rotate(-5deg);
+    background-position-x: 0%;
+}
+
+.fancy-link--l:hover {
+    transform: scale(1.4) rotate(5deg);
+    background-position-x: 100%;
+}

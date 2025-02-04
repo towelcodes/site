@@ -4,17 +4,12 @@ import wooper from "../assets/wooper/wooper1.gif";
 import scanlines from "../assets/scanlines big.png";
 import {Image} from "astro:assets";
 ---
-<div class="flex items-stretch w-full">
-    <div class="colour-card text-center flex-grow-[2] overflow-hidden relative">
-        <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10 left-5 animate-pulse animate-scrollup" style="image-rendering: auto;" />
+<div class="flex flex-col items-stretch w-full">
+    <div class="colour-card text-center overflow-hidden relative">
+        <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10 left-5 animate-scrollup" style="image-rendering: auto;" />
         <WavyText title="towel.codes" client:load class="z-20" />
+    </div>
+    <div class="colour-card bg-pink text-gray-800 mb-1 -mt-2 rounded-t-none">
         <slot />
     </div>
-    <!--<div class="grid flex-grow-[1]">-->
-    <!--    <div class="card">hello worl</div>-->
-    <!--    <div class="card">hello worlr</div>-->
-    <!--</div>-->
-    <!--<div class="card max-h-20 max-w-20 overflow-clip">-->
-    <!--   <Image src={wooper} alt="wooper"></Image>-->
-    <!--</div>-->
 </div>

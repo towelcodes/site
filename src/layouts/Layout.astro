@@ -4,6 +4,7 @@ import WavyText from "../components/WavyText.svelte";
 import MainHeader from "../components/MainHeader.astro";
 import PointyThing from "../components/PointyThing.astro";
 import {Image} from "astro:assets";
+import GithubIcon from "../assets/icon/github.svg";
 ---
 <!doctype html>
 <html lang="en">
@@ -21,8 +22,15 @@ import {Image} from "astro:assets";
 			<aside class="ml-auto w-1/6">
 				<slot name="sidebar" />
 			</aside>
-			<div class="flex">
-				<MainHeader />
+			<div class="flex items-stretch">
+				<MainHeader>
+					<div class="font-display font-bold">
+						<div class="flex content-center items-center [&>*]:mx-1">
+							<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
+							GitHub
+						</div>
+					</div>
+				</MainHeader>
 				<div class="colour-card">
 					<Image src="https://skillicons.dev/icons?i=astro" alt="astro" width="30" height="30" data-tooltip="astro"/>
 				</div>
