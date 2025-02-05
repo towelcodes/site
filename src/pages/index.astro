@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import wooper from "../assets/wooper/wooper1.gif";
 
 import { getRelativeTime } from "../scripts/util.mjs";
-import { BASE_GITHUB, COMMIT_HASH, COMMIT_TIME } from "astro:env/client";
+import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG, COMMIT_TIME } from "astro:env/client";
 const commitHashShort = COMMIT_HASH.slice(0, 7);
 const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 ---
@@ -25,9 +25,9 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 				<span class="material-symbols-outlined bg-teal rounded-r pl-2 relative -left-10 text-xs group-hover:-left-3 transition-all ease-in-out duration-300">open_in_new</span>
 			</span>
 			<blockquote class="ml-2.5 pl-2.5 border-l-2 border-opacity-90">
-				willy wobbla willy wobble
+				{COMMIT_MSG}
 			</blockquote>
-			<span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> {commitTimeRelative}</span>
+			<span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> built {commitTimeRelative}</span>
 		</div>
 	</div>
 	<div class="grid grid-cols-2">
