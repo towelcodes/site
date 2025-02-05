@@ -15,13 +15,17 @@ const hover = (text) => {
 
 const show = () => {
     base.animate({
-        clipPath: "inset(0 0% 0 0)"
+        clipPath: "inset(0 0% 0 0)",
+        transform: "scale(1)",
+        opacity: "0.7"
     }, { duration: 300, fill: "forwards", easing: "ease-out"});
 }
 
 const hide = () => {
     base.animate({
-        clipPath: "inset(0 100% 0 0)"
+        clipPath: "inset(0 100% 0 0)",
+        transform: "scale(0.4)",
+        opacity: "0.2"
     }, { duration: 300, fill: "forwards", easing: "ease-in"});
 };
 
