@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "bun ./scripts/env.js",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
