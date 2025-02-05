@@ -6,6 +6,8 @@ import HeaderButton from "../components/HeaderButton.astro";
 import PointyThing from "../components/PointyThing.astro";
 import {Image} from "astro:assets";
 import GithubIcon from "../assets/icon/github.svg";
+import DiscordIcon from "../assets/icon/discord.svg";
+import AbyssIcon from "../assets/icon/abyss2.png";
 ---
 <!doctype html>
 <html lang="en">
@@ -28,18 +30,24 @@ import GithubIcon from "../assets/icon/github.svg";
 				<div class="flex items-stretch">
 					<MainHeader>
 						<div class="flex [&>*]:mx-1">
-							<HeaderButton colour="bg-red">
+							<HeaderButton colour="bg-mauve">
 									<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
 									GitHub
 							</HeaderButton>
-							<HeaderButton colour="bg-green">
-								<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
-								GitHub
+							<HeaderButton colour="bg-blue">
+								<Image src={DiscordIcon} alt="discord" width="16" height="16" class="inline-block filter-black"/>
+								Discord
+							</HeaderButton>
+							<HeaderButton colour="bg-teal">
+								<Image src={AbyssIcon} alt="abyss" width="16" height="16" class="inline-block"/>
+								Abyss Instance
 							</HeaderButton>
 						</div>
 					</MainHeader>
-					<div class="colour-card">
+					<div class="colour-card flex flex-col justify-evenly">
 						<Image src="https://skillicons.dev/icons?i=astro" alt="astro" width="30" height="30" data-tooltip="astro"/>
+						<Image src="https://skillicons.dev/icons?i=bun" alt="astro" width="30" height="30" data-tooltip="bun"/>
+						<Image src="https://skillicons.dev/icons?i=svelte" alt="astro" width="30" height="30" data-tooltip="svelte"/>
 					</div>
 				</div>
 
