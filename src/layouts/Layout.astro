@@ -2,6 +2,7 @@
 import Ticker from "../components/Ticker.astro"
 import WavyText from "../components/WavyText.svelte";
 import MainHeader from "../components/MainHeader.astro";
+import HeaderButton from "../components/HeaderButton.astro";
 import PointyThing from "../components/PointyThing.astro";
 import {Image} from "astro:assets";
 import GithubIcon from "../assets/icon/github.svg";
@@ -13,31 +14,42 @@ import GithubIcon from "../assets/icon/github.svg";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="me" href="https://ohai.social/@teatowel"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=open_in_new,person,schedule" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Teatowel</title>
 	</head>
 	<body class="mocha">
-		<!--<PointyThing/>-->
-		<div class="w-1/2 mx-auto">
+		<PointyThing/>
+		<div class="flex flex-nowrap">
 			<aside class="ml-auto w-1/6">
-				<slot name="sidebar" />
+				<slot name="sidebar-l" />
 			</aside>
-			<div class="flex items-stretch">
-				<MainHeader>
-					<div class="font-display font-bold">
-						<div class="flex content-center items-center [&>*]:mx-1">
-							<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
-							GitHub
+			<div class="w-1/2">
+				<div class="flex items-stretch">
+					<MainHeader>
+						<div class="flex [&>*]:mx-1">
+							<HeaderButton colour="bg-red">
+									<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
+									GitHub
+							</HeaderButton>
+							<HeaderButton colour="bg-green">
+								<Image src={GithubIcon} alt="github" width="16" height="16" class="inline-block filter-black"/>
+								GitHub
+							</HeaderButton>
 						</div>
+					</MainHeader>
+					<div class="colour-card">
+						<Image src="https://skillicons.dev/icons?i=astro" alt="astro" width="30" height="30" data-tooltip="astro"/>
 					</div>
-				</MainHeader>
-				<div class="colour-card">
-					<Image src="https://skillicons.dev/icons?i=astro" alt="astro" width="30" height="30" data-tooltip="astro"/>
+				</div>
+
+				<div class="card p-4">
+					<slot/>
 				</div>
 			</div>
-			<div class="card p-4">
-				<slot/>
-			</div>
+			<aside class="mr-auto w-1/6">
+				<slot name="sidebar-r" />
+			</aside>
 		</div>
 	</body>
 </html>

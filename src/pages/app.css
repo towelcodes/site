@@ -26,6 +26,15 @@
     .clickable {
         @apply hover:cursor-pointer;
     }
+
+    .hover-zoom {
+        @apply transition-transform duration-500 hover:scale-125 hover:-rotate-12;
+    }
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 1em;
 }
 
 body {
