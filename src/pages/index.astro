@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-// import Guestbook from '../components/Guestbook.svelte';
+import Guestbook from '../components/Guestbook.svelte';
 import Footer from '../components/Footer.astro';
 import SkillIcons from "../components/SkillIcons.astro";
 import './app.css';
@@ -21,9 +21,9 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 			<Image src="/buttons/nekoweb.gif" alt="nekoweb" width="88" height="31" data-tooltip="hosted on nekoweb" />
 			<Image src="/buttons/under-con.gif" alt="under construction" width="88" height="31" data-tooltip="under construction" />
 		</div>
-		<!--<div class="card">-->
-		<!--	<Guestbook client:load />-->
-		<!--</div>-->
+		<div class="card">
+			<Guestbook client:load />
+		</div>
 	</div>
 	<div slot="sidebar-r">
 		<div class="card shadow-none overflow-clip relative">
