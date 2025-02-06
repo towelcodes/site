@@ -1,3 +1,4 @@
-# my website
-https://teatowel.nekoweb.org
-wip
+# my personal site
+written in astro
+
+[towel.codes](https://towel.codes)

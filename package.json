@@ -1,20 +1,24 @@
 {
-  "name": "site-new",
-  "module": "index.ts",
+  "name": "site-astro",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "bun ./scripts/build.ts"
+    "dev": "astro dev",
+    "prebuild": "bun ./scripts/env.js",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^7.0.3",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.1.6",
+    "sass": "^1.83.1",
+    "svelte": "^5.17.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "@types/minify": "^9.1.4",
-    "http": "^0.0.1-security",
-    "minify": "^11.4.0",
-    "node-html-parser": "^6.1.13",
-    "sass": "^1.77.8",
-    "serve-handler": "^6.1.5"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "@catppuccin/tailwindcss": "^0.1.6"
   }
 }

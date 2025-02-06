@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+/* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
+
+@font-face {
+    font-family: "MS UI Gothic";
+    src: url("/font/MS-UIGothic.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply p-1 m-1 bg-surface0 shadow-card;
+    }
+    .colour-card {
+        @apply card border-pink border-2 rounded-md shadow-glow;
+    }
+}
+
+@layer utilities {
+    .clickable {
+        @apply hover:cursor-pointer;
+    }
+
+    .hover-zoom {
+        @apply transition-transform duration-500 hover:scale-125 hover:-rotate-12;
+    }
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+body {
+    @apply bg-base text-text;
+    image-rendering: pixelated;
+}
+
+.fancy-link {
+    transition: 0.5s;
+    padding: 2px;
+    display: inline-block;
+    background-size: 200%;
+}
+
+.fancy-link--r {
+    background-image: linear-gradient(to left, transparent 50%, black 50%);
+    background-position-x: 100%;
+}
+
+.fancy-link--l {
+    background-image: linear-gradient(to right, transparent 50%, black 50%);
+    background-position-x: 0%;
+}
+
+.fancy-link--r:hover {
+    transform: scale(1.4) rotate(-5deg);
+    background-position-x: 0%;
+}
+
+.fancy-link--l:hover {
+    transform: scale(1.4) rotate(5deg);
+    background-position-x: 100%;
+}
