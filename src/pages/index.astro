@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import './app.css';
 import { Image } from "astro:assets";
 import wooper from "../assets/wooper/wooper1.gif";
-
+import GitLogo from "../assets/git.svg";
 import { getRelativeTime } from "../scripts/util.mjs";
 import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG, COMMIT_TIME } from "astro:env/client";
 const commitHashShort = COMMIT_HASH.slice(0, 7);
@@ -16,7 +16,7 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 		<Image src="/buttons/astro.png" alt="astro powered" width="88" height="31" />
 	</div>
 	<div slot="sidebar-r">
-		<div class="card shadow-none">
+		<div class="card shadow-none overflow-clip relative">
 			running
 			<span class="text-black hover:cursor-pointer group" data-tooltip="open in github">
 				<a href={BASE_GITHUB+"/commit/"+COMMIT_HASH} target="_blank">
@@ -28,6 +28,7 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 				{COMMIT_MSG}
 			</blockquote>
 			<span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> built {commitTimeRelative}</span>
+			<Image src={GitLogo} alt="" width="100" height="100" class="absolute opacity-30 sepia left-[calc(100%-80px)] top-2" />
 		</div>
 	</div>
 	<div class="grid grid-cols-2">
