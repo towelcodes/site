@@ -9,6 +9,11 @@
     src: url("/font/MS-UIGothic.woff2") format("woff2");
 }
 
+@font-face {
+    font-family: "Zpix";
+    src: url("/font/zpix.ttf") format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +24,10 @@
     }
     .colour-card {
         @apply card border-pink border-2 rounded-md shadow-glow;
+    }
+
+    .button {
+        @apply px-2 m-1 bg-surface1 text-text shadow-card border-2 border-green;
     }
 }
 
@@ -38,7 +47,7 @@
 }
 
 body {
-    @apply bg-base text-text;
+    @apply bg-mantle text-text;
     image-rendering: pixelated;
 }
 
@@ -56,12 +65,12 @@ body {
 
 .fancy-link--l {
     background-image: linear-gradient(to right, transparent 50%, black 50%);
-    background-position-x: 0%;
+    background-position-x: 0;
 }
 
 .fancy-link--r:hover {
     transform: scale(1.4) rotate(-5deg);
-    background-position-x: 0%;
+    background-position-x: 0;
 }
 
 .fancy-link--l:hover {

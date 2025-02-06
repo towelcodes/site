@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// import Guestbook from '../components/Guestbook.svelte';
+import Footer from '../components/Footer.astro';
+import SkillIcons from "../components/SkillIcons.astro";
 import './app.css';
 import { Image } from "astro:assets";
 import wooper from "../assets/wooper/wooper1.gif";
@@ -11,10 +14,16 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 ---
 
 <Layout>
-	<div slot="sidebar-l" class="card flex flex-wrap justify-evenly gap-1">
-		<Image src="/buttons/handcoded.gif" alt="handcoded" width="88" height="31" data-tooltip="hand coded by me"/>
-		<Image src="/buttons/astro.png" alt="astro powered" width="88" height="31" data-tooltip="made with astro"/>
-		<Image src="/buttons/nekoweb.gif" alt="nekoweb" width="88" height="31" data-tooltip="hosted on nekoweb" />
+	<div slot="sidebar-l">
+		<div class="card flex flex-wrap justify-evenly gap-1">
+			<Image src="/buttons/handcoded.gif" alt="handcoded" width="88" height="31" data-tooltip="hand coded by me"/>
+			<Image src="/buttons/astro.png" alt="astro powered" width="88" height="31" data-tooltip="made with astro"/>
+			<Image src="/buttons/nekoweb.gif" alt="nekoweb" width="88" height="31" data-tooltip="hosted on nekoweb" />
+			<Image src="/buttons/under-con.gif" alt="under construction" width="88" height="31" data-tooltip="under construction" />
+		</div>
+		<!--<div class="card">-->
+		<!--	<Guestbook client:load />-->
+		<!--</div>-->
 	</div>
 	<div slot="sidebar-r">
 		<div class="card shadow-none overflow-clip relative">
@@ -31,13 +40,18 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 			<span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> built {commitTimeRelative}</span>
 			<Image src={GitLogo} alt="" width="100" height="100" class="absolute opacity-30 sepia left-[calc(100%-80px)] top-2" />
 		</div>
+		<div class="card">
+			<SkillIcons/>
+		</div>
 	</div>
 	<div class="grid grid-cols-2">
 		<div>
-			<h1 class="font-display font-bold text-3xl">hello!</h1>
-			<div class="text-md">
+			<h1 class="font-display font-bold text-3xl text-shadow shadow-black">hello!</h1>
+			<div class="text-md text-shadow shadow-black">
 				i'm a 15 year old <span class="text-pink">developer</span> from the <span class="text-mauve">uk</span>.
-				thanks for stopping by!
+				<br>thanks for stopping by!
+				<br><br>
+				<span class="text-sm text-overlay1">* this website is a work in progress, more is coming soon</span>
 			</div>
 		</div>
 		<div>
@@ -45,3 +59,5 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 		</div>
 	</div>
 </Layout>
+
+<Footer/>

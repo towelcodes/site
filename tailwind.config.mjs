@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -9,7 +11,8 @@ export default {
 			'jersey': ['"Jersey 10"', '"MS UI Gothic"', 'sans-serif'],
 			"sans": ["'MS UI Gothic'", "nec_apc3", "Verdana", "sans-serif"],
 			"mono": ["JetBrains Mono", "monospace"],
-			"display": ["Funnel Display", "MS UI Gothic", "Verdana", "sans-serif"]
+			"display": ["Funnel Display", "MS UI Gothic", "Verdana", "sans-serif"],
+			"pixel": ["Zpix", "nec_apc3"],
 		},
 		extend: {
 			boxShadow: {
@@ -32,10 +35,22 @@ export default {
 					"0%": { transform: "translateY(0px)" },
 					"100%": { transform: "translateY(-50%)" }
 				}
+			},
+			textShadow: {
+				DEFAULT: "2px 2px 0px var(--tw-shadow-color)",
+				lg: "2px 2px 4px var(--tw-shadow-color)",
 			}
 		},
 	},
 	plugins: [require("@catppuccin/tailwindcss")({
 		defaultFlavour: "mocha"
+	}),
+	require("tailwindcss-highlights"),
+	plugin(function( { matchUtilities, theme } ) {
+		matchUtilities({
+			"text-shadow": (value) => ({
+				textShadow: value,
+			}),
+		}, { values: theme("textShadow") })
 	})],
 }

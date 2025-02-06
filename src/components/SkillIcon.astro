@@ -1,0 +1,5 @@
+---
+import { Image } from "astro:assets";
+const { skill, tooltip = skill } = Astro.props;
+---
+<img src=`https://skillicons.dev/icons?i=${skill}` alt={skill} data-tooltip={tooltip}/>

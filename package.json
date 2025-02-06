@@ -19,6 +19,7 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@catppuccin/tailwindcss": "^0.1.6"
+    "@catppuccin/tailwindcss": "^0.1.6",
+    "tailwindcss-highlights": "^1.0.0"
   }
 }
