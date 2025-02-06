@@ -4,6 +4,7 @@ import WavyText from "../components/WavyText.svelte";
 import MainHeader from "../components/MainHeader.astro";
 import HeaderButton from "../components/HeaderButton.astro";
 import PointyThing from "../components/PointyThing.astro";
+import LocalTime from "../components/LocalTime.astro";
 import {Image} from "astro:assets";
 import GithubIcon from "../assets/icon/github.svg";
 import DiscordIcon from "../assets/icon/discord.svg";
@@ -42,6 +43,9 @@ import AbyssIcon from "../assets/icon/abyss2.png";
 								<Image src={AbyssIcon} alt="abyss" width="16" height="16" class="inline-block"/>
 								Abyss Instance
 							</HeaderButton>
+							<div class="self-end ml-auto grow text-right">
+								<LocalTime/>
+							</div>
 						</div>
 					</MainHeader>
 					<div class="colour-card flex flex-col justify-evenly">
