@@ -15,7 +15,7 @@ export function getRelativeTime(unixTimestamp) {
   for (const [unit, seconds] of units) {
     if (Math.abs(diff) >= seconds || unit === 'second') {
       const value = Math.round(diff / seconds);
-      return new Intl.RelativeTimeFormat(navigator.language, { numeric: 'auto' }).format(value, unit);
+      return new Intl.RelativeTimeFormat("en", { numeric: 'auto' }).format(value, unit);
     }
   }
 }
