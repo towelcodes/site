@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import GitLogo from "../assets/git.svg";
+import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG, COMMIT_TIME } from "astro:env/client";
+const commitHashShort = COMMIT_HASH.slice(0, 7);
+---
+<script>
+    import { getRelativeTime } from "../scripts/util.mjs";
+    const commitTimeRelative = getRelativeTime(document.querySelector("#commit-time")?.innerHTML);
+    // @ts-ignore
+    document.querySelector("#commit-time-rel").innerHTML = commitTimeRelative;
+</script>
+
+<div class="hidden" id="commit-time">{ COMMIT_TIME }</div>
+<div class="card shadow-none overflow-clip relative">
+    running
+    <span class="text-black hover:cursor-pointer group" data-tooltip="open in github">
+        <a href={BASE_GITHUB+"/commit/"+COMMIT_HASH} target="_blank">
+            <span class="bg-green rounded px-1 font-mono relative z-10 text-xs">{commitHashShort}</span>
+        </a>
+        <span class="material-symbols-outlined bg-teal rounded-r pl-2 relative -left-10 text-xs group-hover:-left-3 transition-all ease-in-out duration-300">open_in_new</span>
+    </span>
+    <blockquote class="ml-2.5 pl-2.5 border-l-2 border-opacity-90">
+        {COMMIT_MSG}
+    </blockquote>
+    <span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> built <span id="commit-time-rel">unknown</span></span>
+    <Image src={GitLogo} alt="" width="100" height="100" class="absolute opacity-30 sepia left-[calc(100%-80px)] top-2" />
+</div>

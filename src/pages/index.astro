@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 // import Guestbook from '../components/Guestbook.svelte';
 import Footer from '../components/Footer.astro';
 import SkillIcons from "../components/SkillIcons.astro";
+import Commit from '../components/Commit.astro';
 import './app.css';
 import { Image } from "astro:assets";
 import wooper from "../assets/wooper/wooper1.gif";
@@ -33,20 +34,7 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 		<!--</div>-->
 	</div>
 	<div slot="sidebar-r">
-		<div class="card shadow-none overflow-clip relative">
-			running
-			<span class="text-black hover:cursor-pointer group" data-tooltip="open in github">
-				<a href={BASE_GITHUB+"/commit/"+COMMIT_HASH} target="_blank">
-					<span class="bg-green rounded px-1 font-mono relative z-10 text-xs">{commitHashShort}</span>
-				</a>
-				<span class="material-symbols-outlined bg-teal rounded-r pl-2 relative -left-10 text-xs group-hover:-left-3 transition-all ease-in-out duration-300">open_in_new</span>
-			</span>
-			<blockquote class="ml-2.5 pl-2.5 border-l-2 border-opacity-90">
-				{COMMIT_MSG}
-			</blockquote>
-			<span class="text-subtext1 text-xs"><span class="material-symbols-outlined">schedule</span> built {commitTimeRelative}</span>
-			<Image src={GitLogo} alt="" width="100" height="100" class="absolute opacity-30 sepia left-[calc(100%-80px)] top-2" />
-		</div>
+		<Commit/>
 		<div class="card">
 			<SkillIcons/>
 		</div>
