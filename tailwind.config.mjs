@@ -13,6 +13,7 @@ export default {
 			"mono": ["JetBrains Mono", "monospace"],
 			"display": ["Funnel Display", "MS UI Gothic", "Verdana", "sans-serif"],
 			"pixel": ["Zpix", "nec_apc3"],
+			"ds": ["Nintendo DS", "Zpix", "nec_apc3"],
 		},
 		extend: {
 			boxShadow: {
