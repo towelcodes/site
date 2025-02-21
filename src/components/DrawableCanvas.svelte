@@ -1,6 +1,6 @@
 <script>
   import {onMount} from "svelte";
-  import {Howl, Howler} from "howler";
+  import {Howl} from "howler";
 
   let { ctx = $bindable() } = $props();
 
@@ -60,8 +60,6 @@
         const rect = canvas.getBoundingClientRect();
         const x = Math.floor(e.clientX - rect.left);
         const y = Math.floor(e.clientY - rect.top);
-        const dx = x - px;
-        const dy = y - py;
 
         ctx.strokeStyle = "#000000";
         ctx.beginPath();
@@ -129,13 +127,26 @@
     <canvas width="190" height="126" class="mx-auto shadow-card">
         canvas is not supported on your browser.
     </canvas>
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="flex mt-1 fn-buttons" onmouseenter={enterButtons()}>
 <!--        <div class="absolute flex" bind:this={arrow}>-->
 <!--            <img src="/icon/arrow.png" alt="" width="32" height="32" />-->
 <!--            <div class="border-black border-2 bg-white rounded text-black font-ds px-1 inline-block" bind:this={tooltip}>Tooltip</div>-->
 <!--        </div>-->
-        <button class="border-orange-500 border-2 rounded fn-button fn-buttons">
+        <button class="rounded fn-button fn-buttons mr-1">
             <img src="/icon/erase.png" alt="erase" width="16" height="16" />
+        </button>
+        <button class="fn-button fn-buttons mr-1">
+            <img src="/icon/pen.png" alt="erase" width="16" height="16" />
+        </button>
+        <button class="fn-button fn-buttons mr-1">
+            <img src="/icon/eraser.png" alt="erase" width="16" height="16" />
+        </button>
+        <button class="fn-button fn-buttons">
+            <img src="/icon/undo.png" alt="erase" width="16" height="16" />
+        </button>
+        <button class="fn-button fn-buttons">
+            <img src="/icon/redo.png" alt="erase" width="16" height="16" />
         </button>
     </div>
     <span class="text-black font-ds">blep</span>
