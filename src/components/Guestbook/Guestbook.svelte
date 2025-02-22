@@ -1,9 +1,5 @@
 <script>
-    import {onMount} from "svelte";
     import DrawableCanvas from "./DrawableCanvas.svelte";
-
-
-      // const id = ctx.createImageData(canvas.width, canvas.height);
 </script>
 
 <div class="p-2">
