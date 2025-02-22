@@ -56,6 +56,11 @@ body {
     image-rendering: pixelated;
 }
 
+/* custom cursors */
+:root {
+    --stylus: url("/cursor/stylus.png") 1 25, auto;
+}
+
 .fancy-link {
     transition: 0.5s;
     padding: 2px;

@@ -1,6 +1,7 @@
 <script>
   import {onMount} from "svelte";
   import {Howl} from "howler";
+  import FlipnoteButton from "./FlipnoteButton.svelte";
 
   let { ctx = $bindable() } = $props();
 
@@ -10,14 +11,18 @@
     volume: 0.8
   });
 
+  const clearSound = new Howl({
+    src: ["/sfx/erase.wav"],
+    loop: false,
+    volume: 1
+  });
+
   let brushSize = $state(8);
   let root = $state();
   let arrow = $state();
   let tooltip = $state();
 
   onMount(() => {
-    const draw = new Audio("/sfx/Sample 30.wav");
-    draw.loop = true;
     const canvas = document.querySelector("canvas");
     ctx = canvas.getContext("2d");
 
@@ -84,22 +89,26 @@
       }
     });
 
-    const arrowParentRect = arrow.parentNode.getBoundingClientRect();
-    const arrowTop = arrowParentRect.top + window.scrollY - 35;
-    arrow.style.top = `${arrowTop}px`;
+    // const arrowParentRect = arrow.parentNode.getBoundingClientRect();
+    // const arrowTop = arrowParentRect.top + window.scrollY - 35;
+    // arrow.style.top = `${arrowTop}px`;
 
-    root.onmousemove = ((e) => {
-      console.log(e.clientX);
-      arrow.animate({
-        left: `${e.clientX-16}px`,
-        // top: `${e.clientY-26}px`
-      }, { duration: 1000, fill: "forwards"});
-    });
+    // root.onmousemove = ((e) => {
+    //   console.log(e.clientX);
+    //   arrow.animate({
+    //     left: `${e.clientX-16}px`,
+    //     // top: `${e.clientY-26}px`
+    //   }, { duration: 1000, fill: "forwards"});
+    // });
   });
 
-  const enterButtons = () => {
-
-  };
+  function clearCanvas() {
+    if (ctx) {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, 190, 126);
+      clearSound.play();
+    }
+  }
 </script>
 
 <style>
@@ -109,18 +118,6 @@
         border: 2px orange solid;
         border-radius: 2px;
     }
-
-    .fn-button {
-        transition: transform 0.2s ease-out;
-    }
-
-    .fn-button:hover {
-        transform: scale(1.2);
-    }
-
-    .fn-buttons {
-        cursor: url("/cursor/stylus.png") 1 25, auto;
-    }
 </style>
 
 <div class="p-1 bg-orange-200 rounded shadow-card w-[190px]" style="image-rendering: pixelated;" bind:this={root}>
@@ -128,26 +125,16 @@
         canvas is not supported on your browser.
     </canvas>
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="flex mt-1 fn-buttons" onmouseenter={enterButtons()}>
+    <div class="flex mt-1 cursor-[var(--stylus)] [&>*]:mr-1 last:mr-0">
 <!--        <div class="absolute flex" bind:this={arrow}>-->
 <!--            <img src="/icon/arrow.png" alt="" width="32" height="32" />-->
 <!--            <div class="border-black border-2 bg-white rounded text-black font-ds px-1 inline-block" bind:this={tooltip}>Tooltip</div>-->
 <!--        </div>-->
-        <button class="rounded fn-button fn-buttons mr-1">
-            <img src="/icon/erase.png" alt="erase" width="16" height="16" />
-        </button>
-        <button class="fn-button fn-buttons mr-1">
-            <img src="/icon/pen.png" alt="erase" width="16" height="16" />
-        </button>
-        <button class="fn-button fn-buttons mr-1">
-            <img src="/icon/eraser.png" alt="erase" width="16" height="16" />
-        </button>
-        <button class="fn-button fn-buttons">
-            <img src="/icon/undo.png" alt="erase" width="16" height="16" />
-        </button>
-        <button class="fn-button fn-buttons">
-            <img src="/icon/redo.png" alt="erase" width="16" height="16" />
-        </button>
+        <FlipnoteButton icon="erase" onclick={clearCanvas}/>
+<!--        <FlipnoteButton icon="pen"/>-->
+<!--        <FlipnoteButton icon="eraser"/>-->
+<!--        <FlipnoteButton icon="undo"/>-->
+<!--        <FlipnoteButton icon="redo"/>-->
     </div>
     <span class="text-black font-ds">blep</span>
 </div>
