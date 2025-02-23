@@ -1,5 +1,5 @@
 <script>
-    import { FlipnoteButton } from "./FlipnoteButton.svelte";
+    import FlipnoteButton from "./FlipnoteButton.svelte";
     let { iconL, iconR, labelL = iconL, labelR = iconR } = $props();
 </script>
 

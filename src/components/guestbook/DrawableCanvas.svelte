@@ -1,9 +1,15 @@
-<script>
+<script lang="ts">
+  import {PostgrestClient} from "@supabase/postgrest-js";
+  import type {Database} from "../../scripts/db.types.ts";
   import {onMount} from "svelte";
   import {Howl} from "howler";
   import FlipnoteButton from "./FlipnoteButton.svelte";
 
-  let { ctx = $bindable() } = $props();
+  let { ctx = $bindable() }: { ctx: CanvasRenderingContext2D } = $props();
+
+  const postgrest = new PostgrestClient<Database["public"]["Tables"]>(import.meta.env.PUBLIC_POSTGREST_ENDPOINT, {
+    headers: { "apikey": import.meta.env.PUBLIC_POSTGREST_KEY }
+  });
 
   const drawSound = new Howl({
     src: ["/sfx/draw.wav"],
@@ -22,18 +28,19 @@
   let arrow = $state();
   let tooltip = $state();
 
-  onMount(() => {
+  onMount(async () => {
     const canvas = document.querySelector("canvas");
-    ctx = canvas.getContext("2d");
+    if (canvas == null) throw new Error("no canvas");
+    ctx = canvas.getContext("2d")!;
 
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     let down = false;
-    let px = undefined;
-    let py = undefined;
+    let px: number | undefined;
+    let py: number | undefined;
 
-    let pauseTask = undefined;
+    let pauseTask: NodeJS.Timeout | undefined;
 
     canvas.addEventListener("mousedown", (e) => {
       down = true;
@@ -89,17 +96,9 @@
       }
     });
 
-    // const arrowParentRect = arrow.parentNode.getBoundingClientRect();
-    // const arrowTop = arrowParentRect.top + window.scrollY - 35;
-    // arrow.style.top = `${arrowTop}px`;
-
-    // root.onmousemove = ((e) => {
-    //   console.log(e.clientX);
-    //   arrow.animate({
-    //     left: `${e.clientX-16}px`,
-    //     // top: `${e.clientY-26}px`
-    //   }, { duration: 1000, fill: "forwards"});
-    // });
+    const { data, error  } = await postgrest.from("appstate").select();
+    if (error) { return console.error("failed to get appstate", error) }
+    console.log(data);
   });
 
   function clearCanvas() {
@@ -107,6 +106,11 @@
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, 190, 126);
       clearSound.play();
+    }
+  }
+
+  async function submit() {
+    if (ctx) {
     }
   }
 </script>
@@ -131,6 +135,7 @@
 <!--            <div class="border-black border-2 bg-white rounded text-black font-ds px-1 inline-block" bind:this={tooltip}>Tooltip</div>-->
 <!--        </div>-->
         <FlipnoteButton icon="erase" onclick={clearCanvas}/>
+        <FlipnoteButton icon="submit" onclick={submit}/>
 <!--        <FlipnoteButton icon="pen"/>-->
 <!--        <FlipnoteButton icon="eraser"/>-->
 <!--        <FlipnoteButton icon="undo"/>-->
