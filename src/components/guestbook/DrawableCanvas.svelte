@@ -1,15 +1,10 @@
 <script lang="ts">
-  import {PostgrestClient} from "@supabase/postgrest-js";
-  import type {Database} from "../../scripts/db.types.ts";
+    import {hexToU8IntClampedArray, postgrest, u8IntClampedArrayToHex} from "../../scripts/db.ts";
   import {onMount} from "svelte";
   import {Howl} from "howler";
   import FlipnoteButton from "./FlipnoteButton.svelte";
 
   let { ctx = $bindable() }: { ctx: CanvasRenderingContext2D } = $props();
-
-  const postgrest = new PostgrestClient<Database["public"]["Tables"]>(import.meta.env.PUBLIC_POSTGREST_ENDPOINT, {
-    headers: { "apikey": import.meta.env.PUBLIC_POSTGREST_KEY }
-  });
 
   const drawSound = new Howl({
     src: ["/sfx/draw.wav"],
@@ -98,7 +93,6 @@
 
     const { data, error  } = await postgrest.from("appstate").select();
     if (error) { return console.error("failed to get appstate", error) }
-    console.log(data);
   });
 
   function clearCanvas() {
@@ -111,6 +105,12 @@
 
   async function submit() {
     if (ctx) {
+        const data = ctx.getImageData(0, 0, 190, 126).data;
+        console.log("submitting:", u8IntClampedArrayToHex(data));
+        console.log("convert", hexToU8IntClampedArray(u8IntClampedArrayToHex(data)));
+        console.log("old", data);
+        const { error } = await postgrest.from("entries").insert({ from: "anon", img_content: u8IntClampedArrayToHex(data) });
+        if (error) console.error("failed to submit", error);
     }
   }
 </script>
