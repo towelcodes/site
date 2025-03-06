@@ -18,3 +18,49 @@ export function u8IntClampedArrayToHex(arr: Uint8ClampedArray): string {
     arr.forEach((byte) => hex += byte.toString(16).padStart(2, "0"));
     return hex;
 }
+
+// TODO use WASM instead so it's faster
+export function compressCanvasData(data: Uint8ClampedArray): Uint8ClampedArray {
+    let last = 0x00;
+    let count = 0;
+
+    let array: Uint8ClampedArray[] = [];
+
+    data.forEach((v) => {
+        if (v == last) {
+            count ++;
+            return;
+        }
+        // append the last n times to the array
+        if (count != 0) {
+            array.push(new Uint8ClampedArray([last, count]));
+        }
+
+        count = 1;
+        last = v;
+    });
+
+    let arr = new Uint8ClampedArray(array.length * 2);
+    array.forEach((v, i) => {
+        arr[2*i] = v[0];
+        arr[(2*i)+1] = v[1];
+    });
+
+    return arr;
+}
+
+export function decompressCanvasData(data: Uint8ClampedArray): Uint8ClampedArray {
+    let key = data.filter((v, i) => (i % 2) == 0);
+    let val = data.filter((v, i) => (i % 2) == 1);
+    let array = new Uint8ClampedArray(val
+        .reduce((partialSum, v) => partialSum + v, 0));
+    let index = 0;
+    key.forEach((v, i) => {
+        let n = val[i];
+        for (let i = 0; i < n; i++) {
+            array[index] = v;
+            index++;
+        }
+    });
+    return array;
+}
