@@ -1,13 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    let { data, width, height }: { data: Uint8ClampedArray, width: number, height: number } = $props();
+    let { data, width, height, classes = "" }: { data: Uint8ClampedArray, width: number, height: number, classes? :string } = $props();
     console.log("loading:",data);
+    let canvas: HTMLCanvasElement;
     onMount(() => {
-        const canvas = document.querySelector("canvas");
-        if (canvas == null) throw new Error("no canvas");
         const ctx = canvas.getContext("2d")!;
         ctx.putImageData(new ImageData(data, width, height), 0, 0);
     });
 </script>
 
-<canvas {width} {height} style="image-rendering: pixelated;">your browser does not support canvas :(></canvas>
+<canvas {width} {height} style="image-rendering: pixelated;" class={classes} bind:this={canvas}>your browser does not support canvas :(></canvas>
