@@ -28,9 +28,16 @@ export function compressCanvasData(data: Uint8ClampedArray): Uint8ClampedArray {
 
     data.forEach((v) => {
         if (v == last) {
-            count ++;
+            if (count < 255) {
+                count ++;
+                return;
+            }
+            array.push(new Uint8ClampedArray([last, count]));
+            count = 1;
+            last = v;
             return;
         }
+
         // append the last n times to the array
         if (count != 0) {
             array.push(new Uint8ClampedArray([last, count]));
@@ -43,6 +50,8 @@ export function compressCanvasData(data: Uint8ClampedArray): Uint8ClampedArray {
     if (count != 0) {
         array.push(new Uint8ClampedArray([last, count]));
     }
+
+    console.log("array", array);
 
     let arr = new Uint8ClampedArray(array.length * 2);
     array.forEach((v, i) => {
