@@ -40,6 +40,10 @@ export function compressCanvasData(data: Uint8ClampedArray): Uint8ClampedArray {
         last = v;
     });
 
+    if (count != 0) {
+        array.push(new Uint8ClampedArray([last, count]));
+    }
+
     let arr = new Uint8ClampedArray(array.length * 2);
     array.forEach((v, i) => {
         arr[2*i] = v[0];
