@@ -1,5 +1,5 @@
 <script>
-  let { icon, label = icon, onclick } = $props();
+  let { icon, label = icon, onclick, classes = "" } = $props();
   /** @type {HTMLDivElement} */
   let tooltip;
   function hover() {
@@ -18,7 +18,7 @@
 </script>
 
 <div class="relative">
-    <button class="relative rounded cursor-[var(--stylus)] z-10" {onclick} onmouseenter={hover} onmouseleave={unhover}>
+    <button class="relative rounded cursor-[var(--stylus)] z-10 {classes}" {onclick} onmouseenter={hover} onmouseleave={unhover}>
         <img src={`/icon/${icon}.png`} alt={icon} />
     </button>
     <div class="absolute top-0 left-0 font-ds text-black text-s bg-white border border-black rounded px-1 h-4 leading-[0.75] z-0 hidden" style="clip-path: inset(0 100% 0 0)" bind:this={tooltip}>

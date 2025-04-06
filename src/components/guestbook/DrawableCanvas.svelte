@@ -1,5 +1,9 @@
 <script lang="ts">
-    import {hexToU8IntClampedArray, postgrest, u8IntClampedArrayToHex} from "../../scripts/db.ts";
+    import {
+        postgrest,
+        u8IntClampedArrayToHex,
+        compressCanvasData,
+    } from "../../scripts/db.ts";
   import {onMount} from "svelte";
   import {Howl} from "howler";
   import FlipnoteButton from "./FlipnoteButton.svelte";
@@ -106,10 +110,8 @@
   async function submit() {
     if (ctx) {
         const data = ctx.getImageData(0, 0, 190, 126).data;
-        console.log("submitting:", u8IntClampedArrayToHex(data));
-        console.log("convert", hexToU8IntClampedArray(u8IntClampedArrayToHex(data)));
-        console.log("old", data);
-        const { error } = await postgrest.from("entries").insert({ from: "anon", img_content: u8IntClampedArrayToHex(data) });
+        const compressed = compressCanvasData(data);
+        const { error } = await postgrest.from("entries").insert({ from: "anon", img_content: u8IntClampedArrayToHex(compressed) });
         if (error) console.error("failed to submit", error);
     }
   }
@@ -130,16 +132,8 @@
     </canvas>
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="flex mt-1 cursor-[var(--stylus)] [&>*]:mr-1 last:mr-0">
-<!--        <div class="absolute flex" bind:this={arrow}>-->
-<!--            <img src="/icon/arrow.png" alt="" width="32" height="32" />-->
-<!--            <div class="border-black border-2 bg-white rounded text-black font-ds px-1 inline-block" bind:this={tooltip}>Tooltip</div>-->
-<!--        </div>-->
-        <FlipnoteButton icon="erase" onclick={clearCanvas}/>
-        <FlipnoteButton icon="submit" onclick={submit}/>
-<!--        <FlipnoteButton icon="pen"/>-->
-<!--        <FlipnoteButton icon="eraser"/>-->
-<!--        <FlipnoteButton icon="undo"/>-->
-<!--        <FlipnoteButton icon="redo"/>-->
+        <FlipnoteButton icon="erase" onclick={clearCanvas} classes="border border-fliporange rounded"/>
+        <FlipnoteButton icon="submit" onclick={submit} classes="border border-flipgreen rounded"/>
     </div>
     <span class="text-black font-ds">blep</span>
 </div>

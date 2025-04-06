@@ -16,6 +16,10 @@ export default {
 			"ds": ["Nintendo DS", "Zpix", "nec_apc3"],
 		},
 		extend: {
+			colors: {
+				"fliporange": "#ed8941",
+				"flipgreen": "#3fd576",
+			},
 			boxShadow: {
 				"card": "5px 5px 0px rgba(0, 0, 0, 0.2)",
 				"glow": "0px 0px 30px 0px #d7b0ff, inset 0px 0px 30px 20px rgba(241, 165, 255, 0.4)"
