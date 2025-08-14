@@ -49,6 +49,9 @@
 body {
     @apply bg-mantle text-text;
     image-rendering: pixelated;
+    /*background:*/
+    /*        repeating-conic-gradient(#808080 0 25%, #0000 0 50%)*/
+    /*        50% / 100px 100px*/
 }
 
 .fancy-link {
