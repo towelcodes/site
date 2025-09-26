@@ -1,7 +1,7 @@
 <script lang="ts">
     import {onMount} from "svelte";
 
-    let { title }: { title: string} = $props();
+    let { title, pagetitle  }: { title: string, pagetitle?: string } = $props();
     let componentRoot: HTMLElement;
 
     onMount(() => {

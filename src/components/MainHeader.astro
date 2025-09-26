@@ -3,7 +3,9 @@ import WavyText from "./WavyText.svelte";
 import wooper from "../assets/wooper/wooper1.gif";
 import scanlines from "../assets/scanlines big.png";
 import {Image} from "astro:assets";
+const { title } = Astro.props;
 ---
+
 <div class="flex flex-col items-stretch w-full">
     <div class="colour-card text-center overflow-hidden relative">
         <Image src={scanlines} alt="" class="absolute -m-5 w-full z-10 left-5 animate-scrollup" style="image-rendering: auto;" />
