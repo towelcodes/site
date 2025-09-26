@@ -2,8 +2,8 @@
 const { colour } = Astro.props;
 ---
 
-<div class={`hover:cursor-pointer ${colour} rounded font-display font-bold mt-[1px] px-2 py-[1px] hover-zoom`}>
-    <div class="flex items-center content-center [&>*]:mx-1">
+<div class={`hover:cursor-pointer ${colour} rounded font-display font-bold mt-px px-2 py-px hover-zoom`}>
+    <div class="flex items-center content-center *:mx-1">
         <slot/>
     </div>
 </div>
