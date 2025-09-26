@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 
-/* @import url("https://github.com/IdreesInc/Monocraft/releases/download/v3.0/Monocraft.ttf"); */
+@import "tailwindcss";
+@import "@catppuccin/tailwindcss/mocha.css";
 
 @font-face {
     font-family: "MS UI Gothic";
@@ -13,10 +14,6 @@
     font-family: "Zpix";
     src: url("/font/zpix.ttf") format("truetype");
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer components {
     .card {
