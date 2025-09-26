@@ -1,58 +1,109 @@
 ---
 import "../styles/global.css";
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 // import Guestbook from '../components/Guestbook.svelte';
-import Footer from '../components/Footer.astro';
+import Footer from "../components/Footer.astro";
 import SkillIcons from "../components/SkillIcons.astro";
-import Commit from '../components/Commit.astro';
+import Commit from "../components/Commit.astro";
 import { Image } from "astro:assets";
 import wooper from "../assets/wooper/wooper1.gif";
 import GitLogo from "../assets/git.svg";
 import { getRelativeTime } from "../scripts/util.mjs";
-import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG, COMMIT_TIME } from "astro:env/client";
+import {
+    BASE_GITHUB,
+    COMMIT_HASH,
+    COMMIT_MSG,
+    COMMIT_TIME,
+} from "astro:env/client";
 const commitHashShort = COMMIT_HASH.slice(0, 7);
 const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 ---
 
 <Layout>
-	<div slot="sidebar-l">
-		<div class="card flex flex-wrap justify-evenly gap-1">
-			<Image src="/buttons/handcoded.gif" alt="handcoded" width="88" height="31" data-tooltip="hand coded by me"/>
-			<Image src="/buttons/astro.png" alt="astro powered" width="88" height="31" data-tooltip="made with astro"/>
-			<Image src="/buttons/nekoweb.gif" alt="nekoweb" width="88" height="31" data-tooltip="hosted on nekoweb" />
-			<a href="https://spacehey.com/ludicra_">
-				<Image src="/buttons/ludicra.gif" alt="ludicra" width="88" height="31" data-tooltip="ludicra !!!!" class="hover-zoom" />
-			</a>
-		</div>
-		<div class="card text-center">
-			<strong class="font-display text-lg text-shadow shadow-black">add my 88x31!</strong>
-			<Image src="/button.gif" class="mx-auto hover-zoom" alt="towel.codes" width="88" height="31" data-tooltip="my button"/>
-			<code class="bg-overlay0 block m-2 p-1" style="word-wrap: break-word; font-size: 0.5em">&lt;img src="https://towel.codes/button.gif" alt="towel.codes" /&gt;</code>
-		</div>
-		<!--<div class="card">-->
-		<!--	<Guestbook client:load />-->
-		<!--</div>-->
-	</div>
-	<div slot="sidebar-r">
-		<Commit/>
-		<div class="card">
-			<SkillIcons/>
-		</div>
-	</div>
-	<div class="grid grid-cols-2">
-		<div>
-			<h1 class="font-display font-bold text-3xl text-shadow shadow-black">hello!</h1>
-			<div class="text-md text-shadow shadow-black">
-				i'm a 16 year old <span class="text-pink">developer</span> from the <span class="text-mauve">uk</span>.
-				<br>thanks for stopping by!
-				<br><br>
-				<span class="text-sm text-overlay1">* this website is a work in progress, more is coming soon</span>
-			</div>
-		</div>
-		<div>
-			<Image src={wooper} alt="wooper"></Image>
-		</div>
-	</div>
+    <div slot="sidebar-l">
+        <div class="card flex flex-wrap justify-evenly gap-1">
+            <Image
+                src="/buttons/handcoded.gif"
+                alt="handcoded"
+                width="88"
+                height="31"
+                data-tooltip="hand coded by me"
+            />
+            <Image
+                src="/buttons/astro.png"
+                alt="astro powered"
+                width="88"
+                height="31"
+                data-tooltip="made with astro"
+            />
+            <Image
+                src="/buttons/nekoweb.gif"
+                alt="nekoweb"
+                width="88"
+                height="31"
+                data-tooltip="hosted on nekoweb"
+            />
+            <a href="https://spacehey.com/ludicra_">
+                <Image
+                    src="/buttons/ludicra.gif"
+                    alt="ludicra"
+                    width="88"
+                    height="31"
+                    data-tooltip="ludicra !!!!"
+                    class="hover-zoom"
+                />
+            </a>
+        </div>
+        <div class="card text-center">
+            <strong class="font-display text-lg text-shadow shadow-black"
+                >add my 88x31!</strong
+            >
+            <Image
+                src="/button.gif"
+                class="mx-auto hover-zoom"
+                alt="towel.codes"
+                width="88"
+                height="31"
+                data-tooltip="my button"
+            />
+            <code
+                class="bg-ctp-overlay0 block m-2 p-1"
+                style="word-wrap: break-word; font-size: 0.5em"
+                >&lt;img src="https://towel.codes/button.gif" alt="towel.codes"
+                /&gt;</code
+            >
+        </div>
+        <!--<div class="card">-->
+        <!--	<Guestbook client:load />-->
+        <!--</div>-->
+    </div>
+    <div slot="sidebar-r">
+        <Commit />
+        <div class="card">
+            <SkillIcons />
+        </div>
+    </div>
+    <div class="grid grid-cols-2">
+        <div>
+            <h1
+                class="font-display font-bold text-3xl text-shadow shadow-black"
+            >
+                hello!
+            </h1>
+            <div class="text-md text-shadow shadow-black">
+                i'm a 16 year old <span class="text-ctp-pink">developer</span> from
+                the <span class="text-ctp-mauve">uk</span>.
+                <br />thanks for stopping by!
+                <br /><br />
+                <span class="text-sm text-ctp-overlay1"
+                    >* this website is a work in progress, more is coming soon</span
+                >
+            </div>
+        </div>
+        <div>
+            <Image src={wooper} alt="wooper" />
+        </div>
+    </div>
 </Layout>
 
-<Footer/>
+<Footer />

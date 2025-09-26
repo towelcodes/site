@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
@@ -17,14 +17,14 @@
 
 @layer components {
     .card {
-        @apply p-1 m-1 bg-surface0 shadow-card;
+        /*@apply p-1 m-1 bg-ctp-surface0 shadow-card;*/
     }
     .colour-card {
-        @apply card border-pink border-2 rounded-md shadow-glow;
+        /*@apply card border-ctp-pink border-2 rounded-md shadow-glow;*/
     }
 
     .button {
-        @apply px-2 m-1 bg-surface1 text-text shadow-card border-2 border-green;
+        /*@apply px-2 m-1 bg-ctp-surface1 text-ctp-text shadow-card border-2 border-ctp-green;*/
     }
 }
 
@@ -44,7 +44,7 @@
 }
 
 body {
-    @apply bg-mantle text-text;
+    @apply bg-ctp-mantle text-ctp-text;
     image-rendering: pixelated;
 }
 

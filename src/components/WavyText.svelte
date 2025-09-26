@@ -22,7 +22,7 @@
 >
     {#each title.split("") as char}
         <span
-            class="bg-clip-text bg-gradient-to-r from-pink to-mauve
+            class="bg-clip-text bg-gradient-to-r from-ctp-pink to-ctp-mauve
       duration-500 ease-out cursor-default animate-wave inline-block drop-shadow-glow"
             >{char}</span
         >
