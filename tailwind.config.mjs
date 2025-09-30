@@ -10,7 +10,7 @@ export default {
 		fontFamily: {
 			'jersey': ['"Jersey 10"', '"MS UI Gothic"', 'sans-serif'],
 			"sans": ["'MS UI Gothic'", "nec_apc3", "Verdana", "sans-serif"],
-			"mono": ["JetBrains Mono", "monospace"],
+			"mono": ["DM Mono", "JetBrains Mono", "monospace"],
 			"display": ["Funnel Display", "MS UI Gothic", "Verdana", "sans-serif"],
 			"pixel": ["Zpix", "nec_apc3"],
 		},
