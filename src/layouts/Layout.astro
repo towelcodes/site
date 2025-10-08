@@ -9,6 +9,7 @@ import { Image } from "astro:assets";
 import GithubIcon from "../assets/icon/github.svg";
 import DiscordIcon from "../assets/icon/discord.svg";
 import AbyssIcon from "../assets/icon/abyss2.png";
+import Button from "../components/Button.astro";
 ---
 
 <!doctype html>
@@ -27,6 +28,52 @@ import AbyssIcon from "../assets/icon/abyss2.png";
     </head>
     <body class="mocha">
         <PointyThing />
+        <main class="m-4 -ml-1 md:ml-4 flex justiy-center gap-2">
+            <aside>
+                <!-- expanded bar -->
+                <div
+                    class="rounded border-2 border-ctp-blue absolute z-20 md:relative my-2 hidden md:block"
+                >
+                    <div
+                        class="text-xs text-ctp-purple italic font-bold bg-ctp-base absolute -top-2"
+                    >
+                        sidebar
+                    </div>
+                    <div class="p-2">gulp</div>
+                    <slot name="sidebar" />
+                </div>
+                <!-- for small viewports -->
+                <div
+                    class="md:hidden rounded border-2 border-ctp-subtext0 mx-2 px-2 italic font-bold text-ctp-subtext0 [writing-mode:vertical-rl] hover:cursor-default"
+                >
+                    <span class="text-ctp-text">s</span>idebar
+                </div>
+            </aside>
+            <div class="flex-1 *:my-2">
+                <div
+                    class="rounded border-ctp-purple border-2 mx-auto p-5 text-center relative"
+                >
+                    <div
+                        class="text-xs text-ctp-purple italic font-bold text-left absolute -top-2 bg-ctp-base px-1 hover:cursor-default"
+                    >
+                        header
+                    </div>
+                    <slot />
+                </div>
+                <div
+                    class="rounded border-ctp-purple border-2 mx-auto p-5 relative"
+                >
+                    <div
+                        class="text-xs text-ctp-purple italic font-bold text-left absolute -top-2 bg-ctp-base px-1 hover:cursor-default"
+                    >
+                        body<br />
+                    </div>
+                    <slot />
+
+                    <Button>button</Button>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
 
