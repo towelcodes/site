@@ -14,6 +14,21 @@
     
     --shadow-card: 5px 5px 0px rgba(0,0,0,0.2);
     --shadow-glow: 0px 0px 30px 0px #d7b0ff inset 0px 30px 20px rgba(241, 165, 255, 0.4);
+    
+    --drop-shadow-glow: 0 0 10px #9836d9;
+   
+   --text-shadow-lg: 2px 2px 4px var(--tw-shadow-color);
+   
+    --animate-wave: wave 1s cubic-bezier(.6, .01, .47, .99) infinite alternate;
+    @keyframes wave {
+        0% { transform: translate(0, -10px) }
+        100% { transform: translate(0) }
+    }
+    --animate-scrollup: scrollup 8s linear infinite, pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
+    @keyframes scrollup {
+        0% { transform: translate(0) }
+        100$ { transform: translate(-50%) }
+    }
 }
 
 @font-face {
