@@ -3,6 +3,8 @@ import PointyThing from "../components/PointyThing.astro";
 import LocalTime from "../components/LocalTime.astro";
 import Button from "../components/Button.astro";
 import Sidebar from "../components/Sidebar.svelte";
+import BoxContainer from "../components/BoxContainer.astro";
+import GithubIcon from "../assets/icon/github.svg";
 ---
 
 <!doctype html>
@@ -17,38 +19,43 @@ import Sidebar from "../components/Sidebar.svelte";
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=open_in_new,person,schedule"
         />
         <meta name="generator" content={Astro.generator} />
-        <title>Teatowel</title>
+        <title>teatowel's home</title>
     </head>
     <body class="mocha">
         <PointyThing />
-        <main class="m-4 -ml-1 md:ml-4 flex justiy-center gap-2">
-            <Sidebar client:load>
-                <slot name="sidebar" />
-            </Sidebar>
-            <div class="flex-1 *:my-2">
+        <main class="m-4 container lg:max-w-3xl! mx-auto">
+            <nav
+                class="border-ctp-green bg-bg border-2 rounded p-4 w-lg mx-auto relative top-6 z-20"
+            >
                 <div
-                    class="rounded border-ctp-purple border-2 mx-auto p-5 text-center relative"
+                    class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
                 >
-                    <div
-                        class="text-xs text-ctp-purple italic font-bold text-left absolute -top-2 bg-bg px-1 hover:cursor-default"
-                    >
-                        header
-                    </div>
-                    <slot />
+                    <div>header</div>
                 </div>
-                <div
-                    class="rounded border-ctp-purple border-2 mx-auto p-5 relative"
+                <h1
+                    class="text-center text-6xl font-display font-bold text-shadow-title flex items-center justify-center"
                 >
-                    <div
-                        class="text-xs text-ctp-purple italic font-bold text-left absolute -top-2 bg-bg px-1 hover:cursor-default"
+                    <span
+                        class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4"
+                        >teatowel's</span
                     >
-                        body<br />
-                    </div>
-                    <slot />
+                    <span
+                        class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green"
+                        >home</span
+                    >
+                </h1>
+            </nav>
 
-                    <Button>button</Button>
+            <section
+                class="relative border-2 border-ctp-surface1 rounded px-6 pt-10 pb-4 bg-ctp-base shadow-box"
+            >
+                <div
+                    class="text-ctp-surface1 absolute bg-ctp-base italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
+                >
+                    <div>body</div>
                 </div>
-            </div>
+                <slot name="body" />
+            </section>
         </main>
     </body>
 </html>

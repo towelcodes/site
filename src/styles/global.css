@@ -2,25 +2,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
 
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
 
 @theme {
-    --color-bg: var(--color-ctp-mantle);
+    --color-bg: var(--color-ctp-crust);
 
-    --font-sans: "DM Mono", "JetBrains Mono", monospace;
+    --font-sans: "MS UI Gothic", "Verdana", system-ui, sans-serif-;
     --font-mono: "DM Mono", "JetBrains Mono", monospace;
-    --font-display: "Funnel Display", "MS UI Gothic", "Verdana", sans-serif;
+    --font-display: "Cal Sans", "MS UI Gothic", "Verdana", sans-serif;
     --font-pixel: "Zpix", "nec_apc3";
 
-    --shadow-card: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    --shadow-box: 5px 5px 0px rgba(0, 0, 0, 0.2);
     --shadow-glow: 0px 0px 30px 0px #d7b0ff inset 0px 30px 20px
         rgba(241, 165, 255, 0.4);
 
     --drop-shadow-glow: 0 0 10px #9836d9;
 
     --text-shadow-lg: 2px 2px 4px var(--tw-shadow-color);
+    --text-shadow-title: 8px 8px 0px #47495e;
+    --text-shadow-heading: 4px 4px 0px var(--color-ctp-crust);
 
     /* animations */
     --animate-wave: wave 1s cubic-bezier(0.6, 0.01, 0.47, 0.99) infinite
@@ -33,7 +36,7 @@
             transform: translate(0);
         }
     }
-    
+
     --animate-scrollup:
         scrollup 8s linear infinite,
         pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -62,6 +65,16 @@
         @apply bg-bg text-ctp-text;
         image-rendering: pixelated;
     }
+
+    /* sane defaults for rendering text blocks */
+    .prose {
+        > h2 {
+            @apply text-4xl font-bold font-display text-shadow-heading;
+        }
+        > p {
+            @apply mb-2 text-lg;
+        }
+    }
 }
 
 @layer components {
@@ -80,24 +93,4 @@
     padding: 2px;
     display: inline-block;
     background-size: 200%;
-}
-
-.fancy-link--r {
-    background-image: linear-gradient(to left, transparent 50%, black 50%);
-    background-position-x: 100%;
-}
-
-.fancy-link--l {
-    background-image: linear-gradient(to right, transparent 50%, black 50%);
-    background-position-x: 0;
-}
-
-.fancy-link--r:hover {
-    transform: scale(1.4) rotate(-5deg);
-    background-position-x: 0;
-}
-
-.fancy-link--l:hover {
-    transform: scale(1.4) rotate(5deg);
-    background-position-x: 100%;
 }

@@ -1,6 +1,16 @@
+---
+import {
+    BASE_GITHUB,
+    COMMIT_HASH,
+    COMMIT_MSG,
+    COMMIT_TIME,
+} from "astro:env/client";
+---
+
 <footer
     class="text-center align-text-bottom font-pixel text-ctp-overlay0 mt-2"
     style="font-size: 0.65em;"
 >
-    towel.codes 2025
-</footer
+    hand coded with love by me <br />
+    {COMMIT_HASH} ({COMMIT_TIME})
+</footer>
