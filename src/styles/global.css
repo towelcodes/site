@@ -62,9 +62,24 @@
 }
 
 @layer base {
+    @keyframes bg-scroll {
+        from {
+            background-position: 0%;
+        }
+        to {
+            background-position: 100% -100%;
+        }
+    }
+
     body {
-        @apply bg-bg text-ctp-text;
+        @apply text-ctp-text;
         image-rendering: pixelated;
+        background: repeating-conic-gradient(
+                var(--color-ctp-crust) 0 25%,
+                var(--color-ctp-mantle) 0 50%
+            )
+            50% / 40px 40px;
+        animation: bg-scroll infinite 40s linear;
     }
 
     /* sane defaults for rendering text blocks */
