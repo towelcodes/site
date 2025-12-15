@@ -22,8 +22,9 @@
     --drop-shadow-glow: 0 0 10px #9836d9;
 
     --text-shadow-lg: 2px 2px 4px var(--tw-shadow-color);
-    --text-shadow-title: 8px 8px 0px #47495e;
     --text-shadow-heading: 4px 4px 0px var(--color-ctp-crust);
+    --text-shadow-title: 8px 8px 0px #47495e;
+    --text-shadow-title-sm: 4px 4px 0px #47495e;
 
     /* animations */
     --animate-wave: wave 1s cubic-bezier(0.6, 0.01, 0.47, 0.99) infinite
@@ -69,7 +70,10 @@
     /* sane defaults for rendering text blocks */
     .prose {
         > h2 {
-            @apply text-4xl font-bold font-display text-shadow-heading;
+            @apply mt-4 text-4xl text-ctp-green font-bold font-display text-shadow-heading;
+        }
+        > h3 {
+            @apply mt-4 text-2xl font-bold text-ctp-blue font-display text-shadow-heading;
         }
         > p {
             @apply mb-2 text-lg;

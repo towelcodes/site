@@ -18,18 +18,28 @@ const commitHashShort = COMMIT_HASH.slice(0, 7);
 const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 ---
 
-<Layout>
+<Layout title="home">
     <div slot="body">
         <div class="prose">
             <h2>hello!</h2>
             <p class="text-xl">
                 i'm a <span>16 year old</span> developer from <span
                     >south england</span
-                >.
+                >.<br />
+                i currently study physics, further maths and computer science.
             </p>
         </div>
 
-        <article></article>
+        <article class="prose">
+            <h3>hobbies</h3>
+            <p>
+                my main hobby (other than writing code) is rhythm gaming. <br />
+                at home i mainly play 4K osu!mania or muse dash, but i like arcade
+                games too <span class="text-xs text-subtext2 font-pixel"
+                    >(when i can afford it)</span
+                >.
+            </p>
+        </article>
     </div>
 </Layout>
 

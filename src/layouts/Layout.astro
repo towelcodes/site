@@ -3,8 +3,8 @@ import PointyThing from "../components/PointyThing.astro";
 import LocalTime from "../components/LocalTime.astro";
 import Button from "../components/Button.astro";
 import Sidebar from "../components/Sidebar.svelte";
-import BoxContainer from "../components/BoxContainer.astro";
 import GithubIcon from "../assets/icon/github.svg";
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,21 +19,22 @@ import GithubIcon from "../assets/icon/github.svg";
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=open_in_new,person,schedule"
         />
         <meta name="generator" content={Astro.generator} />
-        <title>teatowel's home</title>
+        <title>teatowel's {title}</title>
     </head>
     <body class="mocha">
         <PointyThing />
         <main class="m-4 container lg:max-w-3xl! mx-auto">
             <nav
-                class="border-ctp-green bg-bg border-2 rounded p-4 w-lg mx-auto relative top-6 z-20"
+                class="border-ctp-green bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20"
             >
                 <div
                     class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
                 >
                     <div>header</div>
                 </div>
+                <!-- large displays -->
                 <h1
-                    class="text-center text-6xl font-display font-bold text-shadow-title flex items-center justify-center"
+                    class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
                 >
                     <span
                         class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4"
@@ -41,16 +42,30 @@ import GithubIcon from "../assets/icon/github.svg";
                     >
                     <span
                         class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green"
+                        >{title}</span
+                    >
+                </h1>
+
+                <!-- small displays -->
+                <h1
+                    class="md:hidden flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
+                >
+                    <span
+                        class="block relative transform-[rotate(-8deg)] translate-x-4 -translate-y-2"
+                        >teatowel's</span
+                    ><br />
+                    <span
+                        class="block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-ctp-green"
                         >home</span
                     >
                 </h1>
             </nav>
 
             <section
-                class="relative border-2 border-ctp-surface1 rounded px-6 pt-10 pb-4 bg-ctp-base shadow-box"
+                class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 bg-ctp-base shadow-box"
             >
                 <div
-                    class="text-ctp-surface1 absolute bg-ctp-base italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
+                    class="hidden md:flex absolute text-ctp-surface1 bg-ctp-base italic -top-2.5 text-sm px-2 gap-1 *:my-auto font-mono"
                 >
                     <div>body</div>
                 </div>
