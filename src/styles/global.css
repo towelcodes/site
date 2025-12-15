@@ -64,10 +64,10 @@
 @layer base {
     @keyframes bg-scroll {
         from {
-            background-position: 0%;
+            background-position: 0px 0px;
         }
         to {
-            background-position: 100% -100%;
+            background-position: 40px -40px;
         }
     }
 
@@ -79,7 +79,7 @@
                 var(--color-ctp-mantle) 0 50%
             )
             50% / 40px 40px;
-        animation: bg-scroll infinite 40s linear;
+        animation: bg-scroll infinite 1.5s linear;
     }
 
     /* sane defaults for rendering text blocks */
