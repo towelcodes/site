@@ -84,17 +84,23 @@
 
     /* sane defaults for rendering text blocks */
     .prose {
-        > h2 {
+        h2 {
             @apply mt-4 text-4xl text-ctp-green font-bold font-display text-shadow-heading;
         }
-        > h3 {
+        h3 {
             @apply mt-4 text-2xl font-bold text-ctp-blue font-display text-shadow-heading;
         }
-        > p {
+        p {
             @apply mb-2 text-lg leading-6;
-            > a {
-                @apply underline hover:no-underline;
-            }
+        }
+        a {
+            @apply underline hover:no-underline;
+        }
+        strong {
+            @apply text-ctp-mauve;
+        }
+        small {
+            @apply font-pixel text-ctp-subtext0 text-sm;
         }
     }
 }
