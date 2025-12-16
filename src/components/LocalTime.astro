@@ -1,11 +1,12 @@
 ---
-
+const id = `${Math.random()}`;
 ---
-<strong id="time">00:00</strong> local time
-<script>
-    const time = document.getElementById("time");
+
+<strong id={id}>00:00</strong> GMT
+<script is:inline define:vars={{ id }}>
+    const time = document.getElementById(id);
     time.textContent = new Date().toLocaleTimeString().substring(0, 5);
     setInterval(() => {
         time.textContent = new Date().toLocaleTimeString().substring(0, 5);
-    }, 1000);
+    }, 5000);
 </script>

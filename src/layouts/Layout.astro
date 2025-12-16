@@ -29,56 +29,89 @@ const { title } = Astro.props;
         <title>teatowel's {title}</title>
     </head>
     <body class="mocha">
-        <PointyThing />
-        <main class="m-4 container lg:max-w-3xl! mx-auto">
-            <nav
-                class="border-ctp-green bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20"
-            >
-                <div
-                    class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
+        <!-- <PointyThing /> -->
+        <div class="flex">
+            <Sidebar />
+            <main class="grow m-4 container lg:max-w-3xl! mx-auto">
+                <!-- header -->
+                <nav
+                    class="border-ctp-green bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default"
                 >
-                    <div>header</div>
-                </div>
-                <!-- large displays -->
-                <h1
-                    class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
-                >
-                    <span
-                        class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4"
-                        >teatowel's</span
+                    <div
+                        class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
                     >
-                    <span
-                        class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green"
-                        >{title}</span
-                    >
-                </h1>
+                        <div>header</div>
+                    </div>
 
-                <!-- small displays -->
-                <h1
-                    class="md:hidden flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
-                >
-                    <span
-                        class="block relative transform-[rotate(-8deg)] translate-x-4 -translate-y-2"
-                        >teatowel's</span
-                    ><br />
-                    <span
-                        class="block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-ctp-green"
-                        >home</span
-                    >
-                </h1>
-            </nav>
+                    <!-- large displays -->
+                    <div class="hidden md:block">
+                        <h1
+                            class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
+                        >
+                            <span
+                                class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4"
+                                >teatowel's</span
+                            >
+                            <span
+                                class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green"
+                                >{title}</span
+                            >
+                        </h1>
 
-            <section
-                class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 bg-ctp-base/0 backdrop-blur-sm shadow-box"
-            >
-                <div
-                    class="hidden md:flex absolute text-ctp-surface1 bg-ctp-base italic -top-2.5 text-sm px-2 gap-1 *:my-auto font-mono"
-                >
-                    <div>body</div>
+                        <!-- nav buttons -->
+                        <div
+                            class="font-mono absolute bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                        >
+                            <span>
+                                ( <LocalTime /> )
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- small displays -->
+                    <div class="block md:hidden">
+                        <h1
+                            class="flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
+                        >
+                            <span
+                                class="block relative transform-[rotate(-8deg)] translate-x-4 -translate-y-2"
+                                >teatowel's</span
+                            ><br />
+                            <span
+                                class="block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-ctp-green"
+                                >{title}</span
+                            >
+                        </h1>
+
+                        <!-- nav buttons -->
+                        <div
+                            class="font-mono absolute bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                        >
+                            <span>
+                                ( <LocalTime /> )
+                            </span>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="flex">
+                    <!-- sidebar -->
+                    <div></div>
+
+                    <!-- main content -->
+                    <section
+                        class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 backdrop-blur-sm shadow-box"
+                    >
+                        <div
+                            class="hidden md:flex absolute text-ctp-surface1 bg-ctp-base italic -top-2.5 text-sm px-2 gap-1 *:my-auto font-mono"
+                        >
+                            <div>body</div>
+                        </div>
+                        <slot name="body" />
+                    </section>
                 </div>
-                <slot name="body" />
-            </section>
-        </main>
+            </main>
+        </div>
     </body>
 </html>
 
