@@ -2,24 +2,10 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
-import SkillIcons from "../components/SkillIcons.astro";
-import Commit from "../components/Commit.astro";
-import { Image } from "astro:assets";
-import wooper from "../assets/wooper/wooper1.gif";
-import GitLogo from "../assets/git.svg";
-import { getRelativeTime } from "../scripts/util.mjs";
-import {
-    BASE_GITHUB,
-    COMMIT_HASH,
-    COMMIT_MSG,
-    COMMIT_TIME,
-} from "astro:env/client";
-const commitHashShort = COMMIT_HASH.slice(0, 7);
-const commitTimeRelative = getRelativeTime(COMMIT_TIME);
 ---
 
 <Layout title="home">
-    <div slot="body">
+    <div slot="body" class="relative">
         <div class="prose">
             <h2>hello!</h2>
             <p class="text-xl">
@@ -31,14 +17,13 @@ const commitTimeRelative = getRelativeTime(COMMIT_TIME);
         </div>
 
         <article class="prose">
-            <h3>hobbies</h3>
+            <h3>games i play</h3>
             <p>
-                my main hobby (other than writing code) is rhythm gaming. <br />
-                at home i mainly play 4K <a
+                i mainly play rhythm games; at home i play 4K <a
                     href="https://osu.ppy.sh/users/23581678"
                     class="text-ctp-pink underline"
                     target="_blank">osu!mania</a
-                > or muse dash, but i like arcade games too <span
+                > or muse dash; at the arcade i play sdvx and museca. <span
                     class="text-xs text-subtext2 font-pixel"
                     >(when i can afford it)</span
                 >.

@@ -1,7 +1,0 @@
----
-import { Image } from "astro:assets";
-const { skill, tooltip = skill, size = "" } = Astro.props;
----
-<div class="group">
-    <img src=`https://skillicons.dev/icons?i=${skill}` alt={skill} data-tooltip={tooltip} class=`${size} transition-transform duration-500 ease-out group-hover:scale-75`/>
-</div>
