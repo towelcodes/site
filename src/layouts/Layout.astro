@@ -3,7 +3,9 @@ import PointyThing from "../components/PointyThing.astro";
 import LocalTime from "../components/LocalTime.astro";
 import Button from "../components/Button.astro";
 import Sidebar from "../components/Sidebar.svelte";
-import GithubIcon from "../assets/icon/github.svg";
+import { Github } from "@lucide/astro";
+import DiscordIcon from "../assets/icon/discord.svg";
+import { Image } from "astro:assets";
 const { title } = Astro.props;
 ---
 
@@ -29,11 +31,11 @@ const { title } = Astro.props;
         <title>teatowel's {title}</title>
     </head>
     <body class="mocha">
-        <!-- <PointyThing /> -->
+        <!-- <PointyThing /> disabled for now -->
         <div class="flex">
-            <Sidebar />
+            <!-- <Sidebar /> disabled for now -->
             <main class="grow m-4 container lg:max-w-3xl! mx-auto">
-                <!-- header -->
+                <!-- page title and nav -->
                 <nav
                     class="border-ctp-green bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default"
                 >
@@ -43,24 +45,58 @@ const { title } = Astro.props;
                         <div>header</div>
                     </div>
 
-                    <!-- large displays -->
+                    <!-- page title for large displays -->
                     <div class="hidden md:block">
                         <h1
                             class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
                         >
                             <span
-                                class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4"
+                                class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4 z-20"
                                 >teatowel's</span
                             >
                             <span
-                                class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green"
+                                class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green z-20"
                                 >{title}</span
                             >
                         </h1>
 
-                        <!-- nav buttons -->
+                        <!-- socials -->
                         <div
-                            class="font-mono absolute bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                        >
+                            <div class="flex">
+                                (
+                                <a
+                                    href="https://github.com/towelcodes"
+                                    target="_blank"
+                                    class="flex gap-2"
+                                >
+                                    <Github class="w-4 inline-block" />
+                                    <div class="inline-block">github</div>
+                                </a>
+                                )
+                            </div>
+                            <div class="flex">
+                                (
+                                <a
+                                    href="https://discord.com/users/951330347541491802"
+                                    target="_blank"
+                                    class="inline-flex gap-2 items-center"
+                                >
+                                    <Image
+                                        src={DiscordIcon}
+                                        alt="Discord icon"
+                                        class="w-4 filter-ctp-green"
+                                    />
+                                    discord
+                                </a>
+                                )
+                            </div>
+                        </div>
+
+                        <!-- local time -->
+                        <div
+                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex py-0"
                         >
                             <span>
                                 ( <LocalTime /> )
@@ -68,7 +104,7 @@ const { title } = Astro.props;
                         </div>
                     </div>
 
-                    <!-- small displays -->
+                    <!-- page title for small displays -->
                     <div class="block md:hidden">
                         <h1
                             class="flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
@@ -83,9 +119,41 @@ const { title } = Astro.props;
                             >
                         </h1>
 
-                        <!-- nav buttons -->
+                        <!-- socials -->
                         <div
-                            class="font-mono absolute bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                        >
+                            <div class="flex">
+                                (
+                                <a
+                                    href="https://github.com/towelcodes"
+                                    target="_blank"
+                                    class="flex gap-2"
+                                >
+                                    <Github class="w-4" />
+                                </a>
+                                )
+                            </div>
+                            <div class="flex">
+                                (
+                                <a
+                                    href="https://discord.com/users/951330347541491802"
+                                    target="_blank"
+                                    class="inline-flex items-center"
+                                >
+                                    <Image
+                                        src={DiscordIcon}
+                                        alt="Discord icon"
+                                        class="w-4 filter-ctp-green"
+                                    />
+                                </a>
+                                )
+                            </div>
+                        </div>
+
+                        <!-- local time -->
+                        <div
+                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex py-0"
                         >
                             <span>
                                 ( <LocalTime /> )
@@ -102,11 +170,12 @@ const { title } = Astro.props;
                     <section
                         class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 backdrop-blur-sm shadow-box"
                     >
-                        <div
+                        <!-- this label is disabled because it looks ugly currently -->
+                        <!-- <div
                             class="hidden md:flex absolute text-ctp-surface1 bg-ctp-base italic -top-2.5 text-sm px-2 gap-1 *:my-auto font-mono"
                         >
                             <div>body</div>
-                        </div>
+                        </div> -->
                         <slot name="body" />
                     </section>
                 </div>

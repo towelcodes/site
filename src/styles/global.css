@@ -100,6 +100,10 @@
 }
 
 @layer utilities {
+    .filter-ctp-green {
+        filter: invert(92%) sepia(9%) saturate(1428%) hue-rotate(57deg)
+            brightness(94%) contrast(89%);
+    }
 }
 
 .fancy-link {
