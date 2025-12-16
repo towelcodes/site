@@ -91,7 +91,10 @@
             @apply mt-4 text-2xl font-bold text-ctp-blue font-display text-shadow-heading;
         }
         > p {
-            @apply mb-2 text-lg;
+            @apply mb-2 text-lg leading-6;
+            > a {
+                @apply underline hover:no-underline;
+            }
         }
     }
 }

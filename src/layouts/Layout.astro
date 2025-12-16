@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar.svelte";
 import { Github } from "@lucide/astro";
 import DiscordIcon from "../assets/icon/discord.svg";
 import AngelDevil from "../assets/bg/angeldevil.png";
+import Yuuri from "../assets/bg/yuuri.png";
 import { Image } from "astro:assets";
 const { title } = Astro.props;
 ---
@@ -43,7 +44,7 @@ const { title } = Astro.props;
                     <div
                         class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
                     >
-                        <div>header</div>
+                        <div>title</div>
                     </div>
 
                     <!-- page title for large displays -->
@@ -63,21 +64,21 @@ const { title } = Astro.props;
 
                         <!-- socials -->
                         <div
-                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-ctp-green"
                         >
-                            <div class="flex">
+                            <div class="flex items-center">
                                 (
                                 <a
                                     href="https://github.com/towelcodes"
                                     target="_blank"
-                                    class="flex gap-2"
+                                    class="inline-flex items-center gap-2"
                                 >
-                                    <Github class="w-4 inline-block" />
-                                    <div class="inline-block">github</div>
+                                    <Github class="w-4" />
+                                    <div>github</div>
                                 </a>
                                 )
                             </div>
-                            <div class="flex">
+                            <div class="flex items-center">
                                 (
                                 <a
                                     href="https://discord.com/users/951330347541491802"
@@ -122,9 +123,9 @@ const { title } = Astro.props;
 
                         <!-- socials -->
                         <div
-                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-3 text-ctp-green"
+                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-ctp-green"
                         >
-                            <div class="flex">
+                            <div class="flex items-center">
                                 (
                                 <a
                                     href="https://github.com/towelcodes"
@@ -135,7 +136,7 @@ const { title } = Astro.props;
                                 </a>
                                 )
                             </div>
-                            <div class="flex">
+                            <div class="flex items-center">
                                 (
                                 <a
                                     href="https://discord.com/users/951330347541491802"
@@ -154,7 +155,7 @@ const { title } = Astro.props;
 
                         <!-- local time -->
                         <div
-                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex py-0"
+                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex"
                         >
                             <span>
                                 ( <LocalTime /> )
@@ -183,10 +184,16 @@ const { title } = Astro.props;
             </main>
         </div>
 
-        <Image
+        <!-- <Image
             src={AngelDevil}
             alt=""
             class="hidden md:block absolute bottom-0 right-0 w-sm -z-10 mix-blend-screen"
+        /> -->
+        <Image
+            src={Yuuri}
+            alt=""
+            class="hidden md:block absolute bottom-0 right-0 -z-10 opacity-90"
+            width="256"
         />
     </body>
 </html>
