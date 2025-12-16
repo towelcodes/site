@@ -7,6 +7,10 @@
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
 
+:root {
+    color-scheme: dark;
+}
+
 @theme {
     --color-bg: var(--color-ctp-crust);
 
