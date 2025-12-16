@@ -102,11 +102,6 @@
 @layer utilities {
 }
 
-.material-symbols-outlined {
-    vertical-align: middle;
-    font-size: 1em;
-}
-
 .fancy-link {
     transition: 0.5s;
     padding: 2px;
