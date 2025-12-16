@@ -1,10 +1,14 @@
 ---
+import { getRelativeTime } from "../scripts/util.mjs";
+import { GitBranch } from "@lucide/astro";
 import {
     BASE_GITHUB,
     COMMIT_HASH,
     COMMIT_MSG,
     COMMIT_TIME,
 } from "astro:env/client";
+const commitShort = COMMIT_HASH.substring(0, 7);
+const commitTime = getRelativeTime(COMMIT_TIME);
 ---
 
 <img
@@ -17,9 +21,19 @@ import {
     align-text-bottom
     font-pixel
     text-ctp-overlay0
-    mt-2"
+    mt-2 leading-1"
     style="font-size: 0.65em;"
 >
-    hand coded with love by me <br />
-    {COMMIT_HASH} ({COMMIT_TIME})
+    hand coded by me <br />
+    <div class="flex justify-center items-center gap-2">
+        <GitBranch class="w-3" />
+        <a
+            href={BASE_GITHUB}
+            class="underline"
+            target="_blank"
+            data-tooltip="asdawdawfoijaef"
+        >
+            {commitShort} ({commitTime})
+        </a>
+    </div>
 </footer>
