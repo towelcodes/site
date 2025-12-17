@@ -1,5 +1,4 @@
 ---
-import { getRelativeTime } from "../scripts/util.mjs";
 import { GitBranch } from "@lucide/astro";
 import {
     BASE_GITHUB,
@@ -8,8 +7,16 @@ import {
     COMMIT_TIME,
 } from "astro:env/client";
 const commitShort = COMMIT_HASH.substring(0, 7);
-const commitTime = getRelativeTime(COMMIT_TIME);
 ---
+
+<script>
+    import { COMMIT_TIME } from "astro:env/client";
+    import { getRelativeTime } from "../scripts/util.mjs";
+    console.log("time:", COMMIT_TIME);
+    // @ts-ignore
+    document.querySelector("#commitTime").innerText =
+        `(${getRelativeTime(COMMIT_TIME)})`;
+</script>
 
 <img
     src="https://count.getloli.com/@:towelcodes?theme=3d-num"
@@ -33,7 +40,8 @@ const commitTime = getRelativeTime(COMMIT_TIME);
             target="_blank"
             data-tooltip="asdawdawfoijaef"
         >
-            {commitShort} ({commitTime})
+            {commitShort}
+            <span class="no-underline!" id="commitTime"></span>
         </a>
     </div>
     <img
