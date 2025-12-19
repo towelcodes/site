@@ -1,18 +1,16 @@
 ---
 import { GitBranch } from "@lucide/astro";
-import {
-    BASE_GITHUB,
-    COMMIT_HASH,
-    COMMIT_MSG,
-    COMMIT_TIME,
-} from "astro:env/client";
+import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG } from "astro:env/client";
+import { Image } from "astro:assets";
+import SvelteIcon from "../assets/icon/svelte.svg";
+import AstroIcon from "../assets/icon/astro.svg";
+import TailwindIcon from "../assets/icon/tailwind.svg";
 const commitShort = COMMIT_HASH.substring(0, 7);
 ---
 
 <script>
     import { COMMIT_TIME } from "astro:env/client";
     import { getRelativeTime } from "../scripts/util.mjs";
-    console.log("time:", COMMIT_TIME);
     // @ts-ignore
     document.querySelector("#commitTime").innerText =
         `(${getRelativeTime(COMMIT_TIME)})`;
@@ -44,9 +42,9 @@ const commitShort = COMMIT_HASH.substring(0, 7);
             <span class="no-underline!" id="commitTime"></span>
         </a>
     </div>
-    <img
-        src="https://skillicons.dev/icons?i=astro,svelte,tailwind"
-        alt="made with astro, svelte and tailwind"
-        class="h-6 mx-auto mt-2 grayscale"
-    />
+    <div class="flex gap-2 my-2 items-center justify-center">
+        <Image src={AstroIcon} alt="" height="16" />
+        <Image src={SvelteIcon} alt="" height="16" />
+        <Image src={TailwindIcon} alt="" width="16" />
+    </div>
 </footer>
