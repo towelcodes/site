@@ -1,13 +1,21 @@
 ---
-const { name, url, accent, important = false } = Astro.props;
+const { name, url, accent, important = false, newtab = false } = Astro.props;
 ---
 
 <div class="flex items-center">
     (
-    <a href={url} target="_blank" class="inline-flex items-center gap-1">
-        <div class={`*:w-4 ${accent ? "filter-" + accent : ""}`}>
-            <slot />
-        </div>
+    <a
+        href={url}
+        target={newtab ? "_blank" : "_self"}
+        class="inline-flex items-center gap-1"
+    >
+        {
+            (await Astro.slots.render("default")) != undefined && (
+                <div class={`*:w-4 ${accent ? "filter-" + accent : ""}`}>
+                    <slot />
+                </div>
+            )
+        }
         <div class={important ? "" : "hidden md:block"}>{name}</div>
     </a>
     )

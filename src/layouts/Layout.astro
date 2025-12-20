@@ -5,7 +5,8 @@ import NavItem from "../components/NavItem.astro";
 import { Github } from "@lucide/astro";
 import DiscordIcon from "../assets/icon/discord.svg";
 import Title from "../components/Title.astro";
-const { title, accent = "ctp-green" } = Astro.props;
+import Footer from "../components/Footer.astro";
+const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 ---
 
 {accent == "ctp-green" &&
@@ -54,11 +55,11 @@ const { title, accent = "ctp-green" } = Astro.props;
         <div class="flex">
             <main class="grow m-4 container lg:max-w-3xl! mx-auto">
                 <!-- page title and nav -->
-                <Title title={title} accent={accent}>
-                    <NavItem name="github" url="https://github.com/towelcodes">
+                <Title title={title} accent={accent} returnHome={returnHome}>
+                    <NavItem name="github" url="https://github.com/towelcodes" newtab>
                         <Github />
                     </NavItem>
-                    <NavItem name="discord" url="https://discord.com" accent={accent}>
+                    <NavItem name="discord" url="https://discord.com/users/951330347541491802" accent={accent} newtab>
                         <Image src={DiscordIcon} alt="Discord icon" />
                     </NavItem>
                 </Title>
@@ -78,6 +79,8 @@ const { title, accent = "ctp-green" } = Astro.props;
             class="hidden md:block fixed bottom-0 right-0 -z-10 opacity-90"
             width="256"
         />
+
+        <Footer />
     </body>
 </html>
 

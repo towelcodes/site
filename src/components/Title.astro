@@ -1,6 +1,7 @@
 ---
+import { CircleArrowOutUpLeft } from "@lucide/astro";
 import LocalTime from "./LocalTime.astro";
-const { title, accent = "ctp-green" } = Astro.props;
+const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 ---
 
 <nav
@@ -9,7 +10,19 @@ const { title, accent = "ctp-green" } = Astro.props;
     <div
         class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono`}
     >
-        <div>title</div>
+        {
+            returnHome ? (
+                <a
+                    class="flex gap-0 -ml-2 justify-center items-center hover:cursor-pointer"
+                    href="/"
+                >
+                    <CircleArrowOutUpLeft class="h-3" />
+                    <div class="underline">go home</div>
+                </a>
+            ) : (
+                <div>title</div>
+            )
+        }
     </div>
 
     <!-- page title for large displays -->
