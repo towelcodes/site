@@ -1,7 +1,4 @@
 ---
-import DiscordIcon from "../assets/icon/discord.svg";
-import { Github } from "@lucide/astro";
-import { Image } from "astro:assets";
 import LocalTime from "./LocalTime.astro";
 const { title, accent = "ctp-green" } = Astro.props;
 ---
@@ -30,39 +27,11 @@ const { title, accent = "ctp-green" } = Astro.props;
             >
         </h1>
 
-        <!-- socials -->
+        <!-- links -->
         <div
             class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
-        >
-            <div class="flex items-center">
-                (
-                <a
-                    href="https://github.com/towelcodes"
-                    target="_blank"
-                    class="inline-flex items-center gap-2"
-                >
-                    <Github class="w-4" />
-                    <div>github</div>
-                </a>
-                )
-            </div>
-            <div class="flex items-center">
-                (
-                <a
-                    href="https://discord.com/users/951330347541491802"
-                    target="_blank"
-                    class="inline-flex gap-2 items-center"
-                >
-                    <Image
-                        src={DiscordIcon}
-                        alt="Discord icon"
-                        class={`w-4 filter-${accent}`}
-                    />
-                    discord
-                </a>
-                )
-            </div>
-        </div>
+            set:html={await Astro.slots.render("default")}
+        />
 
         <!-- local time -->
         <div
@@ -89,37 +58,11 @@ const { title, accent = "ctp-green" } = Astro.props;
             >
         </h1>
 
-        <!-- socials -->
+        <!-- links -->
         <div
             class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
-        >
-            <div class="flex items-center">
-                (
-                <a
-                    href="https://github.com/towelcodes"
-                    target="_blank"
-                    class="flex gap-2"
-                >
-                    <Github class="w-4" />
-                </a>
-                )
-            </div>
-            <div class="flex items-center">
-                (
-                <a
-                    href="https://discord.com/users/951330347541491802"
-                    target="_blank"
-                    class="inline-flex items-center"
-                >
-                    <Image
-                        src={DiscordIcon}
-                        alt="Discord icon"
-                        class={`w-4 filter-${accent}`}
-                    />
-                </a>
-                )
-            </div>
-        </div>
+            set:html={await Astro.slots.render("default")}
+        />
 
         <!-- local time -->
         <div

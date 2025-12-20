@@ -1,6 +1,9 @@
 ---
 import Yuuri from "../assets/bg/yuuri.png";
 import { Image } from "astro:assets";
+import NavItem from "../components/NavItem.astro";
+import { Github } from "@lucide/astro";
+import DiscordIcon from "../assets/icon/discord.svg";
 import Title from "../components/Title.astro";
 const { title, accent = "ctp-green" } = Astro.props;
 ---
@@ -51,7 +54,14 @@ const { title, accent = "ctp-green" } = Astro.props;
         <div class="flex">
             <main class="grow m-4 container lg:max-w-3xl! mx-auto">
                 <!-- page title and nav -->
-                <Title title={title} accent={accent} />
+                <Title title={title} accent={accent}>
+                    <NavItem name="github" url="https://github.com/towelcodes">
+                        <Github />
+                    </NavItem>
+                    <NavItem name="discord" url="https://discord.com" accent={accent}>
+                        <Image src={DiscordIcon} alt="Discord icon" />
+                    </NavItem>
+                </Title>
 
                 <!-- main content -->
                 <section
