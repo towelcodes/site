@@ -1,9 +1,7 @@
 ---
-import LocalTime from "../components/LocalTime.astro";
-import DiscordIcon from "../assets/icon/discord.svg";
 import Yuuri from "../assets/bg/yuuri.png";
-import { Github } from "@lucide/astro";
 import { Image } from "astro:assets";
+import Title from "../components/Title.astro";
 const { title, accent = "ctp-green" } = Astro.props;
 ---
 
@@ -50,148 +48,17 @@ const { title, accent = "ctp-green" } = Astro.props;
         <title>teatowel's {title}</title>
     </head>
     <body class="mocha">
-        <!-- <PointyThing /> disabled for now -->
         <div class="flex">
-            <!-- <Sidebar /> disabled for now -->
             <main class="grow m-4 container lg:max-w-3xl! mx-auto">
                 <!-- page title and nav -->
-                <nav
-                    class={`border-${accent} bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default`}
+                <Title title={title} accent={accent} />
+
+                <!-- main content -->
+                <section
+                    class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 backdrop-blur-sm shadow-box"
                 >
-                    <div
-                        class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono`}
-                    >
-                        <div>title</div>
-                    </div>
-
-                    <!-- page title for large displays -->
-                    <div class="hidden md:block">
-                        <h1
-                            class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
-                        >
-                            <span
-                                class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4 z-20"
-                                >teatowel's</span
-                            >
-                            <span
-                                class={`block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-${accent} z-20`}
-                                >{title}</span
-                            >
-                        </h1>
-
-                        <!-- socials -->
-                        <div
-                            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
-                        >
-                            <div class="flex items-center">
-                                (
-                                <a
-                                    href="https://github.com/towelcodes"
-                                    target="_blank"
-                                    class="inline-flex items-center gap-2"
-                                >
-                                    <Github class="w-4" />
-                                    <div>github</div>
-                                </a>
-                                )
-                            </div>
-                            <div class="flex items-center">
-                                (
-                                <a
-                                    href="https://discord.com/users/951330347541491802"
-                                    target="_blank"
-                                    class="inline-flex gap-2 items-center"
-                                >
-                                    <Image
-                                        src={DiscordIcon}
-                                        alt="Discord icon"
-                                        class={`w-4 filter-${accent}`}
-                                    />
-                                    discord
-                                </a>
-                                )
-                            </div>
-                        </div>
-
-                        <!-- local time -->
-                        <div
-                            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex py-0`}
-                        >
-                            <span>
-                                ( <LocalTime /> )
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- page title for small displays -->
-                    <div class="block md:hidden">
-                        <h1
-                            class="flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
-                        >
-                            <span
-                                class="block relative transform-[rotate(-8deg)] translate-x-4 -translate-y-2"
-                                >teatowel's</span
-                            ><br />
-                            <span
-                                class={`block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-${accent}`}
-                                >{title}</span
-                            >
-                        </h1>
-
-                        <!-- socials -->
-                        <div
-                            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
-                        >
-                            <div class="flex items-center">
-                                (
-                                <a
-                                    href="https://github.com/towelcodes"
-                                    target="_blank"
-                                    class="flex gap-2"
-                                >
-                                    <Github class="w-4" />
-                                </a>
-                                )
-                            </div>
-                            <div class="flex items-center">
-                                (
-                                <a
-                                    href="https://discord.com/users/951330347541491802"
-                                    target="_blank"
-                                    class="inline-flex items-center"
-                                >
-                                    <Image
-                                        src={DiscordIcon}
-                                        alt="Discord icon"
-                                        class={`w-4 filter-${accent}`}
-                                    />
-                                </a>
-                                )
-                            </div>
-                        </div>
-
-                        <!-- local time -->
-                        <div
-                            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex`}
-                        >
-                            <span>
-                                ( <LocalTime /> )
-                            </span>
-                        </div>
-                    </div>
-                </nav>
-
-                <div class="flex">
-                    <!-- sidebar -->
-                    <div></div>
-
-                    <!-- main content -->
-                    <section
-                        class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 backdrop-blur-sm shadow-box"
-                    >
-                        <slot name="body" />
-                    </section>
-                </div>
+                    <slot name="body" />
+                </section>
             </main>
         </div>
 
