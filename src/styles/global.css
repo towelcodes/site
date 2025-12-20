@@ -19,6 +19,8 @@
     --font-display: "Cal Sans", "MS UI Gothic", "Verdana", sans-serif;
     --font-pixel: "Zpix", "nec_apc3";
 
+    --text-tiny: 0.625rem;
+
     --shadow-box: 5px 5px 0px rgba(0, 0, 0, 0.2);
     --shadow-glow: 0px 0px 30px 0px #d7b0ff inset 0px 30px 20px
         rgba(241, 165, 255, 0.4);
@@ -95,10 +97,20 @@
             @apply mt-4 text-2xl font-bold text-ctp-blue font-display text-shadow-heading;
         }
         p {
-            @apply mb-2 text-lg leading-6;
+            @apply mt-2 text-lg leading-6;
+        }
+        ul {
+            @apply mt-2;
+            li::marker {
+                content: "- ";
+                @apply text-ctp-subtext0/50 font-pixel;
+            }
+            li {
+                @apply ml-4;
+            }
         }
         a {
-            @apply underline hover:no-underline;
+            @apply underline hover:no-underline text-ctp-blue;
         }
         strong {
             @apply text-ctp-mauve;

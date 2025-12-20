@@ -189,7 +189,7 @@ const { title } = Astro.props;
         <Image
             src={Yuuri}
             alt=""
-            class="hidden md:block absolute bottom-0 right-0 -z-10 opacity-90"
+            class="hidden md:block fixed bottom-0 right-0 -z-10 opacity-90"
             width="256"
         />
     </body>
@@ -199,7 +199,6 @@ const { title } = Astro.props;
     html,
     body {
         margin: 0;
-        padding-bottom: 12px;
         width: 100%;
         height: 100%;
     }
