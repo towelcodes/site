@@ -1,17 +1,28 @@
 ---
-import PointyThing from "../components/PointyThing.astro";
 import LocalTime from "../components/LocalTime.astro";
-import Button from "../components/Button.astro";
-import Sidebar from "../components/Sidebar.svelte";
-import { Github } from "@lucide/astro";
 import DiscordIcon from "../assets/icon/discord.svg";
-import AngelDevil from "../assets/bg/angeldevil.png";
 import Yuuri from "../assets/bg/yuuri.png";
+import { Github } from "@lucide/astro";
 import { Image } from "astro:assets";
-const { title } = Astro.props;
+const { title, accent = "ctp-green" } = Astro.props;
 ---
 
-<!doctype html>
+{accent == "ctp-green" &&
+  <style>
+      :root {
+          --accent: var(--color-ctp-green) !important;
+      }
+  </style>
+}
+
+{accent == "ctp-sky" &&
+  <style>
+      :root {
+          --accent: var(--color-ctp-sky) !important;
+      }
+  </style>
+}
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -45,10 +56,10 @@ const { title } = Astro.props;
             <main class="grow m-4 container lg:max-w-3xl! mx-auto">
                 <!-- page title and nav -->
                 <nav
-                    class="border-ctp-green bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default"
+                    class={`border-${accent} bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default`}
                 >
                     <div
-                        class="text-ctp-green absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono"
+                        class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono`}
                     >
                         <div>title</div>
                     </div>
@@ -63,14 +74,14 @@ const { title } = Astro.props;
                                 >teatowel's</span
                             >
                             <span
-                                class="block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-ctp-green z-20"
+                                class={`block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-${accent} z-20`}
                                 >{title}</span
                             >
                         </h1>
 
                         <!-- socials -->
                         <div
-                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-ctp-green"
+                            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
                         >
                             <div class="flex items-center">
                                 (
@@ -94,7 +105,7 @@ const { title } = Astro.props;
                                     <Image
                                         src={DiscordIcon}
                                         alt="Discord icon"
-                                        class="w-4 filter-ctp-green"
+                                        class={`w-4 filter-${accent}`}
                                     />
                                     discord
                                 </a>
@@ -104,7 +115,7 @@ const { title } = Astro.props;
 
                         <!-- local time -->
                         <div
-                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex py-0"
+                            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex py-0`}
                         >
                             <span>
                                 ( <LocalTime /> )
@@ -122,14 +133,14 @@ const { title } = Astro.props;
                                 >teatowel's</span
                             ><br />
                             <span
-                                class="block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-ctp-green"
+                                class={`block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-${accent}`}
                                 >{title}</span
                             >
                         </h1>
 
                         <!-- socials -->
                         <div
-                            class="font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-ctp-green"
+                            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
                         >
                             <div class="flex items-center">
                                 (
@@ -152,7 +163,7 @@ const { title } = Astro.props;
                                     <Image
                                         src={DiscordIcon}
                                         alt="Discord icon"
-                                        class="w-4 filter-ctp-green"
+                                        class={`w-4 filter-${accent}`}
                                     />
                                 </a>
                                 )
@@ -161,7 +172,7 @@ const { title } = Astro.props;
 
                         <!-- local time -->
                         <div
-                            class="font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-ctp-green text-nowrap flex"
+                            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex`}
                         >
                             <span>
                                 ( <LocalTime /> )
@@ -178,12 +189,6 @@ const { title } = Astro.props;
                     <section
                         class="relative border-2 border-ctp-surface1 rounded px-6 pt-6 pb-4 backdrop-blur-sm shadow-box"
                     >
-                        <!-- this label is disabled because it looks ugly currently -->
-                        <!-- <div
-                            class="hidden md:flex absolute text-ctp-surface1 bg-ctp-base italic -top-2.5 text-sm px-2 gap-1 *:my-auto font-mono"
-                        >
-                            <div>body</div>
-                        </div> -->
                         <slot name="body" />
                     </section>
                 </div>
