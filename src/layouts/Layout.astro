@@ -30,8 +30,12 @@ const { title } = Astro.props;
             href="/favicon-light.svg"
             media="screen and (prefers-color-scheme:light)"
         />
-        <link rel="me" href="https://ohai.social/@teatowel" />
         <meta name="generator" content={Astro.generator} />
+        <script
+            is:inline
+            defer
+            src="https://analytics.towel.codes/script.js"
+            data-website-id="21fd41b9-3595-4a05-9bcd-58fd11db1d1b"></script>
         <title>teatowel's {title}</title>
     </head>
     <body class="mocha">
