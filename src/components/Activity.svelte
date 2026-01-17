@@ -73,7 +73,7 @@
     })();
 </script>
 
-{#if online_status != "offline"}
+{#if online_status != "offline" && listening_to_spotify}
     <div
         class="absolute -z-10 border-{accent} border-2 rounded px-2 right-2 -top-7 bg-bg"
     >
