@@ -6,6 +6,7 @@ import { Github } from "@lucide/astro";
 import DiscordIcon from "../assets/icon/discord.svg";
 import Title from "../components/Title.astro";
 import Footer from "../components/Footer.astro";
+import Activity from "../components/Activity.svelte";
 const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 ---
 
@@ -73,12 +74,14 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
             </main>
         </div>
 
-        <Image
-            src={Yuuri}
-            alt=""
-            class="hidden md:block fixed bottom-0 right-0 -z-10 opacity-90"
-            width="256"
-        />
+        <div class="hidden md:block fixed bottom-0 right-0">
+            <Image
+                src={Yuuri}
+                alt=""
+                class="-z-10 opacity-90"
+                width="256"
+            />
+        </div>
 
         <Footer />
     </body>

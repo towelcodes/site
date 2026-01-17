@@ -1,6 +1,7 @@
 ---
 import { CircleArrowOutUpLeft } from "@lucide/astro";
 import LocalTime from "./LocalTime.astro";
+import Activity from "./Activity.svelte";
 const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 ---
 
@@ -25,6 +26,8 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
             )
         }
     </div>
+
+    <Activity client:load accent={accent} />
 
     <!-- page title for large displays -->
     <div class="hidden md:block">
