@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     let { accent = "ctp-green" } = $props();
 
     /*
@@ -57,11 +59,13 @@
     let activites: Activity[] | undefined = $state();
     let listening_to_spotify = $state(false);
     let spotify: Spotify | undefined = $state();
+    let root: HTMLDivElement | undefined = $state();
 
     /**
      * TODO: use websocket
+     * TODO: cache API response
      */
-    (async () => {
+    onMount(async () => {
         const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
         const presence_data = (await (
             await fetch(endpoint)
@@ -70,14 +74,33 @@
         activites = presence_data.data.activities;
         listening_to_spotify = presence_data.data.listening_to_spotify;
         spotify = presence_data.data.spotify;
-    })();
+    });
+
+    $effect(() => {
+        if (root) {
+            const revealKeyframes = [
+                {
+                    opacity: "0",
+                },
+                {
+                    opacity: "1",
+                },
+            ];
+            root.animate(revealKeyframes, {
+                duration: 200,
+                fill: "forwards",
+            }).play();
+        }
+    });
 </script>
 
 {#if online_status != "offline" && listening_to_spotify}
     <div
+        bind:this={root}
+        style="opacity: 0;"
         class="absolute -z-10 border-{accent} border-2 rounded px-2 right-2 -top-7 bg-bg"
     >
-        {#if listening_to_spotify}
+        {#if spotify}
             <div class="flex">
                 <span class="text-ctp-subtext0">listening to&nbsp;</span>
                 <span>{spotify!.song}</span>
