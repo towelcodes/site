@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import { BASE_GITHUB } from "astro:env/client";
 ---
 
 <Layout title="home">
@@ -21,9 +22,11 @@ import Footer from "../components/Footer.astro";
             <p>
                 my primary focus is on learning rust, but i also use typescript
                 and kotlin, among others. <br />
-                my current project is a <strong
-                    >minecraft server implementation</strong
-                > written in rust for my EPQ.
+                i'm currently working on <strong
+                    ><a href={BASE_GITHUB}>this website</a></strong
+                >, a <strong>minecraft server implementation</strong> and a <strong
+                    >rhythm game</strong
+                >.
             </p>
             <h3>games</h3>
             <p>
