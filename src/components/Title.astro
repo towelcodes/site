@@ -9,7 +9,7 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
     class={`border-${accent} bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default`}
 >
     <div
-        class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono`}
+        class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono ${returnHome ? `border-${accent} border-2 rounded` : ""}`}
         style="view-transition-name: title-border"
     >
         {
@@ -19,7 +19,7 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
                     href="/"
                 >
                     <CircleArrowOutUpLeft class="h-3" />
-                    <div class="underline">go home</div>
+                    <div>go home</div>
                 </a>
             ) : (
                 <div>title</div>
