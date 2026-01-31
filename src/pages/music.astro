@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Artist from "../components/music/Artist.astro";
+import WillyRodriguez from "../assets/music/willy_rodriguez.jpg";
+import Wetdream from "../assets/music/wetdream.jpg";
+---
+
+<Layout title="music" accent="ctp-sky" returnHome>
+    <div slot="body" class="relative">
+        <div class="prose">
+            <h2>this page has music i like</h2>
+            <p>i don't know how to make music</p>
+        </div>
+        <div class="flex">
+            <Artist
+                name="Willy Rodriguez"
+                image={WillyRodriguez}
+                songs={[
+                    {
+                        title: "revisited",
+                        album: "wetdream",
+                        image: Wetdream,
+                        rating: 3,
+                        length: "20:21",
+                    },
+                    {
+                        title: "wetdream",
+                        album: "wetdream",
+                        image: Wetdream,
+                        rating: 2,
+                        length: "10:21",
+                    },
+                    {
+                        title: "lost in translation",
+                        album: "wetdream",
+                        image: Wetdream,
+                        rating: 1,
+                        length: "5:53",
+                    },
+                ]}
+                accent="ctp-sky"
+            />
+        </div>
+    </div>
+</Layout>

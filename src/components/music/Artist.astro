@@ -1,0 +1,69 @@
+---
+import { Heart } from "@lucide/astro";
+import { Image } from "astro:assets";
+
+export interface Song {
+    title: string;
+    album: string;
+    image: ImageMetadata;
+    rating: number;
+    length: string;
+}
+
+interface Props {
+    name: string;
+    image: ImageMetadata;
+    songs: Song[];
+    accent: string;
+}
+
+const { name, image, songs, accent = "ctp-blue" } = Astro.props;
+---
+
+<div class="flex flex-col items-center">
+    <Image
+        src={image}
+        alt={name}
+        class="mask-[url(/circle.png)] mask-center mask-cover relative -z-10"
+    />
+    <div
+        class={`border-${accent}` +
+            " border-2 rounded-md font-display text-xl px-2 -mt-4 shadow-box bg-ctp-crust transform-[rotate(-2deg)]"}
+    >
+        {name}
+    </div>
+    <div>
+        {
+            songs.entries().map(([i, song]) => (
+                <div
+                    class="relative -z-10 shadow-box border-1 rounded-md border-ctp-overlay0 bg-ctp-surface0 flex gap-3"
+                    style={`transform: translateY(-4px) rotate(${i % 2 == 0 ? "2" : "-2"}deg);`}
+                >
+                    <div class="px-1 py-1">
+                        <Image
+                            src={song.image}
+                            alt={song.title}
+                            class="rounded-md w-12 h-12"
+                        />
+                    </div>
+                    <div class="grow *:font-display flex flex-col my-auto min-w-24">
+                        <h3 class="-mb-1">{song.title}</h3>
+                        <h5 class="text-ctp-subtext0 -mt-1">{song.album}</h5>
+                    </div>
+                    <div class="flex flex-col my-auto pr-1">
+                        <div class="-mb-1 text-sm text-ctp-subtext0 text-right">
+                            {song.length}
+                        </div>
+                        <div class="flex flex-row-reverse gap-0.5">
+                            {new Array(song.rating).fill(0).map(() => (
+                                <Heart
+                                    class={`w-4 text-ctp-red fill-ctp-red`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
