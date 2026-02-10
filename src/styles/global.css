@@ -15,8 +15,8 @@
 }
 
 /* generate colours for each possible accent */
-@source inline("text-{ctp-green,ctp-sky}");
-@source inline("border-{ctp-green,ctp-sky}");
+@source inline("text-{ctp-green,ctp-sky,ctp-maroon,ctp-peach,ctp-mauve,ctp-blue,ctp-lavender,ctp-yellow}");
+@source inline("border-{ctp-green,ctp-sky,ctp-maroon,ctp-peach,ctp-mauve,ctp-blue,ctp-lavender,ctp-yellow}");
 
 @theme {
     --color-bg: var(--color-ctp-crust);
