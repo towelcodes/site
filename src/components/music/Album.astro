@@ -31,6 +31,54 @@ if (localImage)
         throw new Error(`"${localImage}" was not found in assets/music`);
 ---
 
+<style>
+    @keyframes marquee {
+        from {
+            transform: translateX(0%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+    .marquee {
+        animation: marquee 8s linear infinite;
+    }
+    .marquee::after {
+        content: attr(data-text);
+        padding-left: 1rem;
+    }
+</style>
+
+<script is:inline defer>
+    function setupMarquee() {
+        function checkOverflow(container) {
+            const overflowing = container.scrollWidth > container.clientWidth;
+
+            if (overflowing) {
+                const child = container.querySelector("span");
+                child.classList.add("marquee");
+                const clone = child.cloneNode(true);
+                container.appendChild(clone);
+            }
+        }
+
+        document.querySelectorAll(".can-marquee").forEach(checkOverflow);
+
+        // re-check on window resize
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                document
+                    .querySelectorAll(".can-marquee")
+                    .forEach(checkOverflow);
+            }, 150);
+        });
+    }
+
+    setupMarquee();
+</script>
+
 <div class="relative transition duration-400 ease-in-out hover:scale-110">
     <HoverTilt client:load class="rounded">
         <div class="absolute"></div>
@@ -52,14 +100,18 @@ if (localImage)
                     />
                 )
             }
-            <div class="text-center text-sm hover:cursor-default">
-                {title}
-                <span class="text-ctp-subtext0">({year})</span>
+            <div
+                class="text-center text-sm hover:cursor-default text-nowrap overflow-hidden can-marquee"
+            >
+                <span class="inline-block">
+                    {title}
+                    <span class="text-ctp-subtext0">({year})</span>
+                </span>
             </div>
             <div
-                class="text-center text-ctp-subtext0 text-sm hover:cursor-default"
+                class="text-center text-ctp-subtext0 text-sm hover:cursor-default text-nowrap overflow-hidden can-marquee"
             >
-                {artist}
+                <span class="inline-block">{artist}</span>
             </div>
         </div>
         <div
