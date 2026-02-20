@@ -17,13 +17,13 @@ const commitShort = COMMIT_HASH.substring(0, 7);
 </script>
 
 {
-    PROD ? (
+    PROD == "true" && (
         <img
             src="https://count.getloli.com/@:towelcodes?theme=3d-num"
             width="150"
             class="mx-auto"
         />
-    ) : undefined
+    )
 }
 <footer
     class="text-center

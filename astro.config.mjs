@@ -34,6 +34,11 @@ export default defineConfig({
         access: "public",
         default: "no message",
       }),
+      PROD: envField.string({
+        context: "client",
+        access: "public",
+        default: "true",
+      }),
     },
   },
 

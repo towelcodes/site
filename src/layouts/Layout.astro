@@ -46,13 +46,13 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
         />
         <meta name="generator" content={Astro.generator} />
         {
-          PROD ? (
+          PROD == "true" && (
             <script
                 is:inline
                 defer
                 src="https://analytics.towel.codes/script.js"
                 data-website-id="21fd41b9-3595-4a05-9bcd-58fd11db1d1b"></script>
-          ) : undefined
+          )
         }
         <title>teatowel's {title}</title>
     </head>
