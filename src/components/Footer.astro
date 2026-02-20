@@ -1,6 +1,6 @@
 ---
 import { GitBranch } from "@lucide/astro";
-import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG } from "astro:env/client";
+import { BASE_GITHUB, COMMIT_HASH, COMMIT_MSG, PROD } from "astro:env/client";
 import { Image } from "astro:assets";
 import SvelteIcon from "../assets/icon/svelte.svg";
 import AstroIcon from "../assets/icon/astro.svg";
@@ -16,11 +16,15 @@ const commitShort = COMMIT_HASH.substring(0, 7);
         `(${getRelativeTime(COMMIT_TIME)})`;
 </script>
 
-<img
-    src="https://count.getloli.com/@:towelcodes?theme=3d-num"
-    width="150"
-    class="mx-auto"
-/>
+{
+    PROD ? (
+        <img
+            src="https://count.getloli.com/@:towelcodes?theme=3d-num"
+            width="150"
+            class="mx-auto"
+        />
+    ) : undefined
+}
 <footer
     class="text-center
     align-text-bottom
