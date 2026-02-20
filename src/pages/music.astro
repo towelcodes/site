@@ -1,12 +1,11 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-// import Artist from "../components/music/Artist.astro";
 import Album from "../components/music/Album.astro";
 import { getCollection } from "astro:content";
 
-const artists = await getCollection("music");
-console.log(artists);
+const music = await getCollection("music");
+console.log(music);
 ---
 
 <Layout title="music" accent="ctp-sky" returnHome>
@@ -15,19 +14,20 @@ console.log(artists);
             <h1>music i like</h1>
         </div>
 
-        <div class="flex">
-            <Album
-                title="wetdream"
-                artist="Willy Rodriguez"
-                imagePath="wetdream.jpg"
-                songs={[
-                    {
-                        title: "wetdream",
-                        rating: 3,
-                        length: "08:41",
-                    },
-                ]}
-            />
+        <div class="flex gap-2">
+            {music.length == 0 && <p>no music found :(</p>}
+            {
+                music.map((album) => (
+                    <Album
+                        title={album.data.title}
+                        artist={album.data.artist}
+                        year={album.data.year}
+                        localImage={album.data.localImage}
+                        remoteImage={album.data.remoteImage}
+                        songs={[]}
+                    />
+                ))
+            }
         </div>
     </div>
 </Layout>

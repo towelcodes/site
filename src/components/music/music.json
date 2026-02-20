@@ -1,0 +1,32 @@
+[
+  {
+    "id": "wetdream",
+    "title": "wetdream",
+    "artist": "Willy Rodriguez",
+    "year": 2023,
+    "localImage": "wetdream.jpg",
+    "link": "https://willyrodriguez.bandcamp.com/album/wetdream"
+  },
+  {
+    "id": "squee LP2",
+    "title": "squee LP2",
+    "artist": "squee",
+    "year": 2025,
+    "localImage": "squee.jpg",
+    "link": "https://squeee.bandcamp.com/album/squee-5"
+  },
+  {
+    "id": "twist the tourniquet",
+    "title": "~twist the tourniquet~",
+    "artist": "Catgrove St.",
+    "year": 2025,
+    "link": "https://catgrove.bandcamp.com/album/twist-the-tourniquet"
+  },
+  {
+    "id": "twist the tourniquet",
+    "title": "~twist the tourniquet~",
+    "artist": "Catgrove St.",
+    "year": 2025,
+    "link": "https://catgrove.bandcamp.com/album/twist-the-tourniquet"
+  },
+]

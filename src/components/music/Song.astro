@@ -1,0 +1,37 @@
+---
+import { Heart } from "@lucide/astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+    title: string;
+    length: string;
+    rating: number;
+}
+
+const { title, length, rating } = Astro.props;
+---
+
+<div
+    class="shadow-box border-1 rounded-md border-ctp-overlay0 bg-ctp-crust flex gap-3 *:hover:cursor-default px-2"
+>
+    <!-- song -->
+    <div class="grow my-auto min-w-16 *:leading-3.5">
+        <h3 class="font-sans">{title}</h3>
+    </div>
+    <!-- length -->
+    <div class="flex flex-col my-auto pr-1">
+        <div class="-mb-1 text-sm text-ctp-subtext0 text-right">
+            {length}
+        </div>
+        <div class="flex flex-row-reverse gap-0.5">
+            {
+                new Array(rating)
+                    .fill(0)
+                    .map(() => (
+                        <Heart class={`w-4 text-ctp-red fill-ctp-red`} />
+                    ))
+            }
+        </div>
+    </div>
+</div>

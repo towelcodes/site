@@ -1,0 +1,74 @@
+---
+import { HoverTilt } from "hover-tilt";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import Song from "./Song.astro";
+
+export interface Song {
+    title: string;
+    // link: string;
+    rating: number;
+    length: string;
+}
+
+interface Props {
+    title: string;
+    artist: string;
+    year: number;
+    localImage?: string;
+    remoteImage?: string;
+    songs: Song[];
+}
+
+const { title, artist, year, localImage, remoteImage, songs } = Astro.props;
+
+const basePath = "/src/assets/music/";
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/music/*.{jpg,png,webp}",
+);
+if (localImage)
+    if (!images[basePath + localImage])
+        throw new Error(`"${localImage}" was not found in assets/music`);
+---
+
+<div class="relative transition duration-400 ease-in-out hover:scale-110">
+    <HoverTilt client:load class="rounded">
+        <div class="absolute"></div>
+        <div
+            class="relative bg-ctp-surface0 rounded border-2 border-ctp-surface0 max-w-32 leading-0"
+        >
+            {
+                localImage ? (
+                    <Image
+                        src={images[basePath + localImage]()}
+                        alt={title}
+                        class="w-32 h-32 rounded"
+                    />
+                ) : (
+                    <img
+                        src={remoteImage}
+                        alt={title}
+                        class="w-32 h-32 rounded"
+                    />
+                )
+            }
+            <div class="text-center text-sm hover:cursor-default">
+                {title}
+                <span class="text-ctp-subtext0">({year})</span>
+            </div>
+            <div
+                class="text-center text-ctp-subtext0 text-sm hover:cursor-default"
+            >
+                {artist}
+            </div>
+        </div>
+        <div
+            class="absolute flex flex-col gap-1 -z-10 left-1/2 -translate-x-1/2"
+        >
+            <!-- todo: finish -->
+            <!-- <Song title="wetdream" , length="8:41" rating={3} />
+            <Song title="wetdream" , length="8:41" rating={3} />
+            <Song title="wetdream" , length="8:41" rating={3} /> -->
+        </div>
+    </HoverTilt>
+</div>
