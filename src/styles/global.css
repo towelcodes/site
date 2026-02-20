@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
@@ -21,7 +19,7 @@
 @theme {
     --color-bg: var(--color-ctp-crust);
 
-    --font-sans: "MS UI Gothic", "Verdana", system-ui, sans-serif-;
+    --font-sans: "DM Sans", "MS UI Gothic", "Verdana", system-ui, sans-serif-;
     --font-mono: "DM Mono", "JetBrains Mono", monospace;
     --font-display: "Cal Sans", "MS UI Gothic", "Verdana", sans-serif;
     --font-pixel: "Zpix", "nec_apc3";
@@ -97,15 +95,37 @@
 
     /* sane defaults for rendering text blocks */
     .prose {
+        h1 {
+            @apply mt-4
+            mb-4
+            text-4xl
+            font-bold
+            font-display
+            text-shadow-heading
+            border-b-[2px]
+            border-b-ctp-subtext0/10
+            text-nowrap w-min;
+            color: var(--accent);
+        }
         h2 {
-            @apply mt-4 text-4xl font-bold font-display text-shadow-heading;
+            @apply mt-4
+            text-4xl
+            font-bold
+            font-display
+            text-shadow-heading;
             color: var(--accent);
         }
         h3 {
-            @apply mt-4 text-2xl font-bold text-ctp-blue font-display text-shadow-heading;
+            @apply mt-4
+            text-2xl
+            font-bold
+            text-ctp-blue
+            font-display
+            text-shadow-heading;
         }
         p {
-            @apply mt-2 text-lg leading-6;
+            @apply mt-2
+            leading-6;
         }
         ul {
             @apply mt-2;
