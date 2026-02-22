@@ -20,13 +20,62 @@
     "title": "~twist the tourniquet~",
     "artist": "Catgrove St.",
     "year": 2025,
+    "remoteImage": "https://f4.bcbits.com/img/a4075131486_16.jpg",
     "link": "https://catgrove.bandcamp.com/album/twist-the-tourniquet"
   },
   {
-    "id": "twist the tourniquet",
-    "title": "~twist the tourniquet~",
-    "artist": "Catgrove St.",
-    "year": 2025,
-    "link": "https://catgrove.bandcamp.com/album/twist-the-tourniquet"
+    "id": "eyedazzler",
+    "title": "Eyedazzler",
+    "artist": "Allison's Halo",
+    "year": 1998,
+    "remoteImage": "https://f4.bcbits.com/img/a2808761347_16.jpg",
+    "link": "https://alisonshalo.bandcamp.com/album/eyedazzler"
   },
+  {
+    "id": "11100011",
+    "title": "11100011",
+    "artist": "Asian Glow",
+    "year": 2025,
+    "remoteImage": "https://f4.bcbits.com/img/a3884619826_16.jpg",
+    "link": "https://dbeatdropdeadpowerhead.bandcamp.com/album/11100011"
+  },
+  {
+    "id": "if you were here",
+    "title": "if you were here i'd be home now",
+    "artist": "smush",
+    "year": 2024,
+    "remoteImage": "https://f4.bcbits.com/img/a1661629412_16.jpg",
+    "link": "https://smushcore.bandcamp.com/album/if-you-were-here-id-be-home-now"
+  },
+  {
+    "id": "for a while",
+    "title": "for a while",
+    "artist": "eightiesheadachetape",
+    "year": 2020,
+    "remoteImage": "https://f4.bcbits.com/img/a2555363616_16.jpg",
+    "link": "https://eightiesheadachetape.bandcamp.com/album/for-a-while"
+  },
+  {
+    "id": "for a while",
+    "title": "for a while",
+    "artist": "eightiesheadachetape",
+    "year": 2020,
+    "remoteImage": "https://f4.bcbits.com/img/a2555363616_16.jpg",
+    "link": "https://eightiesheadachetape.bandcamp.com/album/for-a-while"
+  },
+  {
+    "id": "sometimes it gets worse",
+    "title": "sometimes it gets worse",
+    "artist": "drug bug",
+    "year": 2025,
+    "remoteImage": "https://f4.bcbits.com/img/a3945939836_16.jpg",
+    "link": "https://drugbug1.bandcamp.com/album/sometimes-it-gets-worse"
+  },
+  {
+    "id": "glory to the unborn",
+    "title": "Glory To The Unborn !",
+    "year": 2023,
+    "remoteImage": "https://f4.bcbits.com/img/a2977271860_16.jpg",
+    "link": "https://catgrove.bandcamp.com/album/glory-to-the-unborn"
+  }
 ]

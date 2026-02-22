@@ -14,7 +14,7 @@ console.log(music);
             <h1>music i like</h1>
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2 mx-auto">
             {music.length == 0 && <p>no music found :(</p>}
             {
                 music.map((album) => (
