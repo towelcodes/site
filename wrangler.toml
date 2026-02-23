@@ -5,5 +5,3 @@ pages_build_output_dir = "./dist"
 [[kv_namespaces]]
 binding = "api_cache"
 id = "682b3fa6572a4e2a9be9737cc52405c9"
-
-[env.production]
