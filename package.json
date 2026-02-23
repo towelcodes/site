@@ -15,11 +15,14 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "5.14.1",
     "hover-tilt": "^1.0.0",
+    "node-addon-api": "^8.5.0",
+    "node-gyp": "^12.2.0",
     "svelte": "^5.39.11",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@catppuccin/tailwindcss": "^1.0.0"
+    "@catppuccin/tailwindcss": "^1.0.0",
+    "wrangler": "^4.67.0"
   }
 }
