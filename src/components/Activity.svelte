@@ -55,6 +55,27 @@
         };
     }
 
+    const MAX_AGE = 60; // seconds
+    async function getCached(endpoint: string): Promise<any> {
+        const cached = localStorage.getItem(endpoint);
+        if (cached) {
+            const expires = localStorage.getItem(`expiry ${endpoint}`);
+            if (expires) {
+                if (parseInt(expires) > Date.now() / 1000) {
+                    return cached;
+                }
+            }
+        }
+
+        const res = await (await fetch(endpoint)).json();
+        localStorage.setItem(endpoint, res);
+        localStorage.setItem(
+            `expiry ${endpoint}`,
+            `${Date.now() / 1000 + MAX_AGE}`,
+        );
+        return res;
+    }
+
     let online_status = $state("offline");
     let activites: Activity[] | undefined = $state();
     let listening_to_spotify = $state(false);
@@ -63,13 +84,11 @@
 
     /**
      * TODO: use websocket
-     * TODO: cache API response
      */
     onMount(async () => {
         const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
-        const presence_data = (await (
-            await fetch(endpoint)
-        ).json()) as LanyardResponse;
+
+        const presence_data = (await getCached(endpoint)) as LanyardResponse;
         online_status = presence_data.data.discord_status;
         activites = presence_data.data.activities;
         listening_to_spotify = presence_data.data.listening_to_spotify;
