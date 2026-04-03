@@ -117,8 +117,8 @@
             @apply mt-4
             text-4xl
             font-bold
-            font-display
-            text-shadow-heading;
+            /*text-shadow-heading*/
+            font-display;
             color: var(--accent);
             filter: drop-shadow(0 0 2px);
         }
@@ -127,9 +127,9 @@
             text-2xl
             font-bold
             text-ctp-blue
-            font-display
-            text-shadow-heading-sm;
-            filter: drop-shadow(0 0 1px);
+            text-shadow-heading-sm
+            font-display;
+            /*filter: drop-shadow(0 0 1px);*/
         }
         p {
             @apply mt-2
