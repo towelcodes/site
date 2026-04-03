@@ -46,16 +46,16 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 
         <!-- links -->
         <div
-            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
+            class={`font-pixel absolute flex gap-2 *:bg-ctp-mantle text-sm -bottom-4 text-${accent} *:px-2 *:rounded *:border`}
             set:html={await Astro.slots.render("default")}
         />
 
         <!-- local time -->
         <div
-            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex py-0`}
+            class={`font-pixel absolute bg-ctp-mantle text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex py-0 border px-2 rounded`}
         >
             <span>
-                ( <LocalTime /> )
+                <LocalTime />
             </span>
         </div>
     </div>
@@ -77,17 +77,17 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
 
         <!-- links -->
         <div
-            class={`font-mono absolute flex gap-2 *:bg-ctp-crust text-sm -bottom-4 text-${accent}`}
+            class={`font-pixel absolute flex gap-2 *:bg-ctp-mantle *:h-5 text-sm -bottom-3 text-${accent} *:px-2 *:border *:rounded`}
             set:html={await Astro.slots.render("default")}
         />
 
         <!-- local time -->
-        <div
-            class={`font-mono absolute *:bg-ctp-crust text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex`}
+        <!-- <div
+            class={`font-pixel absolute bg-ctp-mantle text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex px-2 border rounded`}
         >
             <span>
-                ( <LocalTime /> )
+                <LocalTime />
             </span>
-        </div>
+        </div> -->
     </div>
 </nav>
