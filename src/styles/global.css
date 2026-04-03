@@ -3,6 +3,21 @@
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/mocha.css";
 
+@font-face {
+    font-family: "MS UI Gothic";
+    src: url("/font/MS-UIGothic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Zpix";
+    src: url("/font/zpix.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "GeistPixel-Square";
+    src: url("/font/GeistPixel-Square.woff2") format("woff2");
+}
+
 :root {
     color-scheme: dark;
     --accent: var(--color-ctp-green); /* default accent colour */
@@ -22,7 +37,7 @@
     --font-sans: "DM Sans", "MS UI Gothic", "Verdana", system-ui, sans-serif-;
     --font-mono: "DM Mono", "JetBrains Mono", monospace;
     --font-display: "Cal Sans", "MS UI Gothic", "Verdana", sans-serif;
-    --font-pixel: "Zpix", "nec_apc3";
+    --font-pixel: "Geist Pixel", "Zpix", "nec_apc3";
 
     --text-tiny: 0.625rem;
 
@@ -34,7 +49,8 @@
 
     --text-shadow-lg: 2px 2px 4px var(--tw-shadow-color);
     --text-shadow-heading: 4px 4px 0px var(--color-ctp-crust);
-    --text-shadow-title: 8px 8px 0px #47495e;
+    --text-shadow-heading-sm: 1px 1px 0px var(--color-ctp-crust);
+    --text-shadow-title: 6px 6px 0px #47495e;
     --text-shadow-title-sm: 4px 4px 0px #47495e;
 
     /* animations */
@@ -60,16 +76,6 @@
             transform: translate(-50%);
         }
     }
-}
-
-@font-face {
-    font-family: "MS UI Gothic";
-    src: url("/font/MS-UIGothic.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Zpix";
-    src: url("/font/zpix.ttf") format("truetype");
 }
 
 @layer base {
@@ -114,6 +120,7 @@
             font-display
             text-shadow-heading;
             color: var(--accent);
+            filter: drop-shadow(0 0 2px);
         }
         h3 {
             @apply mt-4
@@ -121,7 +128,8 @@
             font-bold
             text-ctp-blue
             font-display
-            text-shadow-heading;
+            text-shadow-heading-sm;
+            filter: drop-shadow(0 0 1px);
         }
         p {
             @apply mt-2
@@ -160,6 +168,9 @@
     .filter-ctp-sky {
         filter: brightness(0) saturate(100%) invert(96%) sepia(69%)
             saturate(6433%) hue-rotate(162deg) brightness(95%) contrast(94%);
+    }
+    .glow-sm {
+        filter: drop-shadow(0 0 1px);
     }
 }
 

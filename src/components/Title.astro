@@ -22,7 +22,7 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
                     <div>go home</div>
                 </a>
             ) : (
-                <div>title</div>
+                <div />
             )
         }
     </div>
@@ -32,7 +32,7 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
     <!-- page title for large displays -->
     <div class="hidden md:block">
         <h1
-            class="hidden md:flex text-center text-6xl font-display font-bold text-shadow-title items-center justify-center"
+            class="hidden md:flex text-center text-6xl font-display font-black text-shadow-title items-center justify-center"
         >
             <span
                 class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4 z-20"
