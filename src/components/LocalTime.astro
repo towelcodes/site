@@ -2,11 +2,25 @@
 const id = `${Math.random()}`;
 ---
 
-<strong id={id}>00:00</strong> local
+<span {id}>00:00</span>
 <script is:inline define:vars={{ id }}>
     const time = document.getElementById(id);
-    time.textContent = new Date().toLocaleTimeString().substring(0, 5);
-    setInterval(() => {
-        time.textContent = new Date().toLocaleTimeString().substring(0, 5);
-    }, 5000);
+    const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/London",
+        timeZoneName: "short",
+    }).formatToParts(new Date());
+    const tz = parts.find((part) => part.type === "timeZoneName").value;
+
+    const update = () =>
+        (time.textContent =
+            new Date().toLocaleTimeString().substring(0, 5) + ` ${tz}`);
+
+    update();
+
+    const nextMinute =
+        60000 - (new Date().getSeconds() * 1000 + new Date().getMilliseconds());
+    setTimeout(() => {
+        update();
+        setInterval(update, 60000);
+    }, nextMinute);
 </script>
