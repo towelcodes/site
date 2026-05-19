@@ -32,7 +32,7 @@
 @source inline("border-{ctp-green,ctp-sky,ctp-maroon,ctp-peach,ctp-mauve,ctp-blue,ctp-lavender,ctp-yellow}");
 
 @theme {
-    --color-bg: var(--color-ctp-crust);
+    --color-bg: var(--color-ctp-mantle);
 
     --font-sans: "DM Sans", "MS UI Gothic", "Verdana", system-ui, sans-serif-;
     --font-mono: "DM Mono", "JetBrains Mono", monospace;
@@ -51,7 +51,7 @@
     --text-shadow-heading: 4px 4px 0px var(--color-ctp-crust);
     --text-shadow-heading-sm: 1px 1px 0px var(--color-ctp-crust);
     --text-shadow-title: 6px 6px 0px #47495e;
-    --text-shadow-title-sm: 4px 4px 0px #47495e;
+    --text-shadow-title-sm: 4px 4px 0px var(--color-ctp-mantle);
 
     /* animations */
     --animate-wave: wave 1s cubic-bezier(0.6, 0.01, 0.47, 0.99) infinite
@@ -91,12 +91,12 @@
     body {
         @apply text-ctp-text;
         image-rendering: pixelated;
-        background: repeating-conic-gradient(
+        /*background: repeating-conic-gradient(
                 var(--color-ctp-crust) 0 25%,
                 var(--color-ctp-mantle) 0 50%
             )
             50% / 40px 40px;
-        animation: bg-scroll infinite 1.5s linear;
+        animation: bg-scroll infinite 1.5s linear;*/
     }
 
     /* sane defaults for rendering text blocks */
@@ -168,6 +168,10 @@
     .filter-ctp-sky {
         filter: brightness(0) saturate(100%) invert(96%) sepia(69%)
             saturate(6433%) hue-rotate(162deg) brightness(95%) contrast(94%);
+    }
+    .filter-ctp-subtext0 {
+        filter: brightness(0) saturate(100%) invert(88%) sepia(3%)
+            saturate(4522%) hue-rotate(191deg) brightness(85%) contrast(82%);
     }
     .glow-sm {
         filter: drop-shadow(0 0 1px);

@@ -1,0 +1,22 @@
+<svg width="913" xmlns="http://www.w3.org/2000/svg" height="1118" id="screenshot-f50aa2c9-6410-80eb-8007-e90d007a8f16" viewBox="-297 1151 913 1118" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
+  <g id="shape-f50aa2c9-6410-80eb-8007-e90d007a8f16">
+    <defs>
+      <radialGradient id="fill-color-gradient-render-2395-0" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(-1.000000, 0.000000, -0.000000, -1.000000, 1.000000, 1.000000)">
+        <stop offset="0" stop-color="#f5c2e6" stop-opacity="0.3137254901960784">
+        </stop>
+        <stop offset="1" stop-color="#1949dc" stop-opacity="0">
+        </stop>
+      </radialGradient>
+      <pattern patternUnits="userSpaceOnUse" x="-297" y="1151.0000000000005" width="913" height="1118.0000000000005" id="fill-0-render-2395">
+        <g>
+          <rect width="913" height="1118.0000000000005" style="fill:url(#fill-color-gradient-render-2395-0)">
+          </rect>
+        </g>
+      </pattern>
+    </defs>
+    <g class="fills" id="fills-f50aa2c9-6410-80eb-8007-e90d007a8f16">
+      <rect rx="0" ry="0" x="-297" y="1151.0000000000005" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="913" height="1118.0000000000005" fill="url(#fill-0-render-2395)">
+      </rect>
+    </g>
+  </g>
+</svg>

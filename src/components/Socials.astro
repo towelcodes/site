@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import DiscordIcon from "../assets/icon/discord.svg";
+import GithubIcon from "../assets/icon/github.svg";
+import LocalTime from "../components/LocalTime.astro";
+import { Clock } from "@lucide/astro";
+import { ExternalLink } from "@lucide/astro";
+const { horizontal = false, small = false } = Astro.props;
+---
+
+<div class="text-ctp-subtext0">
+    <ul class={horizontal ? "flex flex-wrap items-center gap-x-4" : "*:my-1"}>
+        <li>
+            <a
+                class="flex gap-2 items-center"
+                href="https://discord.com/users/951330347541491802"
+                target="_blank"
+            >
+                <Image
+                    src={DiscordIcon}
+                    alt=""
+                    class="w-5 filter-ctp-subtext0"
+                />
+                <div class={small ? "hidden" : "flex gap-2 items-center"}>
+                    <div>Discord</div>
+                    <ExternalLink class="w-4" />
+                </div>
+            </a>
+        </li>
+        <li>
+            <a
+                class="flex items-center gap-2"
+                href="https://github.com/towelcodes"
+                target="_blank"
+            >
+                <Image
+                    src={GithubIcon}
+                    alt=""
+                    class="w-5 filter-ctp-subtext0"
+                />
+                <div class={small ? "hidden" : "flex gap-2 items-center"}>
+                    <div>GitHub</div>
+                    <ExternalLink class="w-4" />
+                </div>
+            </a>
+        </li>
+        <li>
+            <div class="flex items-center gap-2">
+                <Clock class="w-5" />
+                <div>
+                    <LocalTime />
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

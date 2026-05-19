@@ -1,5 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import type {
+        Activity,
+        LanyardResponse,
+        Spotify,
+        WebsocketData,
+    } from "./activity_types";
 
     let { accent = "ctp-green" } = $props();
 
@@ -7,53 +13,6 @@
     using lanyard API
     */
     const uid = "951330347541491802";
-
-    interface Spotify {
-        album: string;
-        album_art_url: string;
-        artist: string;
-        song: string;
-        timestamps: {
-            end: number;
-            start: number;
-        };
-        track_id: string;
-    }
-
-    interface Activity {
-        id: string;
-        name: string;
-        state: string;
-        details: string;
-        timestamps: {
-            end: number;
-            start: number;
-        };
-        assets: {
-            large_image: string;
-            large_text: string;
-            small_image: string;
-            small_text: string;
-        };
-    }
-
-    interface LanyardResponse {
-        success: boolean;
-        data: {
-            discord_user: {
-                avatar: string;
-                display_name: string;
-                global_name: string;
-                id: string;
-                username: string;
-                primary_guild?: string;
-            };
-            activities: Activity[];
-            discord_status: string;
-            listening_to_spotify: boolean;
-            spotify?: Spotify;
-        };
-    }
 
     const MAX_AGE = 60; // seconds
     async function getCached(endpoint: string): Promise<any> {
@@ -86,13 +45,27 @@
      * TODO: use websocket
      */
     onMount(async () => {
-        const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
-
-        const presence_data = (await getCached(endpoint)) as LanyardResponse;
-        online_status = presence_data.data.discord_status;
-        activites = presence_data.data.activities;
-        listening_to_spotify = presence_data.data.listening_to_spotify;
-        spotify = presence_data.data.spotify;
+        // const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
+        // // connect to the websocket
+        // const socket = new WebSocket("wss://api.lanyard.rest/socket");
+        // socket.addEventListener("open", (e) => {
+        //     console.info("socket opened");
+        // });
+        // socket.addEventListener("message", (e) => {
+        //     console.info(`socket: ${e.data}`);
+        //     const data = JSON.parse(e.data) as WebsocketData;
+        //     switch (data.op) {
+        //         case 0:
+        //             break;
+        //         default:
+        //             console.warn("unknown op:", data.op);
+        //     }
+        // });
+        // const presence_data = (await getCached(endpoint)) as LanyardResponse;
+        // online_status = presence_data.data.discord_status;
+        // activites = presence_data.data.activities;
+        // listening_to_spotify = presence_data.data.listening_to_spotify;
+        // spotify = presence_data.data.spotify;
     });
 
     $effect(() => {
@@ -120,7 +93,7 @@
         class="absolute -z-10 border-{accent} border-2 rounded px-2 right-2 -top-7 bg-bg"
     >
         {#if spotify}
-            <div class="flex">
+            <div class="flex font-pixel">
                 <span class="text-ctp-subtext0">listening to&nbsp;</span>
                 <span>{spotify!.song}</span>
                 <span class="text-ctp-subtext0">&nbsp;-&nbsp;</span>

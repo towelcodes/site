@@ -1,93 +1,28 @@
 ---
-import { CircleArrowOutUpLeft } from "@lucide/astro";
-import LocalTime from "./LocalTime.astro";
-import Activity from "./Activity.svelte";
-const { title, accent = "ctp-green", returnHome = false } = Astro.props;
+import Teatowel from "../assets/typography/teatowels.svg";
+import Home from "../assets/typography/home.svg";
+import Socials from "../components/Socials.astro";
+import { Image } from "astro:assets";
+
+const { title } = Astro.props;
+const path = Astro.url.pathname;
+const accent = path == "/" ? "ctp-green" : "ctp-sky";
+const returnHome = path != "/";
 ---
 
-<nav
-    class={`border-${accent} bg-bg border-2 rounded p-4 w-4/5 md:w-lg mx-auto relative top-6 z-20 hover:cursor-default`}
->
-    <div
-        class={`text-${accent} absolute bg-bg italic -top-2.5 text-sm px-2 flex gap-1 *:my-auto font-mono ${returnHome ? `border-${accent} border-2 rounded` : ""}`}
-        style="view-transition-name: title-border"
-    >
-        {
-            returnHome ? (
-                <a
-                    class="flex gap-0 -ml-2 justify-center items-center hover:cursor-pointer"
-                    href="/"
-                >
-                    <CircleArrowOutUpLeft class="h-3" />
-                    <div>go home</div>
-                </a>
-            ) : (
-                <div />
-            )
-        }
-    </div>
-
-    <Activity client:load accent={accent} />
-
-    <!-- page title for large displays -->
-    <div class="hidden md:block">
-        <h1
-            class="hidden md:flex text-center text-6xl font-display font-black text-shadow-title items-center justify-center"
-        >
-            <span
-                class="block relative transform-[rotate(-8deg)] -translate-y-2 translate-x-4 z-20"
-                >teatowel's</span
-            >
-            <span
-                class={`block relative transform-[rotate(-9deg)] translate-y-2 -translate-x-4 text-${accent} z-20`}
-                >{title}</span
-            >
-        </h1>
-
-        <!-- links -->
-        <div
-            class={`font-pixel absolute flex gap-2 *:bg-ctp-mantle text-sm -bottom-4 text-${accent} *:px-2 *:rounded *:border`}
-            set:html={await Astro.slots.render("default")}
+<nav class="mt-8 flex items-center justify-center w-full">
+    <div class="flex gap-2">
+        <Image src={Teatowel} alt="teatowel's" height="44" />
+        <Image
+            src={Home}
+            alt="teatowel's"
+            height="44"
+            class="drop-shadow-ctp-green drop-shadow-glow"
         />
-
-        <!-- local time -->
-        <div
-            class={`font-pixel absolute bg-ctp-mantle text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex py-0 border px-2 rounded`}
-        >
-            <span>
-                <LocalTime />
-            </span>
-        </div>
-    </div>
-
-    <!-- page title for small displays -->
-    <div class="block md:hidden">
-        <h1
-            class="flex text-center text-4xl font-display font-bold text-shadow-title-sm items-center justify-center"
-        >
-            <span
-                class="block relative transform-[rotate(-8deg)] translate-x-4 -translate-y-2"
-                >teatowel's</span
-            ><br />
-            <span
-                class={`block relative transform-[rotate(-8deg)] -translate-x-4 translate-y-2 text-${accent}`}
-                >{title}</span
-            >
-        </h1>
-
-        <!-- links -->
-        <div
-            class={`font-pixel absolute flex gap-2 *:bg-ctp-mantle *:h-5 text-sm -bottom-3 text-${accent} *:px-2 *:border *:rounded`}
-            set:html={await Astro.slots.render("default")}
-        />
-
-        <!-- local time -->
-        <!-- <div
-            class={`font-pixel absolute bg-ctp-mantle text-sm -bottom-3 right-4 text-right text-${accent} text-nowrap flex px-2 border rounded`}
-        >
-            <span>
-                <LocalTime />
-            </span>
-        </div> -->
     </div>
 </nav>
+
+<!-- display socials for small displays -->
+<div class="md:hidden mt-4 flex justify-center items-center">
+    <Socials horizontal small />
+</div>
