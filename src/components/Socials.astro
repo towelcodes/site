@@ -3,8 +3,7 @@ import { Image } from "astro:assets";
 import DiscordIcon from "../assets/icon/discord.svg";
 import GithubIcon from "../assets/icon/github.svg";
 import LocalTime from "../components/LocalTime.astro";
-import { Clock } from "@lucide/astro";
-import { ExternalLink } from "@lucide/astro";
+import { Clock, ExternalLink, Mail } from "@lucide/astro";
 const { horizontal = false, small = false } = Astro.props;
 ---
 
@@ -50,6 +49,12 @@ const { horizontal = false, small = false } = Astro.props;
                 <div>
                     <LocalTime />
                 </div>
+            </div>
+        </li>
+        <li class={small ? "hidden" : ""}>
+            <div class="flex items-center gap-2">
+                <Mail class="w-5" />
+                <a href="mailto:tea@towel.codes">tea@towel.codes</a>
             </div>
         </li>
     </ul>
