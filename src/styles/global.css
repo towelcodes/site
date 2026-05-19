@@ -90,7 +90,6 @@
 
     body {
         @apply text-ctp-text;
-        image-rendering: pixelated;
         /*background: repeating-conic-gradient(
                 var(--color-ctp-crust) 0 25%,
                 var(--color-ctp-mantle) 0 50%

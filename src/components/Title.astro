@@ -1,6 +1,8 @@
 ---
 import Teatowel from "../assets/typography/teatowels.svg";
+import TeatowelFallback from "../assets/typography/teatowels.png";
 import Home from "../assets/typography/home.svg";
+import HomeFallback from "../assets/typography/home.png";
 import Socials from "../components/Socials.astro";
 import { Image } from "astro:assets";
 
@@ -12,12 +14,24 @@ const returnHome = path != "/";
 
 <nav class="mt-8 flex items-center justify-center w-full">
     <div class="flex gap-2">
-        <Image src={Teatowel} alt="teatowel's" height="44" />
+        <Image src={Teatowel} alt="teatowel's" height="44" class="not-safari" />
         <Image
-            src={Home}
+            src={TeatowelFallback}
             alt="teatowel's"
             height="44"
-            class="drop-shadow-ctp-green drop-shadow-glow"
+            class="safari"
+        />
+        <Image
+            src={Home}
+            alt="home"
+            height="44"
+            class="drop-shadow-ctp-green drop-shadow-glow not-safari"
+        />
+        <Image
+            src={HomeFallback}
+            alt="home"
+            height="44"
+            class="drop-shadow-ctp-green drop-shadow-glow safari"
         />
     </div>
 </nav>
@@ -26,3 +40,20 @@ const returnHome = path != "/";
 <div class="md:hidden mt-4 flex justify-center items-center">
     <Socials horizontal small />
 </div>
+
+<style>
+    .safari {
+        display: none;
+    }
+    /* i hate safari */
+    _::-webkit-full-page-media,
+    _:future,
+    :root {
+        .safari {
+            display: block !important;
+        }
+        .not-safari {
+            display: none;
+        }
+    }
+</style>
