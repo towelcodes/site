@@ -1,10 +1,7 @@
 ---
 import Teatowel from "../assets/typography/teatowels.svg";
-import TeatowelFallback from "../assets/typography/teatowels.png";
 import Home from "../assets/typography/home.svg";
-import HomeFallback from "../assets/typography/home.png";
 import Socials from "../components/Socials.astro";
-import { Image } from "astro:assets";
 
 const { title } = Astro.props;
 const path = Astro.url.pathname;
@@ -14,9 +11,9 @@ const returnHome = path != "/";
 
 <nav class="mt-8 flex items-center justify-center w-full">
     <div class="flex gap-2 *:hover:cursor-default *:block items-center">
-        <Teatowel class="h-[44px]" />
+        <Teatowel class="h-[44px] relative left-6" />
         <Home
-            class="h-[36px] relative -left-5 drop-shadow-glow drop-shadow-ctp-green"
+            class="h-[36px] relative drop-shadow-glow drop-shadow-ctp-green"
         />
     </div>
 </nav>
