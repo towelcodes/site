@@ -14,28 +14,9 @@ const returnHome = path != "/";
 
 <nav class="mt-8 flex items-center justify-center w-full">
     <div class="flex gap-2 *:hover:cursor-default *:block items-center">
-        <!-- <Image src={Teatowel} alt="teatowel's" height="44" class="not-safari" /> -->
-        <Teatowel class="not-safari h-[44px]" />
-        <Image
-            src={TeatowelFallback}
-            alt="teatowel's"
-            height="44"
-            class="safari"
-        />
-        <!-- <Image
-            src={Home}
-            alt="home"
-            height="44"
-            class="drop-shadow-ctp-green drop-shadow-glow not-safari"
-        /> -->
+        <Teatowel class="h-[44px]" />
         <Home
-            class="not-safari h-[36px] relative -left-5 drop-shadow-glow drop-shadow-ctp-green"
-        />
-        <Image
-            src={HomeFallback}
-            alt="home"
-            height="44"
-            class="drop-shadow-ctp-green drop-shadow-glow safari"
+            class="h-[36px] relative -left-5 drop-shadow-glow drop-shadow-ctp-green"
         />
     </div>
 </nav>
@@ -44,20 +25,3 @@ const returnHome = path != "/";
 <div class="md:hidden mt-4 flex justify-center items-center">
     <Socials horizontal small />
 </div>
-
-<style>
-    .safari {
-        display: none;
-    }
-    /* i hate safari */
-    _::-webkit-full-page-media,
-    _:future,
-    :root {
-        .safari {
-            display: block !important;
-        }
-        .not-safari {
-            display: none;
-        }
-    }
-</style>
