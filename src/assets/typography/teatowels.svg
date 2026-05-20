@@ -3,7 +3,10 @@
 <svg width="100%" height="100%" viewBox="0 0 1303 306" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <defs>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+            @font-face {
+                font-family: "Cal Sans";
+                src: url("https://fonts.gstatic.com/s/calsans/v2/fdN99sWUv3gWqXxqqRBTtFsm46ZwWbw.woff2") format("woff2");
+            }
         </style>
     </defs>
     <g transform="matrix(1,0,0,1,-1021,-479.366667)">

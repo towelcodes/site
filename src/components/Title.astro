@@ -13,20 +13,22 @@ const returnHome = path != "/";
 ---
 
 <nav class="mt-8 flex items-center justify-center w-full">
-    <div class="flex gap-2">
-        <Image src={Teatowel} alt="teatowel's" height="44" class="not-safari" />
+    <div class="flex gap-2 *:hover:cursor-default *:block items-center">
+        <!-- <Image src={Teatowel} alt="teatowel's" height="44" class="not-safari" /> -->
+        <Teatowel class="not-safari h-[44px]" />
         <Image
             src={TeatowelFallback}
             alt="teatowel's"
             height="44"
             class="safari"
         />
-        <Image
+        <!-- <Image
             src={Home}
             alt="home"
             height="44"
             class="drop-shadow-ctp-green drop-shadow-glow not-safari"
-        />
+        /> -->
+        <Home class="not-safari h-[38px] relative -left-4" />
         <Image
             src={HomeFallback}
             alt="home"
