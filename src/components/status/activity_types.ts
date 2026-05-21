@@ -28,24 +28,39 @@ export interface Activity {
 }
 
 export interface LanyardResponse {
-  success: boolean;
-  data: {
-    discord_user: {
-      avatar: string;
-      display_name: string;
-      global_name: string;
-      id: string;
-      username: string;
-      primary_guild?: string;
-    };
-    activities: Activity[];
-    discord_status: string;
-    listening_to_spotify: boolean;
-    spotify?: Spotify;
+  discord_user: {
+    avatar: string;
+    display_name: string;
+    global_name: string;
+    id: string;
+    username: string;
+    primary_guild?: string;
   };
+  activities: Activity[];
+  discord_status: string;
+  listening_to_spotify: boolean;
+  spotify?: Spotify;
 }
+
+export const defaultLanyardResponse: LanyardResponse = {
+  discord_user: {
+    avatar: "",
+    display_name: "",
+    global_name: "",
+    id: "",
+    username: "",
+  },
+  activities: [],
+  discord_status: "offline",
+  listening_to_spotify: false,
+};
 
 export interface WebsocketData {
   op: number;
   d: object;
+  t?: string;
+}
+
+export interface WebsocketHello {
+  heartbeat_interval: number;
 }

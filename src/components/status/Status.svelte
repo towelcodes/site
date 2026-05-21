@@ -1,10 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import type {
-        Activity,
-        LanyardResponse,
-        Spotify,
-        WebsocketData,
+    import {
+        defaultLanyardResponse,
+        type Activity,
+        type LanyardResponse,
+        type Spotify,
+        type WebsocketData,
+        type WebsocketHello,
     } from "./activity_types";
 
     /*
@@ -33,12 +35,14 @@
         return res;
     }
 
-    let online_status = $state("offline");
+    let presence_data = $state(defaultLanyardResponse);
+    $inspect(presence_data);
+    let online_status = $derived(presence_data.discord_status);
     let online = $derived(online_status !== "offline");
+    let activites: Activity[] | undefined = $derived(presence_data.activities);
+    let listening_to_spotify = $derived(presence_data.listening_to_spotify);
+    let spotify = $derived(presence_data.spotify);
 
-    let activites: Activity[] | undefined = $state();
-    let listening_to_spotify = $state(false);
-    let spotify: Spotify | undefined = $state();
     let root: HTMLDivElement | undefined = $state();
 
     /**
@@ -49,25 +53,39 @@
 
         // connect to the websocket
         const socket = new WebSocket("wss://api.lanyard.rest/socket");
+        let heartbeat_task: NodeJS.Timeout | undefined;
         socket.addEventListener("open", (e) => {
             console.info("socket opened");
         });
         socket.addEventListener("message", (e) => {
-            console.info(`socket: ${e.data}`);
             const data = JSON.parse(e.data) as WebsocketData;
             switch (data.op) {
                 case 0:
+                    const t = data.t!;
+                    if (t == "INIT_STATE") {
+                        const update = data.d as any;
+                        presence_data = update[uid] as LanyardResponse;
+                        break;
+                    } else if (t == "PRESENCE_UPDATE") {
+                        presence_data = data.d as LanyardResponse;
+                    }
+                case 1: // hello
+                    socket.send(
+                        JSON.stringify({
+                            op: 2,
+                            d: { subscribe_to_ids: [uid] },
+                        }),
+                    );
+                    const d = data.d as WebsocketHello;
+                    heartbeat_task = setInterval(
+                        () => socket.send(JSON.stringify({ op: 3 })),
+                        d.heartbeat_interval,
+                    );
                     break;
                 default:
                     console.warn("unknown op:", data.op);
             }
         });
-
-        const presence_data = (await getCached(endpoint)) as LanyardResponse;
-        online_status = presence_data.data.discord_status;
-        activites = presence_data.data.activities;
-        listening_to_spotify = presence_data.data.listening_to_spotify;
-        spotify = presence_data.data.spotify;
     });
 
     $effect(() => {
