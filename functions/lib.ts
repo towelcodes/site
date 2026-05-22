@@ -31,7 +31,7 @@ export async function cacheOrFetch(
 
   // cache miss
   const res = await fetch(url, options);
-  if (res.status != 200) {
+  if (!res.ok) {
     console.error(res);
     return {
       age: 0,

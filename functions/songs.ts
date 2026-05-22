@@ -30,7 +30,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       Authorization: `Token ${apikey}`,
     },
   });
-  if (res.status != 200) {
+  if (!res.ok) {
     console.error(res);
     return res;
   }

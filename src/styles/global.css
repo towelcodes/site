@@ -90,12 +90,6 @@
 
     body {
         @apply text-ctp-text;
-        /*background: repeating-conic-gradient(
-                var(--color-ctp-crust) 0 25%,
-                var(--color-ctp-mantle) 0 50%
-            )
-            50% / 40px 40px;
-        animation: bg-scroll infinite 1.5s linear;*/
     }
 
     /* sane defaults for rendering text blocks */
