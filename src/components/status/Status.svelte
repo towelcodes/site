@@ -16,25 +16,6 @@
     const uid = "951330347541491802";
 
     const MAX_AGE = 60; // seconds
-    async function getCached(endpoint: string): Promise<any> {
-        const cached = localStorage.getItem(endpoint);
-        if (cached) {
-            const expires = localStorage.getItem(`expiry ${endpoint}`);
-            if (expires) {
-                if (parseInt(expires) > Date.now() / 1000) {
-                    return JSON.parse(cached);
-                }
-            }
-        }
-
-        const res = await (await fetch(endpoint)).json();
-        localStorage.setItem(endpoint, JSON.stringify(res));
-        localStorage.setItem(
-            `expiry ${endpoint}`,
-            `${Date.now() / 1000 + MAX_AGE}`,
-        );
-        return res;
-    }
 
     let presence_data = $state(defaultLanyardResponse);
     let online_status = $derived(presence_data.discord_status);
@@ -48,6 +29,7 @@
      */
     onMount(async () => {
         const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
+        let heartBeating = false;
 
         // connect to the websocket
         const socket = new WebSocket("wss://api.lanyard.rest/socket");
@@ -63,7 +45,10 @@
                     } else if (t == "PRESENCE_UPDATE") {
                         presence_data = data.d as LanyardResponse;
                     }
+                    break;
                 case 1: // hello
+                    if (heartBeating) break;
+
                     socket.send(
                         JSON.stringify({
                             op: 2,
@@ -75,6 +60,7 @@
                         () => socket.send(JSON.stringify({ op: 3 })),
                         d.heartbeat_interval,
                     );
+                    heartBeating = true;
                     break;
                 default:
                     console.warn("unknown op:", data.op);
