@@ -18,6 +18,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           headers: {
             Age: `${age}`,
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
         });
       }
@@ -46,6 +47,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     headers: {
       Age: "0",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   });
 };
