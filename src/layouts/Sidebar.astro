@@ -1,6 +1,7 @@
 ---
 import Status from "../components/status/Status.svelte";
 import Socials from "../components/Socials.astro";
+import RecentTracks from "../components/status/RecentTracks.svelte";
 ---
 
 <div class="mr-auto mt-9">
@@ -11,9 +12,8 @@ import Socials from "../components/Socials.astro";
     <h2 class="text-4xl font-display text-ctp-mauve text-shadow-title-sm">
         status
     </h2>
-    <div
-        class="text-4xl font-display text-ctp-mauve absolute -top-8 text-shadow-title-sm"
-    >
-    </div>
     <Status client:load />
+    <div class="mt-2">
+        <RecentTracks client:load />
+    </div>
 </div>
