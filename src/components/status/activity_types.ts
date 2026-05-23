@@ -1,13 +1,13 @@
 export interface Spotify {
-  album: string;
-  album_art_url: string;
+  album?: string;
+  album_art_url?: string;
   artist: string;
   song: string;
-  timestamps: {
+  timestamps?: {
     end: number;
     start: number;
   };
-  track_id: string;
+  track_id?: string;
 }
 
 export interface Activity {
@@ -24,6 +24,24 @@ export interface Activity {
     large_text: string;
     small_image: string;
     small_text: string;
+  };
+}
+
+export interface NowPlayingResponse {
+  payload: {
+    count: number;
+    listens: {
+      playing_now: boolean;
+      track_metadata: {
+        additional_info: {
+          duration_ms: number;
+          media_player: string;
+        };
+        artist_name: string;
+        track_name: string;
+        release_name?: string;
+      };
+    }[];
   };
 }
 

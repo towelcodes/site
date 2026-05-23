@@ -8,14 +8,11 @@
         type Spotify,
         type WebsocketData,
         type WebsocketHello,
+        type NowPlayingResponse,
     } from "./activity_types";
 
-    /*
-    using lanyard API
-    */
+    // using lanyard API
     const uid = "951330347541491802";
-
-    const MAX_AGE = 60; // seconds
 
     let presence_data = $state(defaultLanyardResponse);
     let online_status = $derived(presence_data.discord_status);
@@ -24,11 +21,30 @@
     let listening_to_spotify = $derived(presence_data.listening_to_spotify);
     let spotify = $derived(presence_data.spotify);
 
-    /**
-     * TODO: use websocket
-     */
+    let last_check = 0;
+    function updateFromMusicbrainz() {
+        if (listening_to_spotify || !online) return;
+        fetch("/nowplaying").then((res) => {
+            last_check = Date.now();
+            const data = res.json() as Promise<NowPlayingResponse>;
+            data.then((d) => {
+                if (d.payload.count == 0) {
+                    spotify = undefined;
+                    return;
+                }
+                const song = d.payload.listens[0].track_metadata;
+                spotify = {
+                    artist: song.artist_name,
+                    song: song.track_name,
+                    album: song.release_name,
+                };
+            });
+        });
+    }
+    $effect(updateFromMusicbrainz);
+    setTimeout(updateFromMusicbrainz, 1000 * 60); // check every minute
+
     onMount(async () => {
-        const endpoint = `https://api.lanyard.rest/v1/users/${uid}`;
         let heartBeating = false;
 
         // connect to the websocket
@@ -85,23 +101,21 @@
         </div>
     {/key}
 
-    {#if listening_to_spotify}
+    {#if spotify}
         <div transition:fade={{ duration: 200 }}>
-            {#if spotify}
-                <div class="relative">
-                    <div class="text-ctp-subtext0">listening to</div>
-                    {#key spotify.song}
-                        <div
-                            class="relative left-5"
-                            transition:blur={{ duration: 200 }}
-                        >
-                            {spotify!.song}
-                            <span class="text-ctp-subtext0">-</span>
-                            {spotify!.artist}
-                        </div>
-                    {/key}
-                </div>
-            {/if}
+            <div class="relative">
+                <div class="text-ctp-subtext0">listening to</div>
+                {#key spotify.song}
+                    <div
+                        class="relative left-5"
+                        transition:blur={{ duration: 200 }}
+                    >
+                        {spotify!.song}
+                        <span class="text-ctp-subtext0">-</span>
+                        {spotify!.artist}
+                    </div>
+                {/key}
+            </div>
         </div>
     {/if}
 </div>
