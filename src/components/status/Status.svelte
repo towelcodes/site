@@ -24,7 +24,7 @@
     let last_check = 0;
     function updateFromMusicbrainz() {
         if (listening_to_spotify || !online) return;
-        fetch("/nowplaying").then((res) => {
+        fetch("/music/nowplaying").then((res) => {
             last_check = Date.now();
             const data = res.json() as Promise<NowPlayingResponse>;
             data.then((d) => {
@@ -87,7 +87,7 @@
 
 <div class="flex flex-col gap-2 font-pixel">
     {#key online_status}
-        <div class="w-min px-2 flex">
+        <div class="w-min px-2 flex" transition:fade={{ duration: 200 }}>
             <svg
                 class="{online
                     ? 'fill-ctp-green'
