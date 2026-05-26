@@ -23,6 +23,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     headers: {
       Age: response.age.toString(),
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   });
 };
