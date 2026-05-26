@@ -36,18 +36,18 @@ export async function cacheOrFetch(
     return {
       age: 0,
       success: false,
-      data: await res.text(),
+      data: await res.json(),
     };
   }
 
   // store response
-  const body = await res.text();
+  const body = await res.json();
   await cache.put(url, JSON.stringify(body));
   await cache.put("expiry " + url, `${Date.now() / 1000 + maxAge}`);
 
   return {
     success: true,
     age: 0,
-    data: body,
+    data: JSON.stringify(body),
   };
 }
