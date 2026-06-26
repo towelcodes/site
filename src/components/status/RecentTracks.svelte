@@ -66,24 +66,23 @@
                         class="group relative shrink-0 flex gap-1 hover:scale-125 border-0 border-ctp-surface1 hover:border-2 transition ease-out"
                         transition:blur={{ duration: 200 }}
                     >
-                        <object
-                            data={recording.release_mbid
+                        <img
+                            src={recording.release_mbid
                                 ? `https://coverartarchive.org/release/${recording.caa_release_mbid}/front-250`
                                 : "/placeholder.svg"}
-                            aria-label={recording.track_name}
                             class="h-14 w-14 overflow-clip transition-opacity opacity-0 bg-ctp-crust"
+                            alt=""
                             onload={(e) => {
                                 e.currentTarget.classList.replace(
                                     "opacity-0",
                                     "opacity-100",
                                 );
                             }}
-                        >
-                            <img
+                        />
+                        <!-- <img
                                 src="/placeholder.svg"
                                 alt={recording.track_name}
-                            />
-                        </object>
+                            /> -->
                         <div
                             class="hidden group-hover:block absolute top-16 w-min text-nowrap text-tiny font-pixel *:bg-ctp-surface2 *:px-1"
                         >
