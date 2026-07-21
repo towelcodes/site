@@ -121,7 +121,7 @@
             font-bold
             text-ctp-blue
             text-shadow-heading-sm
-            font-display;
+            font-pixel;
             /*filter: drop-shadow(0 0 1px);*/
         }
         p {
