@@ -2,20 +2,15 @@
 import Teatowel from "../assets/typography/teatowels.svg";
 import Home from "../assets/typography/home.svg";
 import Socials from "../components/Socials.astro";
+import TitleNav from "../components/TitleNav.svelte";
 
-const { title } = Astro.props;
 const path = Astro.url.pathname;
 const accent = path == "/" ? "ctp-green" : "ctp-sky";
 const returnHome = path != "/";
 ---
 
 <nav class="mt-8 flex items-center justify-center w-full">
-    <div class="flex gap-2 *:hover:cursor-default *:block items-center">
-        <Teatowel class="h-[44px] relative left-6" />
-        <Home
-            class="h-[36px] relative drop-shadow-glow drop-shadow-ctp-green"
-        />
-    </div>
+    <TitleNav client:load />
 </nav>
 
 <!-- display socials for small displays -->
