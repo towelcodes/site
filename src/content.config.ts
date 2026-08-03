@@ -11,24 +11,6 @@ const music = defineCollection({
     localImage: z.string().optional(),
     remoteImage: z.string().optional(),
     link: z.string(),
-    // accent: z.enum([
-    //   "ctp-green",
-    //   "ctp-sky",
-    //   "ctp-maroon",
-    //   "ctp-peach",
-    //   "ctp-mauve",
-    //   "ctp-blue",
-    //   "ctp-lavender",
-    //   "ctp-yellow",
-    // ]),
-    // songs: z.array(
-    //   z.object({
-    //     title: z.string(),
-    //     // link: z.string(),
-    //     rating: z.number(),
-    //     length: z.string(),
-    //   }),
-    // ),
   }),
 });
 

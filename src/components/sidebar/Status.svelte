@@ -85,13 +85,13 @@
     });
 </script>
 
-<div class="flex flex-col gap-2 font-pixel">
+<div class="flex flex-col gap-2 font-pixel overflow-clip">
     {#key online_status}
         <div class="w-min px-2 flex" transition:fade={{ duration: 200 }}>
             <svg
-                class="{online
-                    ? 'fill-ctp-green'
-                    : 'fill-ctp-surface0'} w-3 h-3 self-center mr-2 transition-colors"
+                class="w-3 h-3 self-center mr-2 transition-colors"
+                class:fill-ctp-green={online}
+                class:fill-ctp-surface0={!online}
                 viewBox="0 0 12 12"
                 xmlns="http://www.w3.org/2000/svg"
             >

@@ -1,6 +1,7 @@
 ---
 import Yuuri from "../assets/bg/yuuri.png";
 import { Image } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
 import Title from "../components/Title.astro";
 import Footer from "../components/Footer.astro";
 import { PROD } from "astro:env/client";
@@ -53,6 +54,7 @@ const { title, accent = "ctp-green", returnHome = false } = Astro.props;
           )
         }
         <title>teatowel's {title}</title>
+        <ViewTransitions />
     </head>
     <body class="mocha">
         <div class="relative min-h-screen">
