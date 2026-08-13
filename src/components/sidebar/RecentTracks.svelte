@@ -68,7 +68,7 @@
                     >
                         <object
                             data={recording.release_mbid
-                                ? `https://coverartarchive.org/release/${recording.caa_release_mbid}/front-250`
+                                ? `/music/cover/${recording.caa_release_mbid}`
                                 : "/placeholder.svg"}
                             aria-label={recording.track_name}
                             class="h-14 w-14 overflow-clip transition-opacity opacity-0 bg-ctp-crust"
