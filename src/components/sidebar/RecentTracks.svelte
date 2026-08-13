@@ -116,11 +116,11 @@
                         transition:blur={{ duration: 200 }}
                     >
                         <div class="hover:scale-125 transition ease-out">
-                            <object
-                                data={recording.release_mbid
+                            <img
+                                src={recording.release_mbid
                                     ? `/music/cover/${recording.caa_release_mbid}`
                                     : "/placeholder.svg"}
-                                aria-label={recording.track_name}
+                                alt={recording.track_name}
                                 class="h-14 w-14 overflow-clip transition-opacity opacity-0 bg-ctp-crust"
                                 onload={(e) => {
                                     e.currentTarget.classList.replace(
@@ -128,12 +128,7 @@
                                         "opacity-100",
                                     );
                                 }}
-                            >
-                                <img
-                                    src="/placeholder.svg"
-                                    alt={recording.track_name}
                                 />
-                            </object>
                         </div>
                         <div
                             use:keepInViewport
