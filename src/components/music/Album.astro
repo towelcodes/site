@@ -4,31 +4,14 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import Song from "./Song.astro";
 
-export interface Song {
-    title: string;
-    // link: string;
-    rating: number;
-    length: string;
-}
-
 interface Props {
     title: string;
     artist: string;
-    year: number;
-    localImage?: string;
-    remoteImage?: string;
-    songs: Song[];
+    date: string;
+    cover: string;
 }
 
-const { title, artist, year, localImage, remoteImage, songs } = Astro.props;
-
-const basePath = "/src/assets/music/";
-const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/music/*.{jpg,png,webp}",
-);
-if (localImage)
-    if (!images[basePath + localImage])
-        throw new Error(`"${localImage}" was not found in assets/music`);
+const { title, artist, date, cover } = Astro.props;
 ---
 
 <style>
@@ -85,27 +68,14 @@ if (localImage)
         <div
             class="relative bg-ctp-surface0 rounded border-2 border-ctp-surface0 max-w-32 leading-0"
         >
-            {
-                localImage ? (
-                    <Image
-                        src={images[basePath + localImage]()}
-                        alt={title}
-                        class="w-32 h-32 rounded"
-                    />
-                ) : (
-                    <img
-                        src={remoteImage}
-                        alt={title}
-                        class="w-32 h-32 rounded"
-                    />
-                )
-            }
+            <img src={cover} alt={title} class="w-32 h-32 rounded" />
             <div
                 class="text-center text-sm hover:cursor-default text-nowrap overflow-hidden can-marquee"
             >
                 <span class="inline-block">
                     {title}
-                    <span class="text-ctp-subtext0">({year})</span>
+                    <span class="text-ctp-subtext0">({date.split("-")[0]})</span
+                    >
                 </span>
             </div>
             <div
